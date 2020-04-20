@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+}
+
+header{
+    background-color: orangered;
+}
+
+header a{
+    display: inline;
+    line-height: 100px;
+}
+
+#forumtitle{
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+#navlogin{
+    float: right;
+    margin-right: 20px;
+}
+
+.sidebar{
+    width: 15%;
+    float: left;
+    background-color: green;
+}
+
+section{
+    width: 85%;
+    float: left;
+    padding: 20px;
+    margin: 16px 0px;
+    background-color: aquamarine;
+    height: 100%;
+}
+
+article{
+    margin-bottom: 20px;
+    border: 2px dashed gray;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+article h2{
+    margin: 0px;
+}

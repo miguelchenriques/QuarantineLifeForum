@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Added Settings
+LOGIN_REDIRECT_URL = '/forum/'
 
 # Application definition
 

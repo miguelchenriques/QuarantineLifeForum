@@ -6,7 +6,7 @@ from django.db.models import Count
 page_size = 10
 
 
-# Create your views here.
+# Forum display Views
 def homepage(request):
     post_list = Post.objects.all()
     paginator = Paginator(post_list, page_size)
@@ -62,3 +62,6 @@ def get_page(page_number, paginator):
         page_list = paginator(paginator.num_pages)
 
     return page_list
+
+
+# Authentication Views

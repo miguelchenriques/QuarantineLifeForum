@@ -22,8 +22,9 @@ class Post(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     text = models.TextField()
+    media = models.URLField(max_length=200, null=True)
     owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="original_poster")
-    likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    post_pizzas = models.ManyToManyField(User, related_name='post_likes', blank=True)
     pub_date = models.DateTimeField('Publication date')
 
     class Meta:
@@ -33,7 +34,7 @@ class Post(models.Model):
         return self.title
 
     def num_likes(self):
-        return self.likes.count()
+        return self.post_pizzas.count()
 
 
 class Comment(models.Model):
@@ -41,13 +42,13 @@ class Comment(models.Model):
     owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     text = models.TextField()
     pub_date = models.DateTimeField(verbose_name='Comment Time')
-    likes = models.ManyToManyField(User, blank=True, related_name='comment_likes')
+    comment_pizzas = models.ManyToManyField(User, blank=True, related_name='comment_pizzas')
 
     class Meta:
         ordering = ['pub_date']
 
     def num_likes(self):
-        return self.likes.count()
+        return self.comment_pizzas.count()
 
     def __str__(self):
         return self.text

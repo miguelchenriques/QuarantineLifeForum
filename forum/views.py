@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Post, Topic, Comment
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
 
 page_size = 10
@@ -10,8 +10,10 @@ page_size = 10
 def homepage(request):
     post_list = Post.objects.all()
     paginator = Paginator(post_list, page_size)
-    page_number = request.GET['page']
-    page_list = paginator.get_page(page_number)
+    page_number = request.GET.get('page', 1)
+
+    page_list = get_page(page_number, paginator)
+
     context = {
         'page_list': page_list,
     }
@@ -39,10 +41,24 @@ def post_details(request, post_id):
 def popular_topics(request):
     topic_list = Topic.objects.annotate(followrs_count=Count('followers')).orderBy('-followers_count')
     paginator = Paginator(topic_list, page_size)
-    page = request.GET['page']
-    page_list = paginator.get_page(page)
+    page_number = request.GET.get('page', 1)
+
+    page_list = get_page(page_number, paginator)
+
     context = {
         'page_list': page_list,
     }
     # return render(request, 'forum/popular_topics.html', context)
     return None
+
+
+# Similar code in pagination
+def get_page(page_number, paginator):
+    try:
+        page_list = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_list = paginator.page(1)
+    except EmptyPage:
+        page_list = paginator(paginator.num_pages)
+
+    return page_list

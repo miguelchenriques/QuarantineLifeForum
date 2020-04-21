@@ -65,3 +65,4 @@ def get_page(page_number, paginator):
 
 
 # Authentication Views
+

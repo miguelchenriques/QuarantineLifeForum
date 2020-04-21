@@ -1,21 +1,34 @@
 *{
     box-sizing: border-box;
-    background-color: #dfe3ee;
     font-family: 'Lato';
 }
 
 body{
     margin: 0;
+    background-color: #dfe3ee;
 }
 
 header{
     background-color: white;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    overflow: hidden;
 }
 
-header a{
+header img{
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+header a {
     display: inline;
     line-height: 100px;
-    background-color: white;
 }
 
 header input{
@@ -23,9 +36,16 @@ header input{
     width: 200px;
 }
 
+main{
+    margin-top: 100px;
+    height: calc(100vh - 200px);
+}
+
 #forumtitle{
     font-size: 30px;
-    margin-left: 20px;
+    margin-left: 10px;
+    /*float: left;*/
+
 }
 
 #navlogin{
@@ -33,36 +53,62 @@ header input{
     margin-right: 20px;
 }
 
-aside ul{
+aside{
     width: 15%;
     float: left;
     /*background-color: lightgray;*/
-    border: 1px solid gray;
-    border-radius: 5px;
+    /*border: 1px solid transparent;*/
+    /*border-radius: 5px;*/
+    padding: 0;
+    margin-top: 30px;
+    /*position: fixed;*/
+}
+
+aside ul{
+    padding: 0;
+}
+
+aside a{
+    padding-left: 30px;
+    display: block;
+    text-decoration: none;
+    color: black;
+
 }
 
 aside h3{
-
+    padding-left: 30px;
+    margin-top: 0;
 }
 
 section{
-    width: 85%;
+    width: 65%;
     float: left;
-    padding: 20px;
-    margin: 16px 0px;
-
+    margin: 30px;
     height: 100%;
 }
 
 article{
     margin-bottom: 20px;
-    border: 2px dashed gray;
-    padding: 10px;
-    border-radius: 10px;
+    border: 1px solid transparent;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
 }
 
-article h2{
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+article a{
     margin: 0px;
+    text-align: center;
+    text-decoration: none;
+    color: #3b5998;
+    padding-left: 10px;
 }
 
 button{

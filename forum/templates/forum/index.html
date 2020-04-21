@@ -9,32 +9,25 @@
 </head>
 <body>
     <header>
+        <img src="https://i.pinimg.com/originals/3a/d3/2b/3ad32b2aa24f4d33e28c1a73b055a079.png">
         <a id="forumtitle">Quarentine Life</a>
         <a id="navlogin"><button>Log In</button></a>
-        <a style="float: right"><input type="text" name="SearchBar" id="search" placeholder="Search..."></a>
+        <a style="float: right"><input type="text" name="SearchBar" placeholder="Search..."></a>
     </header>
 
-    <aside>
-        <ul>
-            <h3>Topicos populares</h3>
-            <li>Topico 1</li>
-            <li>Topico 2</li>
-        </ul>
-    </aside>
+    <main>
+        <aside>
+            <h3>Tópicos populares</h3>
+            {% block asideList %}
 
-    <section>
-        <article>
-            <h2>Nome post-Autor</h2>
-            <p>Texto do post</p>
-            <button>Like</button>
-        </article>
+            {% endblock asideList %}
+        </aside>
 
-        <article>
-            <h2>Nome post-Autor</h2>
-             <p>Texto do post</p>
-            <button>Like</button>
-        </article>
-    </section>
-
+        <section>
+            {% block articles %}
+           
+            {% endblock articles%}
+        </section>
+    </main>
 </body>
 </html>

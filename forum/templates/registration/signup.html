@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>SignUp</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>SignUp</h1>
 
     <form method="post">
         {% csrf_token %}
         {% for field in form %}
+            {{ field.errors }} <br>
             {{ field.label_tag }} <br>
             {{ field }} <br>
         {% endfor %}
-        <input type="submit" value="LogIn">
+        <input type="submit" value="Signup">
     </form>
-    <a href="{% url 'forum:signup' %}">SignUp</a>
+    <a href="{% url 'forum:login' %}">LogIn</a>
 </body>
 </html>

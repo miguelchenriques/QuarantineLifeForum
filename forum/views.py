@@ -17,7 +17,7 @@ def homepage(request):
     context = {
         'page_list': page_list,
     }
-    return render(request, 'forum/index.html', context)
+    return render(request, 'forum/home.html', context)
 
 
 def topic_details(request, topic_slug):

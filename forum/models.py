@@ -36,6 +36,9 @@ class Post(models.Model):
     def num_likes(self):
         return self.post_pizzas.count()
 
+    def user_has_like(self, user):
+        return user in self.post_pizzas
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

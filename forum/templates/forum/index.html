@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="leftheader">
-            <img src="https://i.pinimg.com/originals/3a/d3/2b/3ad32b2aa24f4d33e28c1a73b055a079.png">
+            <img src="../../static/forum/undraw_at_home_octe.png">
             <a id="forumtitle">Quarentine Life</a>
         </div>
         <div class="rightheader">
@@ -34,4 +34,25 @@
         </section>
     </main>
 </body>
+
+    <div class="login">
+        <div class="login-container">
+            <img src="../../static/forum/close.png">
+            <div class="login-form">
+                <img src="../../static/forum/undraw_profile_pic_ic5t.png">
+                <input type="text" name="username" id="id_username" placeholder="Username"></a>
+                <input type="text" name="password" id="id_password1" placeholder="Password"></a>
+                <button>LogIn</button>
+            </div>
+            <div class="login-art">
+                <img src="../../static/forum/undraw_social_distancing_2g0u.png">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("navlogin").addEventListener("click", function () {
+            document.querySelector(".login").style.display = "flex";
+        })
+    </script>
 </html>

@@ -26,9 +26,9 @@ def verify_username(request):
 
 @require_POST
 @login_required
-def like_toggle(request, post_id):
+def like_toggle(request):
     user = request.user
-    post = get_object_or_404(pk=post_id)
+    post = get_object_or_404(pk=request.GET['post_id'])
     if post.user_has_like(user):
         post.post_pizzas.remove(user)
         has_like = False

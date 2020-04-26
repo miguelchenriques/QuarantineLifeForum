@@ -15,50 +15,46 @@ header{
     height: 100px;
     top: 0;
     overflow: hidden;
+    display: flex;
 }
 
-header img{
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    float: left;
-    margin-top: 25px;
-    margin-left: 20px;
+.leftheader{
+    justify-content: flex-start;
+    align-items: center;
+    width:50%;
+    display: flex;
 }
 
-header a {
-    display: inline;
-    line-height: 100px;
-}
-
-header input{
-    height: 25px;
-    width: 200px;
-}
-
-main{
-    margin-top: 100px;
-    height: calc(100vh - 200px);
+.rightheader{
+    display: flex;
+    justify-content: flex-end;
+    width:50%;
+    align-items: center;
 }
 
 #forumtitle{
     font-size: 30px;
     margin-left: 10px;
-    /*float: left;*/
-
 }
 
-#navlogin{
-    float: right;
-    margin-right: 20px;
+header input, button{
+    margin-right: 10px;
+}
+
+header img{
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+main{
+    margin-top: 100px;
+    height: 100vh;
+    display: flex;
 }
 
 aside{
-    width: 15%;
-    float: left;
-    /*background-color: lightgray;*/
-    /*border: 1px solid transparent;*/
-    /*border-radius: 5px;*/
+    width: 20%;
     padding: 0;
     margin-top: 30px;
     /*position: fixed;*/
@@ -69,7 +65,7 @@ aside ul{
 }
 
 aside a{
-    padding-left: 30px;
+    padding-left: 35px;
     display: block;
     text-decoration: none;
     color: black;
@@ -77,14 +73,14 @@ aside a{
 }
 
 aside h3{
-    padding-left: 30px;
+    padding-left: 35px;
     margin-top: 0;
+    /*text-align: center;*/
 }
 
 section{
-    width: 65%;
-    float: left;
-    margin: 30px;
+    width: 60%;
+    margin: 30px 0px;
     height: 100%;
 }
 
@@ -98,8 +94,8 @@ article{
 
 .avatar {
   vertical-align: middle;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
@@ -108,7 +104,6 @@ article a{
     text-align: center;
     text-decoration: none;
     color: #3b5998;
-    padding-left: 10px;
 }
 
 button{

@@ -1,9 +1,11 @@
-from .models import Post, Topic
+from .models import Post, Topic, Comment
+from .forms import CommentForm
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 
 
 @require_GET
@@ -40,3 +42,23 @@ def like_toggle(request):
         'like_count': post.post_pizzas.all().count(),
     }
     return JsonResponse(data)
+
+
+@require_POST
+@login_required
+def new_comment(request, post_id):
+    post = get_object_or_404(pk=post_id)
+    user = request.user
+    comment = Comment(post=post, owner=user, pub_date=timezone.now())
+    form = CommentForm(request.POST, instance=comment)
+    form.save()
+
+    response = {
+        'owner_username': comment.owner.username,
+        'post_id': post_id,
+        'text': comment.text,
+        'num_pizzas': comment.num_likes(),
+        'pub_date': comment.pub_date,
+    }
+
+    return JsonResponse(response)

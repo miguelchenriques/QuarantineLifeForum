@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 # Added Settings
 LOGIN_REDIRECT_URL = '/forum/'
+LOGOUT_REDIRECT_URL = '/forum/'
 
 # Application definition
 

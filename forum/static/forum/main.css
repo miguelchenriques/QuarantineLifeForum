@@ -95,18 +95,6 @@ article{
     flex-direction: column;
 }
 
-.buttonspost{
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.buttonspost img{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
 .avatar {
     width: 40px;
     height: 40px;
@@ -137,15 +125,42 @@ article{
     align-items: center;
 }
 
-button{
+.loginbutton{
     border: 1px solid transparent;
-    border-radius: 5px;
+    border-radius: 100px;
     background-color: #ff6200;
     text-transform: uppercase;
     color: white;
     letter-spacing: 2px;
     padding: 5px 10px;
     height: 30px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.buttonspost{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.like{
+    border: none;
+    background: transparent url("../../static/forum/pizzaOutline3.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.liked{
+    border: none;
+    background: transparent url("../../static/forum/pizza.png");
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    padding: 0;
     cursor: pointer;
 }
 
@@ -170,9 +185,18 @@ button{
     display: flex;
 }
 
-.login-container img{
-    width: 30px;
-    height: 30px;
+#close{
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+#close:hover{
+    border: 1px solid gray;
+    border-radius: 100px;
 }
 
 .login-form{
@@ -206,13 +230,14 @@ button{
 .login-form button{
     margin-top: 30px;
     border-radius: 100px;
-    width: 100px;
+    /*width: 100px;*/
 }
 
 .login-art img{
     width: 100%;
     height: 500px;
     text-align: right;
+    border-radius: 5px;
 }
 
 .login-art{

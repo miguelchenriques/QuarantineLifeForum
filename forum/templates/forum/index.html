@@ -15,7 +15,7 @@
         </div>
         <div class="rightheader">
             <a style="float: right"><input type="text" name="SearchBar" placeholder="Search..."></a>
-            <a id="navlogin"><button>Log In</button></a>
+            <a><button class="loginbutton" id="navloginbutton">Log In</button></a>
         </div>
     </header>
 
@@ -37,12 +37,12 @@
 
     <div class="login">
         <div class="login-container">
-            <img src="../../static/forum/close.png">
+            <img src="../../static/forum/close1.png" id="close">
             <div class="login-form">
                 <img src="../../static/forum/undraw_profile_pic_ic5t.png">
                 <input type="text" name="username" id="id_username" placeholder="Username"></a>
                 <input type="text" name="password" id="id_password1" placeholder="Password"></a>
-                <button>LogIn</button>
+                <button class="loginbutton">LogIn</button>
             </div>
             <div class="login-art">
                 <img src="../../static/forum/undraw_social_distancing_2g0u.png">
@@ -51,8 +51,16 @@
     </div>
 
     <script>
-        document.getElementById("navlogin").addEventListener("click", function () {
+        document.getElementById("navloginbutton").addEventListener("click", function () {
             document.querySelector(".login").style.display = "flex";
         })
+
+        document.getElementById("close").addEventListener("click", function () {
+            document.querySelector(".login").style.display = "none";
+        })
+
+
     </script>
+
+
 </html>

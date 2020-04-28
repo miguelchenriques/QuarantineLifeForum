@@ -125,7 +125,16 @@ article{
     align-items: center;
 }
 
-.loginbutton{
+article .postText{
+    font-size: 14px;
+}
+
+article .postTitle{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.loginbutton, .signupButton{
     border: 1px solid transparent;
     border-radius: 100px;
     background-color: #ff6200;
@@ -169,7 +178,7 @@ article{
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: rgba(0, 0,0 , 0.5);
+    background-color: rgba(0, 0,0 , 0.7);
     /*display: flex;*/
     display: none;
     align-items: center;
@@ -183,12 +192,13 @@ article{
     border-radius: 5px;
     text-align: center;
     display: flex;
+    position: absolute;
 }
 
 #close{
     width: 15px;
     height: 15px;
-    position: relative;
+    position: absolute;
     top: 10px;
     left: 10px;
     cursor: pointer;
@@ -205,15 +215,24 @@ article{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*padding: 50px;*/
+    /*order: 2;*/
 }
 
-.login-form img{
+.signup-form{
+    width: 35%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+}
+
+.login-form img, .signup-form img{
     width: 100px;
     height: 100px;
 }
 
-.login-form input{
+.login-form input, .signup-form input{
     border: none;
     text-align: center;
     border-bottom: 1px solid gray;
@@ -227,10 +246,15 @@ article{
     margin-top: 25px;
 }
 
-.login-form button{
+.login-form button, .signup-form button{
     margin-top: 30px;
     border-radius: 100px;
     /*width: 100px;*/
+}
+
+.login-form a, .signup-form a{
+    margin-top: 15px;
+    font-size: 12px;
 }
 
 .login-art img{
@@ -238,11 +262,13 @@ article{
     height: 500px;
     text-align: right;
     border-radius: 5px;
+    /*transform: scaleX(-1);*/
 }
 
 .login-art{
     /*background-color: #3b5998;*/
     justify-content: flex-end;
     width: 65%;
+    /*order: 1;*/
 }
 

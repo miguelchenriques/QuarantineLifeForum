@@ -1,13 +1,40 @@
 {%  extends 'forum/index.html' %}
 
 {% block asideList %}
-    <ul>
-        <a href="">Filmes</a>
-        <a href="">Culinária</a>
-    </ul>
+    {% if topic %}
+        <ul>
+            {% for topico in topic %}
+                <a href="">({ topico.title }}</a>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Não há tópicos</p>
+    {% endif %}
 {% endblock asideList %}
 
 {% block articles %}
+    {% if page_list %}
+        {% for post in page_list %}
+            <article>
+                <div class="toppost">
+                    <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
+                    <a href="">{{ post.owner.username}}</a>
+                    <a>{{ post.pub_data }}</a>
+                </div>
+                <div class="textpost">
+                    <p class="postTitle">{{ post.title }}</p>
+                    <p class="postText">{{ post.text }}</p>
+                </div>
+                <div class="buttonspost">
+                    <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
+                    <p class="numberPizzas">{{ post.post_pizzas }}</p>
+                    <button>Comment</button>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>Não há posts</p>
+    {% endif %}
     <article>
         <div class="toppost">
             <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
@@ -90,11 +117,9 @@
         var likes=0;
         function likefunctionClick(x) {
             if(!isliked) {
-                {#x.classList.toggle("liked");#}
                 isliked = true;
                 likes++;
             }else{
-                {#x.classList.toggle("liked");#}
                 isliked = false;
                 likes--;
             }

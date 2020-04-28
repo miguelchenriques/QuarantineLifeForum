@@ -43,6 +43,18 @@
                 <input type="text" name="username" id="id_username" placeholder="Username"></a>
                 <input type="text" name="password" id="id_password1" placeholder="Password"></a>
                 <button class="loginbutton">LogIn</button>
+                <a>Ainda não está registado?</a>
+                <a href="#" id="signup">Registe-se aqui</a>
+            </div>
+            <div class="signup-form">
+                <img src="../../static/forum/undraw_profile_pic_ic5t.png">
+                <input type="text" name="username" id="id_username" placeholder="Username"></a>
+                <input type="text" name="email" id="id_email" placeholder="E-mail"></a>
+                <input type="text" name="password" id="id_password1" placeholder="Password"></a>
+                <input type="text" name="password2" id="id_password2" placeholder="Confirme a password"></a>
+                <button class="signupButton">SignUp</button>
+                <a>Já está registado?</a>
+                <a href="#" id="signin">Faça login aqui</a>
             </div>
             <div class="login-art">
                 <img src="../../static/forum/undraw_social_distancing_2g0u.png">
@@ -59,6 +71,24 @@
             document.querySelector(".login").style.display = "none";
         })
 
+        document.getElementById("signup").addEventListener("click", function () {
+            document.querySelector(".login-form").style.display = "none";
+            document.querySelector(".signup-form").style.display = "flex";
+            {#document.querySelector(".signup-form").style.order = 2;#}
+            document.querySelector(".login-art").style.order = 1;
+            document.querySelector(".login-art img").style.transform = "scaleX(-1)";
+            document.querySelector("#close").style.left = "revert";
+            document.querySelector("#close").style.right = "10px";
+        })
+
+        document.getElementById("signin").addEventListener("click", function () {
+            document.querySelector(".login-form").style.display = "flex";
+            document.querySelector(".signup-form").style.display = "none";
+            document.querySelector(".login-art").style.order = 2;
+            document.querySelector(".login-art img").style.transform = "scaleX(1)";
+            document.querySelector("#close").style.left = "10px";
+            document.querySelector("#close").style.right = "revert";
+        })
 
     </script>
 

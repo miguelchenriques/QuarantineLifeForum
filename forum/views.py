@@ -3,15 +3,25 @@ from .models import Post, Topic, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
 from .forms import UserSignUpForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-from .forms import CommentForm
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from .forms import CommentForm, TopicForm
 
 page_size = 10
+
+
+# Common context
+def accounts_form_context(request):
+    context = {
+        'loginForm': AuthenticationForm(),
+        'signupForm': UserSignUpForm()
+    }
+    return context
 
 
 # Forum display Views
@@ -60,7 +70,16 @@ def popular_topics(request):
     return None
 
 
-# Similar code in pagination
+@login_required
+def create_Topic(request):
+    if request.method == 'POST':
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('forum:home')
+    return None
+
+
 def get_page(page_number, paginator):
     try:
         page_list = paginator.page(page_number)

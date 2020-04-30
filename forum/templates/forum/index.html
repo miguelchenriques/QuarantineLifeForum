@@ -60,6 +60,9 @@
             <div class="login-art">
                 <img src="{% static 'forum/img/undraw_social_distancing_2g0u.png' %}">
             </div>
+            <div class="signup-art">
+                <img src="{% static 'forum/img/undraw_authentication_fsn5.png' %}">
+            </div>
         </div>
     </div>
 
@@ -76,9 +79,9 @@
             $("#signup").click(function () {
                 document.querySelector(".login-form").style.display = "none";
                 document.querySelector(".signup-form").style.display = "flex";
-                {#document.querySelector(".signup-form").style.order = 2;#}
                 document.querySelector(".login-art").style.order = 1;
-                document.querySelector(".login-art img").style.transform = "scaleX(-1)";
+                document.querySelector(".signup-art").style.display = "flex";
+                document.querySelector(".login-art").style.display = "none";
                 document.querySelector("#close").style.left = "revert";
                 document.querySelector("#close").style.right = "10px";
             })
@@ -87,7 +90,8 @@
                 document.querySelector(".login-form").style.display = "flex";
                 document.querySelector(".signup-form").style.display = "none";
                 document.querySelector(".login-art").style.order = 2;
-                document.querySelector(".login-art img").style.transform = "scaleX(1)";
+                document.querySelector(".signup-art").style.display = "none";
+                document.querySelector(".login-art").style.display = "flex";
                 document.querySelector("#close").style.left = "10px";
                 document.querySelector("#close").style.right = "revert";
             })

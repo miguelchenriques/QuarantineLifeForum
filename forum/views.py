@@ -2,15 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Topic, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
-from .forms import UserSignUpForm
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .forms import CommentForm, TopicForm
+from .forms import CommentForm, TopicForm, UserSignUpForm, LogInForm
+from django.core.exceptions import ValidationError
 
 page_size = 10
 
@@ -18,7 +17,7 @@ page_size = 10
 # Common context
 def accounts_form_context(request):
     context = {
-        'loginForm': AuthenticationForm(),
+        'loginForm': LogInForm(),
         'signupForm': UserSignUpForm()
     }
     return context
@@ -160,5 +159,20 @@ def new_comment(request, post_id):
         'num_pizzas': comment.num_likes(),
         'pub_date': comment.pub_date,
     }
+
+    return JsonResponse(response)
+
+
+@require_POST
+def login_api(request):
+    form = LogInForm(data=request.POST)
+    response = {
+        'login_successful': False
+    }
+    print(form.is_bound)
+    if form.is_valid():
+        form.clean()
+        login(request, form.get_user())
+        response['login_successful'] = True
 
     return JsonResponse(response)

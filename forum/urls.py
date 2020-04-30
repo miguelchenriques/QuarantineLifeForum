@@ -18,5 +18,6 @@ urlpatterns = [
     path('api/verify-email/', views.verify_email, name='api_verify_email'),
     path('api/verify-username/', views.verify_username, name='api_verify_username'),
     path('api/like_toggle/', views.like_toggle, name='api_like_toggle'),
-    path('api/new_comment/<int:post_id>', views.new_comment, name='api_new_comment'),
+    path('api/new_comment/<int:post_id>/', views.new_comment, name='api_new_comment'),
+    path('api/login/', views.login_api, name='api_login')
 ]

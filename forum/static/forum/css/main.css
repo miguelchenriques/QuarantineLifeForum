@@ -155,7 +155,7 @@ article .postTitle{
 
 .like{
     border: none;
-    background: transparent url("../../static/forum/pizzaOutline3.png");
+    background: transparent url("../img/pizzaOutline3.png");
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -165,7 +165,7 @@ article .postTitle{
 
 .liked{
     border: none;
-    background: transparent url("../../static/forum/pizza.png");
+    background: transparent url("../img/pizza.png");
     background-size: cover;
     width: 30px;
     height: 30px;

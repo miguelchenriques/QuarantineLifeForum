@@ -9,16 +9,17 @@
 
 {% block articles %}
     <article>
-         <div class="toppost">
-            <a href=""><img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar"></a>
+        <div class="toppost">
+            <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
             <a href="">Autor</a>
             <a>ontem às 23:00</a>
         </div>
         <div class="textpost">
-            <p>Texto do post</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
         </div>
         <div class="buttonspost">
-            <button>Like</button>
+            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
+            <button>Comment</button>
         </div>
     </article>
 
@@ -29,23 +30,10 @@
             <a>ontem às 23:00</a>
         </div>
         <div class="textpost">
-            <p>Texto do post</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
         </div>
         <div class="buttonspost">
-            <button>Like</button>
-        </div>
-    </article>
-
-     <article>
-        <div class="toppost">
-            <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
-            <a href="">Autor</a>
-            <a>ontem às 23:00</a>
-        </div>
-        <div class="textpost">
-            <p>Texto do post</p>
-        </div>
-        <div class="buttonspost">
+            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
             <button>Like</button>
         </div>
     </article>
@@ -60,7 +48,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
         </div>
         <div class="buttonspost">
-            <img src="../../static/forum/pizza.png">
+            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
             <button>Like</button>
         </div>
     </article>
@@ -72,10 +60,51 @@
             <a>ontem às 23:00</a>
         </div>
         <div class="textpost">
-            <p>Texto do post</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
         </div>
         <div class="buttonspost">
+            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
             <button>Like</button>
         </div>
     </article>
+
+    <article>
+        <div class="toppost">
+            <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
+            <a href="">Autor</a>
+            <a>ontem às 23:00</a>
+        </div>
+        <div class="textpost">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
+        </div>
+        <div class="buttonspost">
+            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
+{#            <a>Likes: {{ instance.post_pizzas.count }}</a>#}
+            <button>Like</button>
+        </div>
+    </article>
+
+    <script>
+
+        var isliked = false;
+        var likes=0;
+        function likefunctionClick(x) {
+            if(!isliked) {
+                {#x.classList.toggle("liked");#}
+                isliked = true;
+                likes++;
+            }else{
+                {#x.classList.toggle("liked");#}
+                isliked = false;
+                likes--;
+            }
+        }
+
+        function likefunctionHover(x) {
+            if(!isliked) {
+                x.classList.toggle("liked");
+            }
+        }
+
+    </script>
 {% endblock articles %}

@@ -129,7 +129,7 @@ def verify_username(request):
 @login_required
 def like_toggle(request):
     user = request.user
-    post = get_object_or_404(pk=request.GET['post_id'])
+    post = get_object_or_404(Post, pk=request.POST['post_id'])
     if post.user_has_like(user):
         post.post_pizzas.remove(user)
         has_like = False
@@ -137,6 +137,7 @@ def like_toggle(request):
         post.post_pizzas.add(user)
         has_like = True
     data = {
+        'post_id': request.POST['post_id'],
         'has_like': has_like,
         'like_count': post.post_pizzas.all().count(),
     }

@@ -1,20 +1,20 @@
 {%  extends 'forum/index.html' %}
 
 {% block leftAside %}
-    {% if topic %}
-        <ul>
-            {% for topico in topic %}
-                <a href="">({ topico.title }}</a>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <a>Não há tópicos</a>
-    {% endif %}
+{#    {% if topic %}#}
+{#        <ul>#}
+{#            {% for topico in topic %}#}
+{#                <a href="">({ topico.title }}</a>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#    {% else %}#}
+{#        <a>Não há tópicos</a>#}
+{#    {% endif %}#}
 {% endblock leftAside %}
 
 {% block articles %}
-    {% if post_topic_list %}
-        {% for post in post_topic_list %}
+    {% if page_list %}
+        {% for post in page_list %}
             <article>
                 <div class="toppost">
                     <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
@@ -41,3 +41,10 @@
         <p>Não há posts</p>
     {% endif %}
 {% endblock articles %}
+
+{% block rightAside %}
+    <h3>Sobre {{ topic.title }}</h3>
+    <p>{{ topic.description }}</p>
+    <p>{{ topic.num_followers }} Seguidores</p>
+    <button class="create_post">Criar post</button>
+{% endblock rightAside %}

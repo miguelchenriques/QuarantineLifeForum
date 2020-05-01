@@ -25,12 +25,12 @@
     </header>
 
     <main>
-        <left-aside>
+        <div class="left-aside">
             <h3>Tópicos a seguir</h3>
             {% block leftAside %}
 
             {% endblock leftAside %}
-        </left-aside>
+        </div>
 
         <section>
             {% block articles %}
@@ -38,11 +38,11 @@
             {% endblock articles%}
         </section>
 
-        <right-aside>
+        <div class="right-aside">
             {% block rightAside %}
 
             {% endblock rightAside %}
-        </right-aside>
+        </div>
     </main>
 </body>
 

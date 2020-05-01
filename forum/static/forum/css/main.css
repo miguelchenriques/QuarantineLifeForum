@@ -54,19 +54,21 @@ main{
     overflow: scroll;
 }
 
-left-aside{
+.left-aside{
     width: 20%;
     padding: 0;
-    margin-top: 30px;
+    margin: 30px 20px;
     position: sticky;
     top: 2rem;
+    /*background-color: white;*/
+    /*border-radius: 5px;*/
 }
 
-left-aside ul{
+.left-aside ul{
     padding: 0;
 }
 
-left-aside a{
+.left-aside a{
     padding-left: 35px;
     display: block;
     text-decoration: none;
@@ -74,10 +76,61 @@ left-aside a{
 
 }
 
-left-aside h3{
+.left-aside h3{
     padding-left: 35px;
     margin-top: 0;
     /*text-align: center;*/
+}
+
+.right-aside{
+    width: 20%;
+    padding: 0;
+    /*position: sticky;*/
+    /*top: 2rem;*/
+    margin: 30px 20px;
+    background-color: white;
+    border-radius: 5px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-aside p{
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+.right-aside h3{
+    background: #f12711;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: 500px;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px 5px 0 0;
+    color: white;
+    width: 100%;
+}
+
+.right-aside button{
+    border: 1px solid transparent;
+    border-radius: 100px;
+    /*background-color: #ff6200;*/
+    background: #f12711;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-clip: padding-box;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 2px;
+    padding: 5px 10px;
+    height: 30px;
+    width: 150px;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
 section{

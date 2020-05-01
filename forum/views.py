@@ -38,7 +38,7 @@ def homepage(request):
 
 
 def topic_details(request, topic_slug):
-    topic = Topic.objects.get(slug=topic_slug)
+    topic = get_object_or_404(Topic, slug=topic_slug)
     post_list = Post.objects.filter(topic=topic)
     paginator = Paginator(post_list, page_size)
     page_number = request.GET.get('page', 1)
@@ -47,7 +47,7 @@ def topic_details(request, topic_slug):
 
     context = {
         'topic': topic,
-        'post_topic_list': page_list
+        'page_list': page_list
     }
     return render(request, 'forum/topic_details.html', context)
     # return None

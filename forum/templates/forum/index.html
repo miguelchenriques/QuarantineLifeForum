@@ -57,10 +57,13 @@
             </div>
             <div class="signup-form">
                 <img src="{% static 'forum/img/undraw_profile_pic_ic5t.png' %}">
-                {% for field in signupForm %}
-                    {{ field }}
-                {% endfor %}
-                <button class="signupButton">SignUp</button>
+                <form action="{% url 'forum:api_signup' %}" method="post" id="signup_form">
+                    {% csrf_token %}
+                    {% for field in signupForm %}
+                        {{ field }}
+                    {% endfor %}
+                    <input type="submit" class="signupButton" value="SignUp">
+                </form>
                 <a>Já está registado?</a>
                 <a href="#" id="signin">Faça login aqui</a>
             </div>

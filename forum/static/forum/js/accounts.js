@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#login_form").on('submit', function (e) {
         e.preventDefault();
-        let this_ = $(this);
+        const this_ = $(this);
 
         $.ajax({
             url: this_.attr('action'),
@@ -9,7 +9,7 @@ $(document).ready(function () {
             data: {
                 username: $("#id_username").val(),
                 password: $("#id_password").val(),
-                csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val()
+                csrfmiddlewaretoken: $("#login_form input[name='csrfmiddlewaretoken']").val()
             },
             dataType: "json",
             success: function (data) {
@@ -18,6 +18,29 @@ $(document).ready(function () {
                 }
             }
         });
+    })
 
+
+    $("#signup_form").on('submit', function (e) {
+        e.preventDefault();
+        const this_ = $(this);
+
+        $.ajax({
+            url: this_.attr('action'),
+            method: this_.attr('method'),
+            data: {
+                username: $("#signup_username").val(),
+                email: $("#signup_email").val(),
+                password1: $("#signup_password1").val(),
+                password2: $("#signup_password2").val(),
+                csrfmiddlewaretoken: $("#signup_form input[name='csrfmiddlewaretoken']").val()
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data['signup_successful']) {
+                    location.reload()
+                }
+            }
+        })
     })
 });

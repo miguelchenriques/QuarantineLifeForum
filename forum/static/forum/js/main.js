@@ -18,9 +18,9 @@ $(document).ready(function () {
                     this_.find("input:submit").removeClass("liked");
                 }
                 if (data['like_count'] === 1) {
-                    $("p[name="+id+"]").text(data['like_count']+"Like");
+                    $("p[name="+id+"]").text(data['like_count']+" Like");
                 } else {
-                    $("p[name="+id+"]").text(data['like_count']+"Likes");
+                    $("p[name="+id+"]").text(data['like_count']+" Likes");
                 }
             }
         })

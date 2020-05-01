@@ -177,3 +177,19 @@ def login_api(request):
         response['login_successful'] = True
 
     return JsonResponse(response)
+
+
+@require_POST
+def signup_api(request):
+    response = {
+        'signup_successful': False
+    }
+    form = UserSignUpForm(request.POST)
+    if form.is_valid():
+        form.save()
+        username = form.cleaned_data['username']
+        raw_password = form.cleaned_data['password1']
+        user = authenticate(username=username, password=raw_password)
+        login(request, user)
+        response['signup_successful'] = True
+    return JsonResponse(response)

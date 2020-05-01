@@ -141,6 +141,7 @@ article .postTitle{
     background: #f12711;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-clip: padding-box;
     text-transform: uppercase;
     color: white;
     letter-spacing: 2px;
@@ -220,6 +221,13 @@ article .postTitle{
     justify-content: center;
 }
 
+#login_form, #signup_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .signup-form{
     width: 35%;
     display: none;
@@ -234,7 +242,7 @@ article .postTitle{
     height: 100px;
 }
 
-.login-form input, .signup-form input{
+.login-form input:nth-child(-n+3), .signup-form input:nth-child(-n+5){
     border: none;
     text-align: center;
     border-bottom: 1px solid gray;
@@ -244,18 +252,29 @@ article .postTitle{
     padding-bottom: 10px;
 }
 
-.login-form input:nth-child(2){
-    margin-top: 25px;
+.login-form input:nth-child(-n+3):focus, .signup-form input:nth-child(-n+5):focus{
+    outline: none;
 }
 
-.login-form button, .signup-form button{
+.login-form input:nth-child(5), .signup-form input:nth-child(6){
     margin-top: 30px;
     border-radius: 100px;
     /*width: 100px;*/
 }
 
-.login-form a, .signup-form a{
+.credencials-error{
+    margin-top: 5px;
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+.login-form a:nth-child(3), .signup-form a{
     margin-top: 15px;
+    font-size: 12px;
+}
+
+.login-form a:nth-child(4){
     font-size: 12px;
 }
 

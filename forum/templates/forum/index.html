@@ -26,7 +26,7 @@
 
     <main>
         <aside>
-            <h3>Tópicos populares</h3>
+            <h3>Tópicos a seguir</h3>
             {% block asideList %}
 
             {% endblock asideList %}
@@ -50,6 +50,7 @@
                     {% for field in loginForm %}
                         {{ field }}
                     {% endfor %}
+                    <a class="credencials-error">E-mail ou password errados</a>
                     <input type="submit" class="loginbutton" value="LogIn">
                 </form>
                 <a>Ainda não está registado?</a>

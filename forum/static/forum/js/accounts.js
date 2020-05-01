@@ -15,6 +15,9 @@ $(document).ready(function () {
             success: function (data) {
                 if (data['login_successful']) {
                     location.reload();
+                }else{
+                    $(".credencials-error").css("display", "block")
+                    $(".login-form input:nth-child(-n+3)").css("border-bottom", "1px solid red")
                 }
             }
         });

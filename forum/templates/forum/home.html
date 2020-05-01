@@ -33,7 +33,7 @@
                         <input type="submit" class="like {% if user in post.post_pizzas.all %}liked{% endif %}"  value="">
                     </form>
                     {% endif %}
-                    <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }}</p><span class="like-span"> Like{{ post.num_likes|pluralize }}</span>
+                    <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }}Like{{ post.num_likes|pluralize }}</p>
                 </div>
             </article>
         {% endfor %}

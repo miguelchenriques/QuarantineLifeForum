@@ -22,7 +22,7 @@ class Post(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     text = models.TextField()
-    media = models.URLField(max_length=200, null=True)
+    media = models.URLField(max_length=200, blank=True, null=True)
     owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="original_poster")
     post_pizzas = models.ManyToManyField(User, related_name='post_likes', blank=True)
     pub_date = models.DateTimeField('Publication date')
@@ -37,7 +37,7 @@ class Post(models.Model):
         return self.post_pizzas.count()
 
     def user_has_like(self, user):
-        return user in self.post_pizzas
+        return self.post_pizzas.filter(username=user.username).exists()
 
 
 class Comment(models.Model):

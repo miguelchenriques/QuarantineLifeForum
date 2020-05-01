@@ -2,15 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Topic, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
-from .forms import UserSignUpForm
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .forms import CommentForm, TopicForm
+from .forms import CommentForm, TopicForm, UserSignUpForm, LogInForm
+from django.core.exceptions import ValidationError
 
 page_size = 10
 
@@ -18,7 +17,7 @@ page_size = 10
 # Common context
 def accounts_form_context(request):
     context = {
-        'loginForm': AuthenticationForm(),
+        'loginForm': LogInForm(),
         'signupForm': UserSignUpForm()
     }
     return context
@@ -130,7 +129,7 @@ def verify_username(request):
 @login_required
 def like_toggle(request):
     user = request.user
-    post = get_object_or_404(pk=request.GET['post_id'])
+    post = get_object_or_404(Post, pk=request.POST['post_id'])
     if post.user_has_like(user):
         post.post_pizzas.remove(user)
         has_like = False
@@ -138,6 +137,7 @@ def like_toggle(request):
         post.post_pizzas.add(user)
         has_like = True
     data = {
+        'post_id': request.POST['post_id'],
         'has_like': has_like,
         'like_count': post.post_pizzas.all().count(),
     }
@@ -161,4 +161,35 @@ def new_comment(request, post_id):
         'pub_date': comment.pub_date,
     }
 
+    return JsonResponse(response)
+
+
+@require_POST
+def login_api(request):
+    form = LogInForm(data=request.POST)
+    response = {
+        'login_successful': False
+    }
+    print(form.is_bound)
+    if form.is_valid():
+        form.clean()
+        login(request, form.get_user())
+        response['login_successful'] = True
+
+    return JsonResponse(response)
+
+
+@require_POST
+def signup_api(request):
+    response = {
+        'signup_successful': False
+    }
+    form = UserSignUpForm(request.POST)
+    if form.is_valid():
+        form.save()
+        username = form.cleaned_data['username']
+        raw_password = form.cleaned_data['password1']
+        user = authenticate(username=username, password=raw_password)
+        login(request, user)
+        response['signup_successful'] = True
     return JsonResponse(response)

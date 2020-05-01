@@ -26,110 +26,18 @@
                     <p class="postText">{{ post.text }}</p>
                 </div>
                 <div class="buttonspost">
-                    <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
-                    <p class="numberPizzas">{{ post.post_pizzas }}</p>
-                    <button>Comment</button>
+                    {% if user.is_authenticated %}
+                    <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                        <input type="submit" class="like {% if user in post.post_pizzas.all %}liked{% endif %}"  value="">
+                    </form>
+                    {% endif %}
+                    <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
                 </div>
             </article>
         {% endfor %}
     {% else %}
         <p>Não há posts</p>
     {% endif %}
-    <article>
-        <div class="toppost">
-            <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
-            <a href="">Autor</a>
-            <a>ontem às 23:00</a>
-        </div>
-        <div class="textpost">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
-        </div>
-        <div class="buttonspost">
-            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
-            <button>Comment</button>
-        </div>
-    </article>
-
-    <article>
-        <div class="toppost">
-            <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
-            <a href="">Autor</a>
-            <a>ontem às 23:00</a>
-        </div>
-        <div class="textpost">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
-        </div>
-        <div class="buttonspost">
-            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
-            <button>Like</button>
-        </div>
-    </article>
-
-     <article>
-        <div class="toppost">
-            <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
-            <a href="">Autor</a>
-            <a>ontem às 23:00</a>
-        </div>
-        <div class="textpost">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
-        </div>
-        <div class="buttonspost">
-            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
-            <button>Like</button>
-        </div>
-    </article>
-
-     <article>
-        <div class="toppost">
-            <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
-            <a href="">Autor</a>
-            <a>ontem às 23:00</a>
-        </div>
-        <div class="textpost">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
-        </div>
-        <div class="buttonspost">
-            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
-            <button>Like</button>
-        </div>
-    </article>
-
-    <article>
-        <div class="toppost">
-            <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
-            <a href="">Autor</a>
-            <a>ontem às 23:00</a>
-        </div>
-        <div class="textpost">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae itaque iusto minima perferendis porro quas repellat sed similique. Aut cupiditate eius ipsa nobis non perferendis possimus tempora ullam velit?</p>
-        </div>
-        <div class="buttonspost">
-            <button onclick="likefunctionClick(this)" onmouseenter="likefunctionHover(this)" onmouseleave="likefunctionHover(this)" class="like"></button>
-{#            <a>Likes: {{ instance.post_pizzas.count }}</a>#}
-            <button>Like</button>
-        </div>
-    </article>
-
-    <script>
-
-        var isliked = false;
-        var likes=0;
-        function likefunctionClick(x) {
-            if(!isliked) {
-                isliked = true;
-                likes++;
-            }else{
-                isliked = false;
-                likes--;
-            }
-        }
-
-        function likefunctionHover(x) {
-            if(!isliked) {
-                x.classList.toggle("liked");
-            }
-        }
-
-    </script>
 {% endblock articles %}

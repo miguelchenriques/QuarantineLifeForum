@@ -134,7 +134,7 @@ article .postTitle{
     font-size: 15px;
 }
 
-.loginbutton, .signupButton{
+.loginbutton, .signupButton, .logoutbutton{
     border: 1px solid transparent;
     border-radius: 100px;
     /*background-color: #ff6200;*/

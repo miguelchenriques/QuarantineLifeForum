@@ -39,11 +39,14 @@ def homepage(request):
 
 def topic_details(request, topic_slug):
     topic = Topic.objects.get(slug=topic_slug)
+    post_topic_list = Post.objects.get(topic='topic')
+
     context = {
-        'topic': topic
+        'topic': topic,
+        'post_topic_list': post_topic_list
     }
-    # return render(request, 'forum/topic_details.html', context)
-    return None
+    return render(request, 'forum/topic_details.html', context)
+    # return None
 
 
 def post_details(request, post_id):
@@ -51,8 +54,8 @@ def post_details(request, post_id):
     context = {
         'post': post
     }
-    # return render(request, 'forum/post_details.html', context)
-    return None
+    return render(request, 'forum/post_details.html', context)
+    # return None
 
 
 def popular_topics(request):

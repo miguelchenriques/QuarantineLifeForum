@@ -1,6 +1,6 @@
 {%  extends 'forum/index.html' %}
 
-{% block asideList %}
+{% block leftAside %}
     {% if topic %}
         <ul>
             {% for topico in topic %}
@@ -10,7 +10,7 @@
     {% else %}
         <a>Não há tópicos</a>
     {% endif %}
-{% endblock asideList %}
+{% endblock leftAside %}
 
 {% block articles %}
     {% if page_list %}

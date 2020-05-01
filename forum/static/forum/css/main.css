@@ -54,7 +54,7 @@ main{
     overflow: scroll;
 }
 
-aside{
+left-aside{
     width: 20%;
     padding: 0;
     margin-top: 30px;
@@ -62,11 +62,11 @@ aside{
     top: 2rem;
 }
 
-aside ul{
+left-aside ul{
     padding: 0;
 }
 
-aside a{
+left-aside a{
     padding-left: 35px;
     display: block;
     text-decoration: none;
@@ -74,7 +74,7 @@ aside a{
 
 }
 
-aside h3{
+left-aside h3{
     padding-left: 35px;
     margin-top: 0;
     /*text-align: center;*/

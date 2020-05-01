@@ -25,18 +25,24 @@
     </header>
 
     <main>
-        <aside>
+        <left-aside>
             <h3>Tópicos a seguir</h3>
-            {% block asideList %}
+            {% block leftAside %}
 
-            {% endblock asideList %}
-        </aside>
+            {% endblock leftAside %}
+        </left-aside>
 
         <section>
             {% block articles %}
            
             {% endblock articles%}
         </section>
+
+        <right-aside>
+            {% block rightAside %}
+
+            {% endblock rightAside %}
+        </right-aside>
     </main>
 </body>
 

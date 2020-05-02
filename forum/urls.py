@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.homepage, name='home'),
     path('topic_<slug:slug>/', views.topic_details, name='topic'),
     path('post_<int:post_id>/', views.post_details, name='post'),
+    path('search/', views.search, name='search'),
 
     # Accounts URLS
     path('login/', auth_views.LoginView.as_view(), name='login'),

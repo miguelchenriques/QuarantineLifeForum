@@ -1,15 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post, Topic, Comment
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db.models import Count
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.models import User
+from django.db.models import Count, Q
 from django.http import JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from .forms import CommentForm, TopicForm, UserSignUpForm, LogInForm
-from django.core.exceptions import ValidationError
+from .models import Post, Topic, Comment
 
 page_size = 10
 
@@ -77,6 +76,19 @@ def create_Topic(request):
             form.save()
             return redirect('forum:home')
     return None
+
+
+@require_GET
+def search(request):
+    query = request.GET['q']
+    if query is not None:
+        context = {
+            'posts': Post.objects.filter(Q(title__icontains=query) | Q(text__icontains=query)),
+            'topics': Topic.objects.filter(Q(title__icontains=query) | Q(description__icontains=query)),
+            'users': User.objects.filter(Q(username__icontains=query))
+        }
+        return None
+    return redirect(request.META['HTTP_REFERER'])
 
 
 def get_page(page_number, paginator):

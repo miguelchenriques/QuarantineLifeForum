@@ -26,21 +26,20 @@
 
     <main>
         <div class="left-aside">
-            <h3>Tópicos a seguir</h3>
+            <h3>Following topics</h3>
+            <a>Culinaria</a>
+            <a>Filmes</a>
             {% block leftAside %}
-
             {% endblock leftAside %}
         </div>
 
         <section>
             {% block articles %}
-           
             {% endblock articles%}
         </section>
 
         <div class="right-aside">
             {% block rightAside %}
-
             {% endblock rightAside %}
         </div>
     </main>
@@ -56,11 +55,11 @@
                     {% for field in loginForm %}
                         {{ field }}
                     {% endfor %}
-                    <a class="credencials-error">E-mail ou password errados</a>
+                    <a class="credencials-error">Wrong e-mail or password</a>
                     <input type="submit" class="loginbutton" value="LogIn">
                 </form>
-                <a>Ainda não está registado?</a>
-                <a href="#" id="signup">Registe-se aqui</a>
+                <a>Don't have an account?</a>
+                <a href="#" id="signup">Signup here</a>
             </div>
             <div class="signup-form">
                 <img src="{% static 'forum/img/undraw_profile_pic_ic5t.png' %}">
@@ -71,8 +70,8 @@
                     {% endfor %}
                     <input type="submit" class="signupButton" value="SignUp">
                 </form>
-                <a>Já está registado?</a>
-                <a href="#" id="signin">Faça login aqui</a>
+                <a>Already have an account?</a>
+                <a href="#" id="signin">Login here</a>
             </div>
             <div class="login-art">
                 <img src="{% static 'forum/img/undraw_social_distancing_2g0u.png' %}">

@@ -1,3 +1,5 @@
+/*color: ff6200;*/
+
 *{
     box-sizing: border-box;
     font-family: 'Lato';
@@ -35,6 +37,8 @@ header{
 #forumtitle{
     font-size: 30px;
     margin-left: 10px;
+    font-weight: 200;
+    font-family: Verdana;
 }
 
 header input, header button{
@@ -59,38 +63,50 @@ main{
     padding: 0;
     margin: 30px 20px;
     position: sticky;
-    top: 2rem;
-    /*background-color: white;*/
-    /*border-radius: 5px;*/
-}
-
-.left-aside ul{
-    padding: 0;
+    top: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
 }
 
 .left-aside a{
-    padding-left: 35px;
-    display: block;
+    /*padding-left: 35px;*/
+    /*display: block;*/
+    border-top: 1px solid rgba(0,0,0, 0.2);
+    width: 100%;
+    text-align: center;
+    padding: 10px;
     text-decoration: none;
     color: black;
+    cursor: pointer;
 
 }
 
 .left-aside h3{
-    padding-left: 35px;
-    margin-top: 0;
-    /*text-align: center;*/
+    background: #f12711;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: 500px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px 5px 0 0;
+    color: white;
 }
 
 .right-aside{
     width: 20%;
     padding: 0;
-    /*position: sticky;*/
-    /*top: 2rem;*/
+    position: sticky;
+    top: 1rem;
     margin: 30px 20px;
     background-color: white;
     border-radius: 5px;
-    height: 250px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,6 +147,7 @@ main{
     width: 150px;
     cursor: pointer;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 section{
@@ -207,7 +224,14 @@ article .postTitle{
 .buttonspost{
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.numberPizzas{
+    margin: 0;
+    font-size: 14px;
+    color: gray;
+    margin-left: 5px;
 }
 
 .like{

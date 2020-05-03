@@ -2,13 +2,11 @@
 
 {% block leftAside %}
     {% if topic %}
-        <ul>
-            {% for topico in topic %}
-                <a href="">({ topico.title }}</a>
-            {% endfor %}
-        </ul>
+        {% for topico in topic %}
+            <a href="">({ topico.title }}</a>
+        {% endfor %}
     {% else %}
-        <a>Não há tópicos</a>
+        <a>There are no topics</a>
     {% endif %}
 {% endblock leftAside %}
 

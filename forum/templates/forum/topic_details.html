@@ -43,8 +43,8 @@
 {% endblock articles %}
 
 {% block rightAside %}
-    <h3>Sobre {{ topic.title }}</h3>
+    <h3>About {{ topic.title }}</h3>
     <p>{{ topic.description }}</p>
-    <p>{{ topic.num_followers }} Seguidores</p>
-    <button class="create_post">Criar post</button>
+    <p>{{ topic.num_followers }} Follower{{ topic.num_followers|pluralize }}</p>
+    <button class="create_post">Create post</button>
 {% endblock rightAside %}

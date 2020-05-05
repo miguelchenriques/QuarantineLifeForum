@@ -38,7 +38,7 @@
                 </div>
                 <div class="commentspost">
                     <input type="text" name="comment" placeholder="Comment...">
-{#                    {% for comment in post.comment_set %}#}
-{#                        <a>{{ comment.text }}</a>#}
-{#                    {% endfor %}#}
+                      {% for comment in post.comment_set.all %}
+                          <a>{{ comment.text }}</a>
+                      {% endfor %}
 {% endblock articles %}

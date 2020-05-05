@@ -15,7 +15,7 @@
             <a id="forumtitle">Quarentine Life</a>
         </div>
         <div class="rightheader">
-            <a style="float: right"><input type="text" name="SearchBar" placeholder="Search..."></a>
+            <a><input type="text" class="searchBar" placeholder="Search..."></a>
             {% if user.is_authenticated %}
                 <a href="{% url 'forum:logout' %}"><button class="logoutbutton">LogOut</button></a>
             {% else %}
@@ -26,9 +26,6 @@
 
     <main>
         <div class="left-aside">
-            <h3>Following topics</h3>
-            <a>Culinaria</a>
-            <a>Filmes</a>
             {% block leftAside %}
             {% endblock leftAside %}
         </div>

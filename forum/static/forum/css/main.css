@@ -1,4 +1,5 @@
 /*color: ff6200;*/
+/*background-color: #A7A5E6;*/
 
 *{
     box-sizing: border-box;
@@ -32,6 +33,12 @@ header{
     justify-content: flex-end;
     width:50%;
     align-items: center;
+}
+
+.searchBar{
+    border-radius: 100px;
+    border: 1px solid gray;
+    padding: 6px 7px;
 }
 
 #forumtitle{
@@ -70,6 +77,7 @@ main{
     flex-direction: column;
     align-items: center;
     height: fit-content;
+    box-shadow: 2px 3px rgba(0,0,0,0.1);
 }
 
 .left-aside a{
@@ -82,14 +90,20 @@ main{
     text-decoration: none;
     color: black;
     cursor: pointer;
+}
 
+.left-aside a:hover{
+    /*background-color: #7977A6;*/
+    background-color: #A7A5E6;
+    color: white;
 }
 
 .left-aside h3{
-    background: #f12711;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-size: 500px;
+    /*background: #f12711;  !* fallback for old browsers *!*/
+    /*background: -webkit-linear-gradient(to right, #f5af19, #f12711);  !* Chrome 10-25, Safari 5.1-6 *!*/
+    /*background: linear-gradient(to right, #f5af19, #f12711); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    /*background-size: 500px;*/
+    background-color: #414059;
     width: 100%;
     text-align: center;
     padding: 10px;
@@ -110,6 +124,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 2px 3px rgba(0,0,0,0.1);
 }
 
 .right-aside p{
@@ -118,10 +133,11 @@ main{
 }
 
 .right-aside h3{
-    background: #f12711;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-size: 500px;
+    /*background: #f12711;  !* fallback for old browsers *!*/
+    /*background: -webkit-linear-gradient(to right, #f5af19, #f12711);  !* Chrome 10-25, Safari 5.1-6 *!*/
+    /*background: linear-gradient(to right, #f5af19, #f12711); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    /*background-size: 500px;*/
+    background-color: #414059;
     margin: 0;
     padding: 10px;
     display: flex;
@@ -163,6 +179,12 @@ article{
     background-color: white;
     display: flex;
     flex-direction: column;
+    box-shadow: 5px 8px rgba(0,0,0, 0.1);
+    cursor: pointer;
+}
+
+article:hover{
+    border: 1px solid rgba(0,0,0, 0.2);
 }
 
 .avatar {

@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{%  extends 'forum/index.html' %}
 
-</body>
-</html>
+{% block articles %}
+    {% if post %}
+        <article>
+            <div class="toppost">
+                <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
+                <a href="">{{ post.owner.username}}</a>
+                <a>{{ post.pub_date }}</a>
+            </div>
+            <div class="textpost">
+                <p class="postTitle">{{ post.title }}</p>
+                <p class="postText">{{ post.text }}</p>
+            </div>
+            <div class="buttonspost">
+                {% if user.is_authenticated %}
+                    <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                        <input type="submit" class="like {% if user in post.post_pizzas.all %}liked{% endif %}"  value="">
+                    </form>
+                {% endif %}
+                <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
+            </div>
+        </article>
+    {% else %}
+        Não há esse post :/
+    {% endif %}
+{% endblock articles %}

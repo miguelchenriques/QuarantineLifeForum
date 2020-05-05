@@ -1,6 +1,7 @@
 {%  extends 'forum/index.html' %}
 
 {% block leftAside %}
+    <h3>Following topics</h3>
 {#    {% if topic %}#}
 {#        <ul>#}
 {#            {% for topico in topic %}#}
@@ -17,7 +18,7 @@
         {% for post in page_list %}
             <article>
                 <div class="toppost">
-                    <a href=""><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
+                    <a href=""><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
                     <a href="">{{ post.owner.username}}</a>
                     <a>{{ post.pub_date }}</a>
                 </div>

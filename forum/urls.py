@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, apiviews
 from django.contrib.auth import views as auth_views
 
 app_name = 'forum'
@@ -16,10 +16,10 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),
 
     # API URLS
-    path('api/verify-email/', views.verify_email, name='api_verify_email'),
-    path('api/verify-username/', views.verify_username, name='api_verify_username'),
-    path('api/like_toggle/', views.like_toggle, name='api_like_toggle'),
-    path('api/new_comment/<int:post_id>/', views.new_comment, name='api_new_comment'),
-    path('api/login/', views.login_api, name='api_login'),
-    path('api/signup', views.signup_api, name='api_signup'),
+    path('api/verify-email/', apiviews.verify_email, name='api_verify_email'),
+    path('api/verify-username/', apiviews.verify_username, name='api_verify_username'),
+    path('api/like_toggle/', apiviews.like_toggle, name='api_like_toggle'),
+    path('api/new_comment/<int:post_id>/', apiviews.new_comment, name='api_new_comment'),
+    path('api/login/', apiviews.login_api, name='api_login'),
+    path('api/signup', apiviews.signup_api, name='api_signup'),
 ]

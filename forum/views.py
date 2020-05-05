@@ -1,12 +1,12 @@
 from django.db.models import Count, Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from .forms import TopicForm, UserSignUpForm, LogInForm
-from .models import Post, Topic
+from .models import Post, Topic, Profile
 
 page_size = 10
 
@@ -94,6 +94,12 @@ def search(request):
         }
         return None
     return redirect(request.META['HTTP_REFERER'])
+
+
+def profile_detail(request, username):
+    user = get_object_or_404(User, username=username)
+    profile = get_object_or_404(Profile, user=user)
+    return None
 
 
 def get_page(page_number, paginator):

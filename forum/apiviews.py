@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.shortcuts import get_object_or_404
 from .forms import CommentForm, LogInForm, UserSignUpForm
-from .models import Comment, Post
+from .models import Comment, Post, Profile
 
 
 @require_GET
@@ -94,4 +94,5 @@ def signup_api(request):
         user = authenticate(username=username, password=raw_password)
         login(request, user)
         response['signup_successful'] = True
+        Profile(user=user).save()
     return JsonResponse(response)

@@ -22,7 +22,8 @@ class Post(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     text = models.TextField()
-    media = models.URLField(max_length=200, blank=True, null=True)
+    image = models.URLField(max_length=300, blank=True)
+    video = models.URLField(max_length=300, blank=True)
     owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="original_poster")
     post_pizzas = models.ManyToManyField(User, related_name='post_likes', blank=True)
     pub_date = models.DateTimeField('Publication date')
@@ -55,3 +56,22 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    profile_image = models.URLField(max_length=300, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+    def num_likes(self):
+        count = 0
+        posts = Post.objects.filter(owner=self.user)
+        comments = Comment.objects.filter(owner=self.user)
+        for post in posts:
+            count += post.num_likes()
+        for comment in comments:
+            count += comment.num_likes()
+        return count

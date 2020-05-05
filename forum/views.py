@@ -5,13 +5,8 @@ from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-<<<<<<< HEAD
-from .forms import TopicForm, UserSignUpForm, LogInForm
-from .models import Post, Topic, Profile, Comment
-=======
 from .forms import TopicForm, UserSignUpForm, LogInForm, PostForm
 from .models import Post, Topic, Profile
->>>>>>> logic
 
 page_size = 10
 

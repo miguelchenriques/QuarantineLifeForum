@@ -1,29 +1,41 @@
 {%  extends 'forum/index.html' %}
 {% load static %}
 
+{% block leftAside %}
+{% endblock %}
+
 {% block articles %}
     {% if post %}
-        <article>
-            <div class="toppost">
-                <a href=""><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
-                <a href="">{{ post.owner.username}}</a>
-                <a>{{ post.pub_date }}</a>
+        <div class="postSection">
+            <div class="postArticle">
+                <div class="toppost">
+                    <a href=""><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
+                    <a href="">{{ post.owner.username}}</a>
+                    <a>{{ post.pub_date }}</a>
+                </div>
+                <div class="textpost">
+                    <p class="postTitle">{{ post.title }}</p>
+                    <p class="postText">{{ post.text }}</p>
+                </div>
+                <div class="buttonspost">
+                    {% if user.is_authenticated %}
+                        <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                            <input type="submit" class="like {% if user in post.post_pizzas.all %}liked{% endif %}"  value="">
+                        </form>
+                    {% endif %}
+                    <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
+                    <button>Comment</button>
+                </div>
+                <div class="commentspost">
+                    <input type="text" name="comment" placeholder="Comment...">
+{#                    {% for comment in post.comment_set %}#}
+{#                        <a>{{ comment.text }}</a>#}
+{#                    {% endfor %}#}
+                </div>
             </div>
-            <div class="textpost">
-                <p class="postTitle">{{ post.title }}</p>
-                <p class="postText">{{ post.text }}</p>
-            </div>
-            <div class="buttonspost">
-                {% if user.is_authenticated %}
-                    <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="post_id" value="{{ post.id }}">
-                        <input type="submit" class="like {% if user in post.post_pizzas.all %}liked{% endif %}"  value="">
-                    </form>
-                {% endif %}
-                <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
-            </div>
-        </article>
+        </div>
     {% else %}
         Não há esse post :/
     {% endif %}

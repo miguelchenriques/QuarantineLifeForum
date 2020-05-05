@@ -153,15 +153,16 @@ main{
     border: 1px solid transparent;
     border-radius: 100px;
     /*background-color: #ff6200;*/
-    background: #f12711;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*background: #f12711;  !* fallback for old browsers *!*/
+    /*background: -webkit-linear-gradient(to right, #f5af19, #f12711);  !* Chrome 10-25, Safari 5.1-6 *!*/
+    /*background: linear-gradient(to right, #f5af19, #f12711); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    background-color: #414059;
     background-clip: padding-box;
     text-transform: uppercase;
     color: white;
     letter-spacing: 2px;
     padding: 5px 10px;
-    height: 30px;
+    height: 40px;
     width: 150px;
     cursor: pointer;
     margin-top: 20px;
@@ -171,6 +172,12 @@ main{
 section{
     width: 60%;
     margin: 30px 0px;
+}
+
+.postSection{
+    width: 50%;
+    margin: 30px 0px;
+
 }
 
 article{
@@ -187,6 +194,49 @@ article{
 
 article:hover{
     border: 1px solid rgba(0,0,0, 0.2);
+}
+
+.topicArticle{
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    padding: 5px 20px;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 1px 4px rgba(0,0,0, 0.1);
+}
+
+.topicArticle button{
+    position: absolute;
+    right: 10px;
+    /*background-color: #414059;*/
+    background: #f12711;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 2px;
+    padding: 5px 10px;
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.postArticle{
+    border: 1px solid transparent;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 8px rgba(0,0,0, 0.1);
+    cursor: pointer;
+    height: 100%;
 }
 
 .avatar {
@@ -219,11 +269,11 @@ article:hover{
     align-items: center;
 }
 
-article .postText{
+.postText{
     font-size: 14px;
 }
 
-article .postTitle{
+.postTitle{
     font-weight: bold;
     font-size: 15px;
 }
@@ -276,6 +326,20 @@ article .postTitle{
     height: 30px;
     padding: 0;
     cursor: pointer;
+}
+
+.commentspost input{
+    margin-top: 20px;
+    /*border-radius: 50px;*/
+    border: 1px solid transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.commentspost input:focus{
+    outline: none;
 }
 
 .login{

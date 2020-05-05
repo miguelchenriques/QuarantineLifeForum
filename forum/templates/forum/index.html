@@ -9,6 +9,30 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 </head>
 <body>
+<main>
+    <div class="left-aside">
+        {% block leftAside %}
+{#            <h3>Following topics</h3>#}
+{#            {% if topic %}#}
+{#                {% for topico in topic %}#}
+{#                    <a href="">({ topico.title }}</a>#}
+{#                {% endfor %}#}
+{#            {% else %}#}
+{#                <a>There are no topics</a>#}
+{#            {% endif %}#}
+        {% endblock leftAside %}
+    </div>
+
+
+    {% block articles %}
+    {% endblock articles%}
+
+    <div class="right-aside">
+        {% block rightAside %}
+        {% endblock rightAside %}
+    </div>
+</main>
+
     <header>
         <div class="leftheader">
             <img src="{% static 'forum/img/undraw_at_home_octe.png' %}">
@@ -25,23 +49,6 @@
             {% endif %}
         </div>
     </header>
-
-    <main>
-        <div class="left-aside">
-            {% block leftAside %}
-            {% endblock leftAside %}
-        </div>
-
-        <section>
-            {% block articles %}
-            {% endblock articles%}
-        </section>
-
-        <div class="right-aside">
-            {% block rightAside %}
-            {% endblock rightAside %}
-        </div>
-    </main>
 </body>
 
     <div class="login">

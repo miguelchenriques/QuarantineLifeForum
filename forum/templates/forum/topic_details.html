@@ -1,19 +1,13 @@
 {%  extends 'forum/index.html' %}
 {% load static %}
 
-{#{% block leftAside %}#}
-{#    <h3>Following topics</h3>#}
-{#    {% if topic %}#}
-{#        {% for topico in topic %}#}
-{#            <a href="">({ topico.title }}</a>#}
-{#        {% endfor %}#}
-{#    {% else %}#}
-{#        <a>There are no topics</a>#}
-{#    {% endif %}#}
-{#{% endblock leftAside %}#}
-
 {% block articles %}
+    <section>
     {% if page_list %}
+        <div class="topicArticle">
+            <h3>{{ topic.title }}</h3>
+            <button>Join</button>
+        </div>
         {% for post in page_list %}
             <article>
                 <div class="toppost">
@@ -40,11 +34,12 @@
     {% else %}
         <p>Não há posts</p>
     {% endif %}
+    </section>
 {% endblock articles %}
 
 {% block rightAside %}
     <h3>About {{ topic.title }}</h3>
     <p>{{ topic.description }}</p>
     <p>{{ topic.num_followers }} Follower{{ topic.num_followers|pluralize }}</p>
-    <button class="create_post">Create post</button>
+    <button>Create post</button>
 {% endblock rightAside %}

@@ -1,17 +1,16 @@
 {%  extends 'forum/index.html' %}
+{% load static %}
 
-{% block leftAside %}
-    <h3>Following topics</h3>
+{#{% block leftAside %}#}
+{#    <h3>Following topics</h3>#}
 {#    {% if topic %}#}
-{#        <ul>#}
-{#            {% for topico in topic %}#}
-{#                <a href="">({ topico.title }}</a>#}
-{#            {% endfor %}#}
-{#        </ul>#}
+{#        {% for topico in topic %}#}
+{#            <a href="">({ topico.title }}</a>#}
+{#        {% endfor %}#}
 {#    {% else %}#}
-{#        <a>Não há tópicos</a>#}
+{#        <a>There are no topics</a>#}
 {#    {% endif %}#}
-{% endblock leftAside %}
+{#{% endblock leftAside %}#}
 
 {% block articles %}
     {% if page_list %}

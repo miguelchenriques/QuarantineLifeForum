@@ -1,25 +1,14 @@
 {%  extends 'forum/index.html' %}
 
-{% block leftAside %}
-    <h3>Following topics</h3>
-{#    {% if topic %}#}
-{#        <ul>#}
-{#            {% for topico in topic %}#}
-{#                <a href="">({ topico.title }}</a>#}
-{#            {% endfor %}#}
-{#        </ul>#}
-{#    {% else %}#}
-{#        <a>Não há tópicos</a>#}
-{#    {% endif %}#}
-{% endblock leftAside %}
+{% load static %}
 
 {% block articles %}
     {% if page_list %}
         {% for post in page_list %}
             <article>
                 <div class="toppost">
-                    <a href=""><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
-                    <a href="">{{ post.owner.username}}</a>
+                    <a href="{% url 'forum:profile' post.owner.username %}"><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
+                    <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
                     <a>{{ post.pub_date }}</a>
                 </div>
                 <div class="textpost">

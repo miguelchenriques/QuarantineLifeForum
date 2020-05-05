@@ -5,7 +5,7 @@ from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from .forms import TopicForm, UserSignUpForm, LogInForm
+from .forms import TopicForm, UserSignUpForm, LogInForm, PostForm
 from .models import Post, Topic, Profile
 
 page_size = 10
@@ -44,7 +44,8 @@ def topic_details(request, topic_slug):
 
     context = {
         'topic': topic,
-        'page_list': page_list
+        'page_list': page_list,
+        'postForm': PostForm()
     }
     return render(request, 'forum/topic_details.html', context)
     # return None

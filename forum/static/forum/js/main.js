@@ -26,7 +26,7 @@ $(document).ready(function () {
         })
     });
 
-    $("article").click(function () {
+    $("#forumtitle").click(function () {
         location.href = $(this).attr('value')
     })
 });

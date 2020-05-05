@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Comment, Topic, Post
 from django.contrib.auth.forms import AuthenticationForm
-from django.forms import formsets
 
 
 class LogInForm(AuthenticationForm):
@@ -38,3 +37,9 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ['slug', 'title', 'description']
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'text', 'image', 'video']

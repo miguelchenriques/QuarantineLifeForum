@@ -9,7 +9,7 @@ class Topic(models.Model):
     slug = models.SlugField(max_length=50)
     title = models.CharField(max_length=100)
     description = models.TextField()
-    followers = models.ManyToManyField(User, blank=True)
+    followers = models.ManyToManyField(User, blank=True, related_name='topic_followers')
 
     def __str__(self):
         return self.title

@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block articles %}
+    <section>
     {% if page_list %}
         {% for post in page_list %}
             <article value="{% url 'forum:post' post.id %}">
@@ -29,4 +30,5 @@
     {% else %}
         <p>Não há posts</p>
     {% endif %}
+    </section>
 {% endblock articles %}

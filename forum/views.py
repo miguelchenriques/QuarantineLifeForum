@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from .forms import TopicForm, UserSignUpForm, LogInForm
-from .models import Post, Topic, Profile
+from .models import Post, Topic, Profile, Comment
 
 page_size = 10
 

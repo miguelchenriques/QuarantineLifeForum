@@ -24,5 +24,9 @@ $(document).ready(function () {
                 }
             }
         })
+    });
+
+    $("article").click(function () {
+        location.href = $(this).attr('value')
     })
 });

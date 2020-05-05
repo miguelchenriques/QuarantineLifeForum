@@ -66,6 +66,8 @@
                         {{ field }}
                     {% endfor %}
                     <input type="submit" class="signupButton" value="SignUp">
+                    <input type="hidden" name="url_emailValidation" value="{% url 'forum:api_verify_email' %}">
+                    <input type="hidden" name="url_usernameValidation" value="{% url 'forum:api_verify_username' %}">
                 </form>
                 <a>Já está registado?</a>
                 <a href="#" id="signin">Faça login aqui</a>

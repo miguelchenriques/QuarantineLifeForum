@@ -1,4 +1,5 @@
 {%  extends 'forum/index.html' %}
+
 {% load static %}
 
 {% block articles %}
@@ -11,8 +12,8 @@
         {% for post in page_list %}
             <article>
                 <div class="toppost">
-                    <a href=""><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
-                    <a href="">{{ post.owner.username}}</a>
+                    <a href="{% url 'forum:profile' post.owner.username %}"><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
+                    <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
                     <a>{{ post.pub_date }}</a>
                 </div>
                 <div class="textpost">

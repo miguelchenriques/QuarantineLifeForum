@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block tabTitle %}
+    Quarantine Life
+    {% endblock %}</title>
     {% load static %}
     <script src="{% static 'forum/js/jquery-3.5.0.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'forum/css/main.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="shortcut icon" type="image/png" href="{% static 'forum/img/favicon.ico' %}"/>
 </head>
 <body>
 <main>
     <div class="left-aside">
         {% block leftAside %}
             <h3>Following topics</h3>
-            {% if topic %}
-                {% for topico in topic %}
-                    <a href="">({ topico.title }}</a>
-                {% endfor %}
-            {% else %}
-                <a>There are no topics</a>
+            {% if user.is_authenticated %}
+                {% if user.topic_followers.all %}
+                    {% for topic in user.topic_followers.all %}
+                        <a href="{% url 'forum:topic' topic.slug %}">{{ topic.title }}</a>
+                    {% endfor %}
+                {% else %}
+                    <a>There are no topics</a>
+                {% endif %}
             {% endif %}
         {% endblock leftAside %}
     </div>
@@ -38,7 +43,7 @@
     <header>
         <div class="leftheader">
             <img src="{% static 'forum/img/undraw_at_home_octe.png' %}">
-            <a id="forumtitle">Quarentine Life</a>
+            <a value="{% url 'forum:home' %}" id="forumtitle">Quarantine Life</a>
         </div>
         <div class="rightheader">
             <form action="{% url 'forum:search' %}" method="get">
@@ -127,6 +132,8 @@
     </script>
     <script src="{% static 'forum/js/accounts.js' %}"></script>
     <script src="{% static 'forum/js/main.js' %}"></script>
+    {% block js %}
+    {% endblock %}
 
 
 </html>

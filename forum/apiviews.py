@@ -5,8 +5,8 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.shortcuts import get_object_or_404
-from .forms import CommentForm, LogInForm, UserSignUpForm
-from .models import Comment, Post, Profile
+from .forms import CommentForm, LogInForm, UserSignUpForm, PostForm
+from .models import Comment, Post, Profile, Topic
 
 
 @require_GET
@@ -95,4 +95,29 @@ def signup_api(request):
         login(request, user)
         response['signup_successful'] = True
         Profile(user=user).save()
+    return JsonResponse(response)
+
+
+@require_POST
+@login_required
+def create_post_api(request, topic_id):
+    topic = get_object_or_404(Topic, id=topic_id)
+    post = Post(owner=request.user, pub_date=timezone.now(), topic=topic)
+    form = PostForm(request.POST, instance=post)
+    if form.is_valid():
+        form.save()
+        response = {
+            'created': True,
+            'id': post.id,
+            'owner': post.owner.username,
+            'topic': topic.slug,
+            'title': post.title,
+            'text': post.text,
+            'pub_date': post.pub_date,
+            'image': post.image,
+            'video': post.video
+        }
+    else:
+        response = {'created': False}
+
     return JsonResponse(response)

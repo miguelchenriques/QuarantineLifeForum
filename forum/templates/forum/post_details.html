@@ -6,16 +6,23 @@
 {% endblock %}
 
 {% block articles %}
-    {% if post %}
         <div class="postSection">
             <div class="postArticle">
                 <div class="toppost">
-                    <a href=""><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
-                    <a href="">{{ post.owner.username}}</a>
+                    <a href="{% url 'forum:profile' post.owner.username %}"><img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="avatar"></a>
+                    <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
                     <a>{{ post.pub_date }}</a>
                 </div>
                 <div class="textpost">
                     <p class="postTitle">{{ post.title }}</p>
+                    {% if post.image %}
+                        <img src="{{ post.image }}">
+                    {% endif %}
+                    {% if post.video %}
+                        <video>
+                            <source src="{{ image.video }}">
+                        </video>
+                    {% endif %}
                     <p class="postText">{{ post.text }}</p>
                 </div>
                 <div class="buttonspost">
@@ -34,10 +41,4 @@
 {#                    {% for comment in post.comment_set %}#}
 {#                        <a>{{ comment.text }}</a>#}
 {#                    {% endfor %}#}
-                </div>
-            </div>
-        </div>
-    {% else %}
-        Não há esse post :/
-    {% endif %}
 {% endblock articles %}

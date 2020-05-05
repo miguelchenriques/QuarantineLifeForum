@@ -7,13 +7,21 @@
         {% for post in page_list %}
             <article value="{% url 'forum:post' post.id %}">
                 <div class="toppost">
-                    <a href=""><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
+                    <a href="{% url 'forum:profile' post.owner.username %}"><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
                     <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
                     <a>{{ post.pub_date }}</a>
                 </div>
                 <div class="textpost">
                     <p class="postTitle">{{ post.title }}</p>
-                    <p class="postText">{{ post.text }}</p>
+                    {% if post.image %}
+                        <img src="{{ post.image }}">
+                    {% elif post.video %}
+                        <video>
+                            <source src="{{ post.video }}">
+                        </video>
+                    {% else %}
+                        <p class="postText">{{ post.text }}</p>
+                    {% endif %}
                 </div>
                 <div class="buttonspost">
                     {% if user.is_authenticated %}
@@ -32,3 +40,7 @@
     {% endif %}
     </section>
 {% endblock articles %}
+
+{% block js %}
+    <script src="{% static 'forum/js/list.js' %}"></script>
+{% endblock %}

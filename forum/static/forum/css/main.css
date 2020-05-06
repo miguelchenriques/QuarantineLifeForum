@@ -208,7 +208,7 @@ article:hover{
     box-shadow: 1px 4px rgba(0,0,0, 0.1);
 }
 
-.topicArticle button{
+.topicArticle input[type=submit]{
     position: absolute;
     right: 10px;
     /*background-color: #414059;*/

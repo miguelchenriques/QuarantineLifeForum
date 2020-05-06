@@ -11,8 +11,6 @@ urlpatterns = [
     path('search/', views.search, name='search'),
 
     # Accounts URLS
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('signup/', views.signup, name='signup'),
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),
     path('profile/<str:username>', views.profile_detail, name="profile"),
 
@@ -21,6 +19,9 @@ urlpatterns = [
     path('api/verify-username/', apiviews.verify_username, name='api_verify_username'),
     path('api/like_toggle/', apiviews.like_toggle, name='api_like_toggle'),
     path('api/new_comment/<int:post_id>/', apiviews.new_comment, name='api_new_comment'),
+    path('api/new_post/<int:topic_id>', apiviews.create_post_api, name='api_new_post'),
     path('api/login/', apiviews.login_api, name='api_login'),
     path('api/signup', apiviews.signup_api, name='api_signup'),
+    path('api/login_required/', apiviews.login_required_api, name='api_login_required'),
+    path('api/topic_follow/', apiviews.follow_topic_api, name='api_follow_topic')
 ]

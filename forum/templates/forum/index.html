@@ -22,8 +22,12 @@
                         <a href="{% url 'forum:topic' topic.slug %}">{{ topic.title }}</a>
                     {% endfor %}
                 {% else %}
-                    <a>There are no topics</a>
+                    <a>You don't follow any topics</a>
                 {% endif %}
+            {% else %}
+                {% for topic in topTopics %}
+                    <a href="{% url 'forum:topic' topic.slug %}">{{ topic.title }}</a>
+                {% endfor %}
             {% endif %}
         {% endblock leftAside %}
     </div>
@@ -97,10 +101,16 @@
         </div>
     </div>
 
+    <input type="hidden" id="login_required_url" value="{% url 'forum:api_login_required' %}">
+
     <script>
+        function open_login() {
+            $(".login").css("display", "flex");
+        };
+
         $(document).ready(function () {
             $("#navloginbutton").click(function () {
-                $(".login").css("display", "flex")
+                open_login()
             });
 
             $("#close").click(function () {

@@ -12,14 +12,14 @@
 <main>
     <div class="left-aside">
         {% block leftAside %}
-{#            <h3>Following topics</h3>#}
-{#            {% if topic %}#}
-{#                {% for topico in topic %}#}
-{#                    <a href="">({ topico.title }}</a>#}
-{#                {% endfor %}#}
-{#            {% else %}#}
-{#                <a>There are no topics</a>#}
-{#            {% endif %}#}
+            <h3>Following topics</h3>
+            {% if topic %}
+                {% for topico in topic %}
+                    <a href="">({ topico.title }}</a>
+                {% endfor %}
+            {% else %}
+                <a>There are no topics</a>
+            {% endif %}
         {% endblock leftAside %}
     </div>
 

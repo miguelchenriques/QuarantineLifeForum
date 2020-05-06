@@ -235,8 +235,7 @@ article:hover{
     display: flex;
     flex-direction: column;
     box-shadow: 5px 8px rgba(0,0,0, 0.1);
-    cursor: pointer;
-    height: 100%;
+    height: fit-content;
 }
 
 .avatar {
@@ -308,6 +307,10 @@ article:hover{
     margin-left: 5px;
 }
 
+.commentsPizzas{
+    font-size: 10px;
+}
+
 .like{
     border: none;
     background: transparent url("../img/pizzaOutline3.png");
@@ -328,18 +331,89 @@ article:hover{
     cursor: pointer;
 }
 
-.commentspost input{
-    margin-top: 20px;
-    /*border-radius: 50px;*/
-    border: 1px solid transparent;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
+.commentsLike{
+    width: 20px;
+    height: 20px;
 }
 
-.commentspost input:focus{
+.commentsLiked{
+    width: 20px;
+    height: 20px;
+}
+
+.commentsArticle{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.commentBar{
+    display: flex;
+    justify-content: center;
+}
+
+#commentInput{
+    border: 1px solid transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    width: 90%;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#commentInput:focus{
     outline: none;
+}
+
+#commentButton{
+    /*width: 25%;*/
+    margin-left: 10px;
+    border: 1px solid transparent;
+    background-color: #414059;
+    color: white;
+    border-radius: 100px;
+    padding: 5px 20px;
+    font-size: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.commentsTop img{
+    width: 25px;
+    height: 25px;
+}
+
+.commentsTop a:nth-child(2){
+    font-size: 12px;
+    text-decoration: none;
+    color: #3B5998;
+    margin-left: 5px;
+}
+
+.commentsTop a:nth-child(3){
+    font-size: 10px;
+    text-decoration: none;
+    color: gray;
+    margin-left: 5px;
+}
+
+.commentsText{
+    margin-top: 10px;
+    margin-left: 33px;
+    margin-right: 33px;
+    display: flex;
+}
+
+.commentsText a{
+    font-size: 12px;
+}
+
+.commentsButtons{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 33px;
 }
 
 .login{

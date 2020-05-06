@@ -5,7 +5,7 @@
     <section>
     {% if page_list %}
         {% for post in page_list %}
-            <article value="{% url 'forum:post' post.id %}">
+            <article class="detail_post-articles" value="{% url 'forum:post' post.id %}">
                 <div class="toppost">
                     <a href="{% url 'forum:profile' post.owner.username %}"><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
                     <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>

@@ -14,7 +14,7 @@ async function login_required() {
 };
 
 $(document).ready(function () {
-    $(".likeForm").on("submit", function (e) {
+    $(".likeForm").submit(function (e) {
         e.preventDefault();
         let this_ = $(this);
 

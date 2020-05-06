@@ -14,7 +14,7 @@
             </form>
         </div>
         {% for post in page_list %}
-            <article>
+            <article class="detail_post-articles" value="{% url 'forum:post' post.id %}">
                 <div class="toppost">
                     <a href="{% url 'forum:profile' post.owner.username %}"><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
                     <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
@@ -43,7 +43,7 @@
 {% block rightAside %}
     <h3>About {{ topic.title }}</h3>
     <p>{{ topic.description }}</p>
-    <p>{{ topic.num_followers }} Follower{{ topic.num_followers|pluralize }}</p>
+    <p id="topic-followers">{{ topic.num_followers }} Follower{{ topic.num_followers|pluralize }}</p>
     <button>Create post</button>
 {% endblock rightAside %}
 

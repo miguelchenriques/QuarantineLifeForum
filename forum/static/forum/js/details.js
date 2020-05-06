@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("article").click(function (e) {
+    $(".detail_post-articles").click(function (e) {
         if ($(e.target).hasClass('like')) return;
         location.href = $(this).attr('value')
     });
@@ -25,6 +25,7 @@ $(document).ready(function () {
                 } else {
                     $("#topic-join-submit").removeClass('is_following')
                 }
+                $("#topic-followers").text(`${num_followers} Follower${num_followers === 1 ? '':'s'}`)
             }
         })
     })

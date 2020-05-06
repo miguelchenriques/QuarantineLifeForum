@@ -1,29 +1,21 @@
 from django.db.models import Count, Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
-from .forms import TopicForm, UserSignUpForm, LogInForm, PostForm
+from .forms import TopicForm, PostForm
 from .models import Post, Topic, Profile
 
-page_size = 10
-
-
-# Common context
-def accounts_form_context(request):
-    context = {
-        'loginForm': LogInForm(),
-        'signupForm': UserSignUpForm()
-    }
-    return context
+PAGE_SIZE = 10
+MINIMUM_NUM_LIKES_TO_CREATE_TOPIC = 5
 
 
 # Forum display Views
 def homepage(request):
     post_list = Post.objects.all()
-    paginator = Paginator(post_list, page_size)
+    paginator = Paginator(post_list, PAGE_SIZE)
     page_number = request.GET.get('page', 1)
 
     page_list = get_page(page_number, paginator)
@@ -37,7 +29,7 @@ def homepage(request):
 def topic_details(request, topic_slug):
     topic = get_object_or_404(Topic, slug=topic_slug)
     post_list = Post.objects.filter(topic=topic)
-    paginator = Paginator(post_list, page_size)
+    paginator = Paginator(post_list, PAGE_SIZE)
     page_number = request.GET.get('page', 1)
 
     page_list = get_page(page_number, paginator)
@@ -48,21 +40,19 @@ def topic_details(request, topic_slug):
         'postForm': PostForm()
     }
     return render(request, 'forum/topic_details.html', context)
-    # return None
 
 
 def post_details(request, post_id):
-    post = Post.objects.get(pk=post_id)
+    post = get_object_or_404(Post, id=post_id)
     context = {
         'post': post
     }
     return render(request, 'forum/post_details.html', context)
-    # return None
 
 
 def popular_topics(request):
-    topic_list = Topic.objects.annotate(followrs_count=Count('followers')).orderBy('-followers_count')
-    paginator = Paginator(topic_list, page_size)
+    topic_list = Topic.objects.annotate(followers_count=Count('followers')).order_by('-followers_count')
+    paginator = Paginator(topic_list, PAGE_SIZE)
     page_number = request.GET.get('page', 1)
 
     page_list = get_page(page_number, paginator)
@@ -76,12 +66,15 @@ def popular_topics(request):
 
 @login_required
 def create_Topic(request):
+    if request.user.profile.num_likes() < MINIMUM_NUM_LIKES_TO_CREATE_TOPIC:
+        return HttpResponseForbidden()
     if request.method == 'POST':
         form = TopicForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('forum:home')
-    return None
+        else:
+            return None
 
 
 @require_GET
@@ -112,19 +105,3 @@ def get_page(page_number, paginator):
         page_list = paginator(paginator.num_pages)
 
     return page_list
-
-
-# Authentication Views
-def signup(request):
-    if request.method == 'POST':
-        form = UserSignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('forum:home')
-    else:
-        form = UserSignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})

@@ -1,8 +1,11 @@
 from django.contrib import admin
+from django.contrib.admin.sites import AdminSite
 from .models import Topic, Post, Comment, Profile
 
-
 # Register your models here.
+AdminSite.site_url = '/forum/'
+
+
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
     list_display = ['slug', 'title', 'num_followers']

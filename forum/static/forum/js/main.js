@@ -1,7 +1,24 @@
+async function login_required() {
+    const api_url = $("#login_required_url").val();
+
+    let authenticated;
+    const response = await fetch(api_url, {method: 'GET'});
+    const json = await response.json();
+    authenticated = json['is_authenticated'];
+
+    if (!authenticated) {
+        open_login();
+    }
+    ;
+    return authenticated
+};
+
 $(document).ready(function () {
     $(".likeForm").on("submit", function (e) {
         e.preventDefault();
         let this_ = $(this);
+
+        if (!login_required()) return;
 
         $.ajax({
             url: this_.attr("action"),

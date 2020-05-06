@@ -121,3 +121,29 @@ def create_post_api(request, topic_id):
         response = {'created': False}
 
     return JsonResponse(response)
+
+
+@require_GET
+def login_required_api(request):
+    response = {
+        'is_authenticated': False
+    }
+    if request.user.is_authenticated:
+        response['is_authenticated'] = True
+    return JsonResponse(response)
+
+
+@require_POST
+@login_required
+def follow_topic_api(request):
+    topic = get_object_or_404(Topic, id=request.POST['topic_id'])
+    response = {
+        'is_following': False,
+        'num_followers': topic.num_followers()
+    }
+    if topic.is_following(request.user):
+        topic.followers.remove(request.user)
+    else:
+        topic.followers.add(request.user)
+        response['is_following'] = True
+    return JsonResponse(response)

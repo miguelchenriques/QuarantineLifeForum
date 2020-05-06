@@ -7,7 +7,11 @@
     {% if page_list %}
         <div class="topicArticle">
             <h3>{{ topic.title }}</h3>
-            <button>Join</button>
+            <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
+                {% csrf_token %}
+                <input id="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
+                <input id="topic-join-submit" type="submit" value="Join">
+            </form>
         </div>
         {% for post in page_list %}
             <article>
@@ -21,13 +25,11 @@
                     <p class="postText">{{ post.text }}</p>
                 </div>
                 <div class="buttonspost">
-                    {% if user.is_authenticated %}
                     <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}">
                         {% csrf_token %}
                         <input type="hidden" name="post_id" value="{{ post.id }}">
-                        <input type="submit" class="like {% if user in post.post_pizzas.all %}liked{% endif %}"  value="">
+                        <input type="submit" class="like {% if not user.is_authenticated or user in post.post_pizzas.all %}liked{% endif %}"  value="">
                     </form>
-                    {% endif %}
                     <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
                 </div>
             </article>
@@ -44,3 +46,7 @@
     <p>{{ topic.num_followers }} Follower{{ topic.num_followers|pluralize }}</p>
     <button>Create post</button>
 {% endblock rightAside %}
+
+{% block js %}
+<script src="{% static 'forum/js/details.js' %}"></script>
+{% endblock %}

@@ -6,12 +6,16 @@
     <section>
     {% if page_list %}
         <div class="topicArticle">
-            <h3>{{ topic.title }}</h3>
-            <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
-                {% csrf_token %}
-                <input id="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
-                <input id="topic-join-submit" type="submit" value="Join">
-            </form>
+            <div class="topic_left">
+                <h3>{{ topic.title }}</h3>
+            </div>
+            <div class="topic_right">
+                <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
+                    {% csrf_token %}
+                    <input id="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
+                    <input id="topic-join-submit" type="submit" value="Join">
+                </form>
+            </div>
         </div>
         {% for post in page_list %}
             <article>

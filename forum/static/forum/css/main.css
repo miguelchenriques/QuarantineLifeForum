@@ -208,9 +208,21 @@ article:hover{
     box-shadow: 1px 4px rgba(0,0,0, 0.1);
 }
 
+.topic_left{
+    display: flex;
+    width: 50%;
+}
+
+.topic_right{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .topicArticle input[type=submit]{
-    position: absolute;
-    right: 10px;
+    /*position: absolute;*/
+    /*right: 10px;*/
     /*background-color: #414059;*/
     background: #f12711;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */

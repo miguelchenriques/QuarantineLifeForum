@@ -26,13 +26,11 @@
                     <p class="postText">{{ post.text }}</p>
                 </div>
                 <div class="buttonspost">
-                    {% if user.is_authenticated %}
                         <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}">
                             {% csrf_token %}
                             <input type="hidden" name="post_id" value="{{ post.id }}">
-                            <input type="submit" class="like {% if user in post.post_pizzas.all %}liked{% endif %}"  value="">
+                            <input type="submit" class="like {% if not user.is_authenticated or user in post.post_pizzas.all %}liked{% endif %}"  value="">
                         </form>
-                    {% endif %}
                     <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
                     <button id="commentButton">Comment</button>
                 </div>
@@ -58,7 +56,7 @@
                                         <input type="submit" class="like commentsLike {% if user in comment.post_pizzas.all %} liked commentsLiked {% endif %}"  value="">
                                     </form>
                                 {% endif %}
-                                <p name="{{ post.id }}" class="numberPizzas commentsPizzas">{{ comment.num_likes }} Like{{ comment.num_likes|pluralize }}</p>
+                                <p name="{{ comment.id }}" class="numberPizzas commentsPizzas">{{ comment.num_likes }} Like{{ comment.num_likes|pluralize }}</p>
                             </div>
                         </div>
                     {% endfor %}

@@ -110,6 +110,7 @@ def create_post_api(request):
     topic = get_object_or_404(Topic, id=topic_id)
     post = Post(owner=request.user, pub_date=timezone.now(), topic=topic)
     form = PostForm(request.POST, instance=post)
+    date = datetime.strftime(post.pub_date, "%d-%m-%Y-%H-%M-%p")
     if form.is_valid():
         form.save()
         response = {

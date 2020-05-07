@@ -57,11 +57,11 @@ $(document).ready(function () {
 
     $("#forumtitle").click(function () {
         location.href = $(this).attr('value')
-    })
+    });
 
     $("#forumicon").click(function () {
         location.href = $(this).attr('value')
-    })
+    });
 
     $(".detail_post-articles").click(function (e) {
         if ($(e.target).hasClass('like')) return;

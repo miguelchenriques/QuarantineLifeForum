@@ -44,4 +44,8 @@ $(document).ready(function () {
     $("#forumtitle").click(function () {
         location.href = $(this).attr('value')
     })
+
+    $("#forumicon").click(function () {
+        location.href = $(this).attr('value')
+    })
 });

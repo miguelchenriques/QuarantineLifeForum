@@ -13,7 +13,7 @@
                 <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
                     {% csrf_token %}
                     <input id="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
-                    <input id="topic-join-submit" type="submit" value="Join" class="{% if user.is_authenticated and user in topic.followers.all %}is_following{% endif %}">
+                    <input id="topic-join-submit" type="submit" value="{% if user.is_authenticated and user in topic.followers.all %}Following{% else %}Join{% endif %}" class="topic_join_button {% if user.is_authenticated and user in topic.followers.all %}is_following{% endif %}">
                 </form>
             </div>
         </div>

@@ -46,6 +46,11 @@ header{
     margin-left: 10px;
     font-weight: 200;
     font-family: Verdana;
+    cursor: pointer;
+}
+
+#forumicon{
+    cursor: pointer;
 }
 
 header input, header button{
@@ -220,13 +225,13 @@ article:hover{
     justify-content: flex-end;
 }
 
-.topicArticle input[type=submit]{
+.topic_join_button{
     /*position: absolute;*/
     /*right: 10px;*/
     /*background-color: #414059;*/
-    background: #f12711;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #A7A5E6;  /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to right, #f5af19, #f12711);  !* Chrome 10-25, Safari 5.1-6 *!*/
+    /*background: linear-gradient(to right, #f5af19, #f12711); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
     background-clip: padding-box;
     border: 1px solid transparent;
     border-radius: 100px;
@@ -237,6 +242,13 @@ article:hover{
     height: 40px;
     width: 150px;
     cursor: pointer;
+}
+
+.is_following{
+    background-color: white;
+    background: none;
+    color: #414059;
+    border: 1px solid gray;
 }
 
 .postArticle{
@@ -362,7 +374,9 @@ article:hover{
 
 .commentBar{
     display: flex;
-    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    align-items: center;
 }
 
 #commentInput{
@@ -371,25 +385,20 @@ article:hover{
     width: 90%;
     padding: 10px;
     font-size: 14px;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-left: 20px;
+    height: 40px;
+    resize: none;
 }
 
 #commentInput:focus{
     outline: none;
+    height: 80px;
 }
 
-#commentButton{
-    /*width: 25%;*/
-    margin-left: 10px;
-    border: 1px solid transparent;
-    background-color: #414059;
-    color: white;
-    border-radius: 100px;
-    padding: 5px 20px;
-    font-size: 10px;
-    text-transform: uppercase;
-    cursor: pointer;
+#commenticon{
+    width: 25px;
+    height: 25px;
+    opacity: 0.5;
 }
 
 .commentsTop img{

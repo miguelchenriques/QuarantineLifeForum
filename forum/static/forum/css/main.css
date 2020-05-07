@@ -248,6 +248,7 @@ article:hover{
     flex-direction: column;
     box-shadow: 5px 8px rgba(0,0,0, 0.1);
     height: fit-content;
+    height: -moz-fit-content;
 }
 
 .avatar {

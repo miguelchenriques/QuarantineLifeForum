@@ -60,6 +60,9 @@ class Comment(models.Model):
     def __str__(self):
         return self.text
 
+    def user_has_like(self, user):
+        return self.comment_pizzas.filter(username=user.username).exists()
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

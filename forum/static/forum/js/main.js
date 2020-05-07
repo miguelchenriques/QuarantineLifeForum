@@ -20,25 +20,23 @@ $(document).ready(function () {
 
         if (!login_required()) return;
 
+        const type = this_.attr('name');
+
         $.ajax({
             url: this_.attr("action"),
             method: "Post",
             data: {
-                post_id: this_.find("input[name=post_id]").val(),
+                article_id: this_.find("input[name=article_id]").val(),
                 csrfmiddlewaretoken: this_.find("input[name=csrfmiddlewaretoken]").val()
             },
             success: function (data) {
-                const id = data['post_id']
+                const id = data['article_id'];
                 if (data['has_like']) {
                     this_.find("input:submit").addClass("liked");
                 } else {
                     this_.find("input:submit").removeClass("liked");
                 }
-                if (data['like_count'] === 1) {
-                    $("p[name="+id+"]").text(data['like_count']+" Like");
-                } else {
-                    $("p[name="+id+"]").text(data['like_count']+" Likes");
-                }
+                $(`p[name=${type}${id}]`).text(`${data['like_count']} Like${data['like_count'] === 1 ? '': 's'}`)
             }
         })
     });

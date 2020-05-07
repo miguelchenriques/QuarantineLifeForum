@@ -31,7 +31,7 @@ def verify_username(request):
 @login_required
 def like_toggle(request):
     user = request.user
-    post = get_object_or_404(Post, pk=request.POST['post_id'])
+    post = get_object_or_404(Post, pk=request.POST['article_id'])
     if post.user_has_like(user):
         post.post_pizzas.remove(user)
         has_like = False
@@ -39,7 +39,7 @@ def like_toggle(request):
         post.post_pizzas.add(user)
         has_like = True
     data = {
-        'post_id': request.POST['post_id'],
+        'article_id': request.POST['article_id'],
         'has_like': has_like,
         'like_count': post.post_pizzas.all().count(),
     }
@@ -147,3 +147,22 @@ def follow_topic_api(request):
         topic.followers.add(request.user)
         response['is_following'] = True
     return JsonResponse(response)
+
+
+@require_POST
+@login_required
+def comment_like_toggle(request):
+    user = request.user
+    comment = get_object_or_404(Comment, pk=request.POST['article_id'])
+    if comment.user_has_like(user):
+        comment.comment_pizzas.remove(user)
+        has_like = False
+    else:
+        comment.comment_pizzas.add(user)
+        has_like = True
+    data = {
+        'article_id': request.POST['article_id'],
+        'has_like': has_like,
+        'like_count': comment.comment_pizzas.all().count(),
+    }
+    return JsonResponse(data)

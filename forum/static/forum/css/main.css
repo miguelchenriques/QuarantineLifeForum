@@ -182,7 +182,6 @@ section{
 .postSection{
     width: 50%;
     margin: 30px 0px;
-
 }
 
 article{
@@ -263,7 +262,52 @@ article:hover{
     height: -moz-fit-content;
 }
 
-.avatar {
+.searchTab{
+    flex-direction: row;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    border-radius: 5px;
+}
+
+.searchTab button{
+    height: 100%;
+    width: 33.3%;
+    border: 1px solid transparent;
+    padding: 10px;
+    background-color: #414059;
+    color: white;
+    /*border-radius: 5px;*/
+    margin: 0;
+    font-size: 18.72px;
+}
+
+.searchArticle{
+    height: fit-content;
+    background-color: white;
+    display: flex;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+}
+
+.topicsearch{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.topicsearch:hover{
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.topicsearch a:nth-child(2){
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.toppost img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -275,17 +319,20 @@ article:hover{
     display: flex;
 }
 
-.toppost a:nth-child(2){
+.toppost a:nth-child(2n){
     text-decoration: none;
     color: #3b5998;
     margin-left: 10px;
     font-size: 17px;
     display: flex;
     align-items: center;
-
 }
 
-.toppost a:nth-child(3){
+.toppost a:nth-child(2n):hover{
+    text-decoration: underline;
+}
+
+.toppost a:nth-child(2n+1){
     margin-left: 5px;
     color: gray;
     font-size: 10px;
@@ -293,8 +340,23 @@ article:hover{
     align-items: center;
 }
 
+.topsearchpost img, .userssearch img{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.topsearchpost a:nth-child(2n){
+    font-size: 14px;
+}
+
 .postText{
     font-size: 14px;
+}
+
+.postsearchtitle{
+    font-size: 12px;
+    margin: 0px;
 }
 
 .postTitle{
@@ -325,11 +387,22 @@ article:hover{
     margin-top: 15px;
 }
 
+.bottomsearchpost{
+    margin-left: 33px;
+    margin-bottom: 20px;
+}
+
 .numberPizzas{
     margin: 0;
     font-size: 14px;
     color: gray;
     margin-left: 5px;
+}
+
+.numbersearchpizzas{
+    font-size: 12px;
+    color: gray;
+    margin: 0;
 }
 
 .commentsPizzas{
@@ -436,6 +509,45 @@ article:hover{
     align-items: center;
     margin-top: 15px;
     margin-left: 33px;
+}
+
+.tabContent{
+    width: 100%;
+}
+
+.postsSearch{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.postsSearch:hover{
+    border: 1px solid rgba(0,0,0, 0.2);
+    border-radius: 5px;
+}
+
+.userssearch{
+    display: flex;
+    padding: 10px;
+}
+
+.userssearch:hover{
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.userssearch a:nth-child(2){
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.userssearch a:nth-child(2):hover{
+    text-decoration: underline;
 }
 
 .login{

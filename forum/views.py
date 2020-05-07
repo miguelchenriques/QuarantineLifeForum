@@ -86,7 +86,7 @@ def search(request):
             'topics': Topic.objects.filter(Q(title__icontains=query) | Q(description__icontains=query)),
             'users': User.objects.filter(Q(username__icontains=query))
         }
-        return None
+        return render(request, 'forum/search.html', context)
     return redirect(request.META['HTTP_REFERER'])
 
 

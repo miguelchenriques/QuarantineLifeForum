@@ -48,4 +48,18 @@ $(document).ready(function () {
     $("#forumicon").click(function () {
         location.href = $(this).attr('value')
     })
+
+    $(".detail_post-articles").click(function (e) {
+        if ($(e.target).hasClass('like')) return;
+        location.href = $(this).attr('value')
+    });
+
+    $(".topicsearch").click(function (e) {
+        location.href = $(this).attr('value')
+    });
+
+    $(".userssearch").click(function (e) {
+        location.href = $(this).attr('value')
+    });
+
 });

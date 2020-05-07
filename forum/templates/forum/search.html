@@ -1,0 +1,77 @@
+{% extends 'forum/index.html' %}
+{% load static %}
+
+{% block articles %}
+    <section>
+        <div class="searchTab">
+            <button class="tabButton" onclick="openPage('postsTab', this)" id="defaultOpen" style="border-radius: 5px 0 0 0">Posts</button>
+            <button class="tabButton" onclick="openPage('topicsTab', this)">Topics</button>
+            <button class="tabButton" onclick="openPage('usersTab', this)" style="border-radius: 0 5px 0 0">Users</button>
+        </div>
+        <div class="searchArticle">
+            <div id="postsTab" class="tabContent">
+                {% if posts %}
+                    {% for post in posts %}
+                        <div class="postsSearch detail_post-articles" value="{% url 'forum:post' post.id %}">
+                            <div class="toppost topsearchpost">
+                                <a href="{% url 'forum:profile' post.owner.username %}"><img src="{{ post.owner.profile.profile_image}}" alt="Avatar"></a>
+                                <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
+                                <a>posted in</a>
+                                <a href="{% url 'forum:topic' post.topic.slug %}">t/{{ post.topic.title }}</a>
+                                <a>{{ post.pub_date }}</a>
+                            </div>
+                            <div class="bottomsearchpost">
+                                <p class="postsearchtitle">{{ post.title }}</p>
+                                <p name="Post{{ post.id }}" class="numbersearchpizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <a>There are no posts</a>
+                {% endif %}
+            </div>
+            <div id="topicsTab" class="tabContent">
+                {% if topics %}
+                    {% for topic in topics %}
+                        <div class="topicsearch" value="{% url 'forum:topic' topic.slug %}">
+                            <a>t/{{ topic.title }}</a>
+                            <a>{{ topic.description }}</a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <a>There are no topics</a>
+                {% endif %}
+            </div>
+            <div id="usersTab" class="tabContent">
+                {% if users %}
+                    {% for user in users %}
+                        <div class="userssearch" value="{% url 'forum:profile' user.profile %}">
+                            <a href="{% url 'forum:profile' user.username %}"><img src="{{ user.profile.profile_image }}" alt="Avatar"></a>
+                            <a href="{% url 'forum:profile' user.username %}">{{ user.username}}</a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <a>There are no users</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openPage(pageName,elmnt) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabContent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tabButton");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = "#A7A5E6";
+            }
+
+            document.getElementById("defaultOpen").click();
+    </script>
+{% endblock articles %}

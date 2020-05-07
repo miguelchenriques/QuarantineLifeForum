@@ -138,14 +138,14 @@ def login_required_api(request):
 def follow_topic_api(request):
     topic = get_object_or_404(Topic, id=request.POST['topic_id'])
     response = {
-        'is_following': False,
-        'num_followers': topic.num_followers()
+        'is_following': False
     }
     if topic.is_following(request.user):
         topic.followers.remove(request.user)
     else:
         topic.followers.add(request.user)
         response['is_following'] = True
+    response['num_followers'] = topic.num_followers()
     return JsonResponse(response)
 
 

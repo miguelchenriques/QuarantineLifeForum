@@ -13,7 +13,7 @@
                 <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
                     {% csrf_token %}
                     <input id="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
-                    <input id="topic-join-submit" type="submit" value="Join">
+                    <input id="topic-join-submit" type="submit" value="Join" class="topic_join_button">
                 </form>
             </div>
         </div>

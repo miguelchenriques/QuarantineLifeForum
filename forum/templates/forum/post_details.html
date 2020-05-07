@@ -34,10 +34,11 @@
                         </form>
                     {% endif %}
                     <p name="{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
-                    <button id="commentButton">Comment</button>
                 </div>
                 <form class="commentBar" method="post" action="">
-                    <input type="text" name="comment" placeholder="Add a comment" id="commentInput">
+                    <img src="{% static 'forum/img/comunicacoes.svg' %}" id="commenticon">
+                    <textarea placeholder="Add a comment" id="commentInput"></textarea>
+{#                    <input type="text" name="comment" placeholder="Add a comment" id="commentInput">#}
                 </form>
                 {% if post.comment_set.all %}
                     {% for comment in post.comment_set.all %}

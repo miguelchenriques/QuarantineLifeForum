@@ -22,8 +22,10 @@ $(document).ready(function () {
                 const num_followers = data['num_followers'];
                 if (data['is_following']) {
                     $("#topic-join-submit").addClass('is_following')
+                    $("#topic-join-submit").val('Following')
                 } else {
                     $("#topic-join-submit").removeClass('is_following')
+                    $("#topic-join-submit").val('Join')
                 }
             }
         })

@@ -53,12 +53,18 @@
 {% block createPost %}
     <div class="createPost">
         <div class="createPost-container">
-            <h2>Hello world!</h2>
+            <img src="{% static 'forum/img/undraw_wall_post_83ul.png' %}">
+            <form id="createPost_form" action="{% url 'forum:api_new_post' topic.id %}" method="post">
+                {% csrf_token %}
+                {% for field in postForm %}
+                    {{ field }}
+                {% endfor %}
+            </form>
         </div>
     </div>
 {% endblock createPost %}
 
 
 {% block js %}
-<script src="{% static 'forum/js/topic_details.js' %}"></script>
+<script src="{% static 'forum/js/topic_detail.js' %}"></script>
 {% endblock %}

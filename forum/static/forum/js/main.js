@@ -13,8 +13,22 @@ async function login_required() {
     return authenticated
 };
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+function convertDate(date) {
+    let [day, month, year, hour, minutes, AM_or_PM] = date.split('-');
+    hour = AM_or_PM === 'PM' ? (parseInt(hour)-12).toString() : hour;
+    month = monthNames[parseInt(month)-1];
+    AM_or_PM = AM_or_PM === 'PM' ? 'p.m.' : 'a.m.';
+    day = parseInt(day)
+
+    return `${month} ${day}, ${year}, ${hour}:${minutes} ${AM_or_PM}`
+}
+
 $(document).ready(function () {
-    $(".likeForm").submit(function (e) {
+    $(document).on("submit",".likeForm", function (e) {
         e.preventDefault();
         let this_ = $(this);
 
@@ -43,11 +57,11 @@ $(document).ready(function () {
 
     $("#forumtitle").click(function () {
         location.href = $(this).attr('value')
-    })
+    });
 
     $("#forumicon").click(function () {
         location.href = $(this).attr('value')
-    })
+    });
 
     $(".detail_post-articles").click(function (e) {
         if ($(e.target).hasClass('like')) return;

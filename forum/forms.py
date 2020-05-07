@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Comment, Topic, Post
+from .models import Topic, Post
 from django.contrib.auth.forms import AuthenticationForm
 
 
@@ -27,12 +27,6 @@ class UserSignUpForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ('text',)
-
-
 class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
@@ -43,3 +37,10 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'text', 'image', 'video']
+
+        widgets = {
+            'title': forms.TextInput(attrs={'placeholder': 'Title', 'id': 'title_id'}),
+            'text': forms.TextInput(attrs={'placeholder': 'Text', 'id': 'text_id'}),
+            'image': forms.URLInput(attrs={'placeholder': 'Image URL', 'id': 'image_id'}),
+            'video': forms.URLInput(attrs={'placeholder': 'Video URL', 'id': 'video_id'})
+        }

@@ -3,7 +3,6 @@
 
 {% block articles %}
     <section>
-    {% if page_list %}
         <div class="topicArticle">
             <div class="topic_left">
                 <h3>{{ topic.title }}</h3>
@@ -16,6 +15,7 @@
                 </form>
             </div>
         </div>
+        {% if page_list %}
         {% for post in page_list %}
             <article class="detail_post-articles" value="{% url 'forum:post' post.id %}">
                 <div class="toppost">
@@ -66,5 +66,5 @@
 
 
 {% block js %}
-<script src="{% static 'forum/js/topic_detail.js' %}"></script>
+    <script src="{% static 'forum/js/topic_details.js' %}"></script>
 {% endblock %}

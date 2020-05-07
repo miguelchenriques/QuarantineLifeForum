@@ -5,8 +5,10 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.shortcuts import get_object_or_404
-from .forms import CommentForm, LogInForm, UserSignUpForm, PostForm
+from .forms import LogInForm, UserSignUpForm, PostForm
 from .models import Comment, Post, Profile, Topic
+from datetime import datetime
+import json
 
 
 @require_GET
@@ -48,19 +50,23 @@ def like_toggle(request):
 
 @require_POST
 @login_required
-def new_comment(request, post_id):
-    post = get_object_or_404(pk=post_id)
+def new_comment(request):
+    post_id = request.POST['post_id']
+    post = get_object_or_404(Post, pk=post_id)
     user = request.user
-    comment = Comment(post=post, owner=user, pub_date=timezone.now())
-    form = CommentForm(request.POST, instance=comment)
-    form.save()
+    comment = Comment(post=post, owner=user, pub_date=timezone.now(), text=request.POST['text'])
+    comment.save()
+
+    date = datetime.strftime(comment.pub_date, "%d-%m-%Y-%H-%M-%p")
 
     response = {
         'owner_username': comment.owner.username,
         'post_id': post_id,
+        'id': comment.id,
         'text': comment.text,
         'num_pizzas': comment.num_likes(),
-        'pub_date': comment.pub_date,
+        'pub_date': date,
+        'owner_image': comment.owner.profile.profile_image
     }
 
     return JsonResponse(response)
@@ -95,15 +101,26 @@ def signup_api(request):
         login(request, user)
         response['signup_successful'] = True
         Profile(user=user).save()
+    else:
+        errors = form.errors.as_json()
+        errors = json.loads(errors)
+        # Selects one of the errors
+        for k in errors:
+            error = errors[k]
+        # Selects the error message
+        error = error[0]['message']
+        response['error_message'] = error
     return JsonResponse(response)
 
 
 @require_POST
 @login_required
-def create_post_api(request, topic_id):
+def create_post_api(request):
+    topic_id = request.POST['topic_id']
     topic = get_object_or_404(Topic, id=topic_id)
     post = Post(owner=request.user, pub_date=timezone.now(), topic=topic)
     form = PostForm(request.POST, instance=post)
+    date = datetime.strftime(post.pub_date, "%d-%m-%Y-%H-%M-%p")
     if form.is_valid():
         form.save()
         response = {

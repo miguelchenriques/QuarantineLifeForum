@@ -1,5 +1,8 @@
-$(document).ready(function () {
+function open_createPost() {
+        $(".createPost").css("display", "flex");
+};
 
+$(document).ready(function () {
     $("#topic-join").submit(function (e) {
         e.preventDefault();
         const this_ = $(this);
@@ -26,5 +29,9 @@ $(document).ready(function () {
                 $("#topic-followers").text(`${num_followers} Follower${num_followers === 1 ? '':'s'}`)
             }
         })
-    })
-})
+    });
+
+    $("#createPost-button").click(function () {
+        open_createPost()
+    });
+});

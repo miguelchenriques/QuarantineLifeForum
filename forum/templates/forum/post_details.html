@@ -33,11 +33,15 @@
                         </form>
                     <p name="Post{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
                 </div>
-                <form class="commentBar" method="post" action="">
+
+                <form id="new_comment" class="commentBar" method="post" action="{% url 'forum:api_new_comment' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{ post.id }}">
                     <img src="{% static 'forum/img/comunicacoes.svg' %}" id="commenticon">
-                    <textarea placeholder="Add a comment" id="commentInput"></textarea>
-{#                    <input type="text" name="comment" placeholder="Add a comment" id="commentInput">#}
+                    <input type="text" id="commentInput" placeholder="Add a comment">
                 </form>
+
+                <div id="commentsDiv">
                 {% if post.comment_set.all %}
                     {% for comment in post.comment_set.all %}
                         <div class="commentsArticle">
@@ -63,8 +67,13 @@
                     {% endfor %}
                 {% else %}
                 {% endif %}
-                <input id="profileURL" type="hidden" value="{% url 'forum:profile' 'XX' %}">
+                </div>
+                <input id="profileURL" type="hidden" value="{% url 'forum:profile' 'username' %}">
                 <input id="commentLikeUrl" type="hidden" value="{% url 'forum:api_comment_like_toggle' %}">
             </div>
         </div>
 {% endblock articles %}
+
+{% block js %}
+<script src="{% static 'forum/js/post_details.js' %}"></script>
+{% endblock %}

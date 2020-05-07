@@ -40,7 +40,7 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title', 'id': 'title_id'}),
-            'text': forms.TextInput(attrs={'placeholder': 'Text', 'id': 'text_id'}),
+            'text': forms.Textarea(attrs={'placeholder': 'Text', 'id': 'text_id'}),
             'image': forms.URLInput(attrs={'placeholder': 'Image URL', 'id': 'image_id'}),
             'video': forms.URLInput(attrs={'placeholder': 'Video URL', 'id': 'video_id'})
         }

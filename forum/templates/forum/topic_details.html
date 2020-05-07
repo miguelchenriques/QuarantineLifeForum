@@ -54,7 +54,7 @@
     <div class="createPost">
         <div class="createPost-container">
             <img src="{% static 'forum/img/undraw_wall_post_83ul.png' %}">
-            <form id="createPost_form" action="{% url 'forum:api_new_post' topic.id %}" method="post">
+            <form id="createPost_form" action="{% url 'forum:api_new_post' %}" method="post">
                 {% csrf_token %}
                 {% for field in postForm %}
                     {{ field }}

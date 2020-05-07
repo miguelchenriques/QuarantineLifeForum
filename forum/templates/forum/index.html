@@ -87,7 +87,7 @@
                     {% for field in signupForm %}
                         {{ field }}
                     {% endfor %}
-                    <a id="signup_error_message" class="credencials-error"></a>
+                    <a id="signup_error_message"></a>
                     <input type="submit" class="signupButton" value="SignUp">
                     <input type="hidden" name="url_emailValidation" value="{% url 'forum:api_verify_email' %}">
                     <input type="hidden" name="url_usernameValidation" value="{% url 'forum:api_verify_username' %}">

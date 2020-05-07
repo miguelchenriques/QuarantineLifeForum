@@ -672,6 +672,12 @@ article:hover{
     display: none;
 }
 
+#signup_error_message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
 .login-form a:nth-child(3), .signup-form a{
     margin-top: 15px;
     font-size: 12px;

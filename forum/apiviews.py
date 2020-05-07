@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from .forms import LogInForm, UserSignUpForm, PostForm
 from .models import Comment, Post, Profile, Topic
 from datetime import datetime
+import json
 
 
 @require_GET
@@ -100,6 +101,15 @@ def signup_api(request):
         login(request, user)
         response['signup_successful'] = True
         Profile(user=user).save()
+    else:
+        errors = form.errors.as_json()
+        errors = json.loads(errors)
+        # Selects one of the errors
+        for k in errors:
+            error = errors[k]
+        # Selects the error message
+        error = error[0]['message']
+        response['error_message'] = error
     return JsonResponse(response)
 
 

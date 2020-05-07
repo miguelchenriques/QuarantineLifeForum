@@ -319,6 +319,10 @@ article:hover{
     cursor: pointer;
 }
 
+.signupButton {
+    margin-top: 15px;
+}
+
 .buttonspost{
     display: flex;
     align-items: center;

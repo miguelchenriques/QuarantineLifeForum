@@ -19,7 +19,7 @@
         {% for post in page_list %}
             <article class="detail_post-articles" value="{% url 'forum:post' post.id %}">
                 <div class="toppost">
-                    <a href="{% url 'forum:profile' post.owner.username %}"><img src="{% static 'forum/img/avatar6.png' %}" alt="Avatar" class="avatar"></a>
+                    <a href="{% url 'forum:profile' post.owner.username %}"><img src="{{ post.owner.profile.profile_image }}" alt="Avatar" class="avatar"></a>
                     <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
                     <a>{{ post.pub_date }}</a>
                 </div>
@@ -53,12 +53,14 @@
 {% block createPost %}
     <div class="createPost">
         <div class="createPost-container">
+            <img src="{% static 'forum/img/close1.png' %}" id="close_createComment">
             <img src="{% static 'forum/img/undraw_wall_post_83ul.png' %}">
-            <form id="createPost_form" action="{% url 'forum:api_new_post' topic.id %}" method="post">
+            <form class="createPost_form" action="{% url 'forum:api_new_post' %}" method="post">
                 {% csrf_token %}
                 {% for field in postForm %}
                     {{ field }}
                 {% endfor %}
+                <input type="submit" class="createpostbutton" value="Post">
             </form>
         </div>
     </div>

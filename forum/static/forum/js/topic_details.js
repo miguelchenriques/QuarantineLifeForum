@@ -34,4 +34,8 @@ $(document).ready(function () {
     $("#createPost-button").click(function () {
         open_createPost()
     });
+
+     $("#close_createComment").click(function () {
+                $(".createPost").css("display", "none")
+            });
 });

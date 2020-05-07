@@ -50,10 +50,16 @@
         </div>
         <div class="rightheader">
             <form action="{% url 'forum:search' %}" method="get">
-                <input style="float: right" type="text" name="q" placeholder="Search...">
+                <input class="searchButton" type="text" name="q" placeholder="Search...">
             </form>
             {% if user.is_authenticated %}
-                <a href="{% url 'forum:logout' %}"><button class="logoutbutton">LogOut</button></a>
+                <div class="dropdown">
+                    <a href="{% url 'forum:profile' user.username %}"><img src="{{ user.profile.profile_image }}" alt="Avatar" class="avatar"></a>
+                    <div class="dropdown-content">
+                        <a href="#">Perfil</a>
+                        <a href="{% url 'forum:logout' %}">Logout</a>
+                    </div>
+                </div>
             {% else %}
             <a><button class="loginbutton" id="navloginbutton">Log In</button></a>
             {% endif %}

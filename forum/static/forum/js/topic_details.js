@@ -1,9 +1,4 @@
 $(document).ready(function () {
-    $(".detail_post-articles").click(function (e) {
-        if ($(e.target).hasClass('like')) return;
-        location.href = $(this).attr('value')
-    });
-
     $("#topic-join").submit(function (e) {
         e.preventDefault();
         const this_ = $(this);

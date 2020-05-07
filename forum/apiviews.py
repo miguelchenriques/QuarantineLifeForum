@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import get_object_or_404
 from .forms import LogInForm, UserSignUpForm, PostForm
 from .models import Comment, Post, Profile, Topic
+from datetime import datetime
 
 
 @require_GET
@@ -55,13 +56,15 @@ def new_comment(request):
     comment = Comment(post=post, owner=user, pub_date=timezone.now(), text=request.POST['text'])
     comment.save()
 
+    date = datetime.strftime(comment.pub_date, "%d-%m-%Y-%H-%M-%p")
+
     response = {
         'owner_username': comment.owner.username,
         'post_id': post_id,
         'id': comment.id,
         'text': comment.text,
         'num_pizzas': comment.num_likes(),
-        'pub_date': comment.pub_date,
+        'pub_date': date,
         'owner_image': comment.owner.profile.profile_image
     }
 

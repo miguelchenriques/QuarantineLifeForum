@@ -2,12 +2,14 @@ function addComment(comment) {
     const profile_url = $("#profileURL").val().replace("username", comment['owner_username']);
     const like_url = $("#commentLikeUrl").val();
     const csrfmiddlewaretoken = $("input[name=csrfmiddlewaretoken]").val();
+    const pub_date = convertDate(comment['pub_date']);
+
     let html_string;
     html_string = `<div class="commentsArticle">
                             <div class="commentsTop">
                                 <a href="${profile_url}"><img src="${comment['owner_image']}" alt="Avatar" class="avatar"></a>
                                 <a href="${profile_url}">${comment['owner_username']}</a>
-                                <a>${comment['pub_date']}</a>
+                                <a>${pub_date}</a>
                             </div>
                             <div class="commentsText">
                                 <a>${comment['text']}</a>

@@ -550,7 +550,7 @@ article:hover{
     text-decoration: underline;
 }
 
-.login{
+.login, .createPost{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -562,7 +562,7 @@ article:hover{
     justify-content: center;
 }
 
-.login-container{
+.login-container, .createPost-container{
     width: 60%;
     height: 500px;
     background-color: white;

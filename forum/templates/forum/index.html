@@ -42,6 +42,10 @@
         {% block rightAside %}
         {% endblock rightAside %}
     </div>
+
+
+    {% block createPost %}
+    {% endblock createPost %}
 </main>
 
     <header>
@@ -143,7 +147,7 @@
     <script src="{% static 'forum/js/accounts.js' %}"></script>
     <script src="{% static 'forum/js/main.js' %}"></script>
     {% block js %}
-    {% endblock %}
+    {% endblock js%}
 
 
 </html>

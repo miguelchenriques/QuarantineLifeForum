@@ -1,5 +1,4 @@
 {%  extends 'forum/index.html' %}
-
 {% load static %}
 
 {% block articles %}
@@ -48,9 +47,18 @@
     <h3>About {{ topic.title }}</h3>
     <p>{{ topic.description }}</p>
     <p id="topic-followers">{{ topic.num_followers }} Follower{{ topic.num_followers|pluralize }}</p>
-    <button>Create post</button>
+    <button id="createPost-button">Create post</button>
 {% endblock rightAside %}
 
+{% block createPost %}
+    <div class="createPost">
+        <div class="createPost-container">
+            <h2>Hello world!</h2>
+        </div>
+    </div>
+{% endblock createPost %}
+
+
 {% block js %}
-<script src="{% static 'forum/js/details.js' %}"></script>
+<script src="{% static 'forum/js/topic_details.js' %}"></script>
 {% endblock %}

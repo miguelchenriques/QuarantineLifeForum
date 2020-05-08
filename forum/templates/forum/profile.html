@@ -45,8 +45,8 @@
                 {% endif %}
             </div>
             <div id="topicsfollowedTab" class="tabContent">
-                {% if profile.user.followers%}
-                    {% for topic in profile.user.followers %}
+                {% if topics_followed %}
+                    {% for topic in topics_followed %}
                         <div class="topicsearch" value="{% url 'forum:topic' topic.slug %}">
                             <a>t/{{ topic.title }}</a>
                             <a>{{ topic.description }}</a>

@@ -63,7 +63,7 @@ $(document).ready(function () {
         location.href = $(this).attr('value')
     });
 
-    $(".detail_post-articles").click(function (e) {
+    $(document).on('click', ".detail_post-articles", function (e) {
         if ($(e.target).hasClass('like')) return;
         location.href = $(this).attr('value')
     });

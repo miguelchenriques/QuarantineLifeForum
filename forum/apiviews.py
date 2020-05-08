@@ -57,7 +57,7 @@ def new_comment(request):
     comment = Comment(post=post, owner=user, pub_date=timezone.now(), text=request.POST['text'])
     comment.save()
 
-    date = datetime.strftime(comment.pub_date, "%d-%m-%Y-%H-%M-%p")
+    date = format_date(comment.pub_date)
 
     response = {
         'owner_username': comment.owner.username,
@@ -120,17 +120,18 @@ def create_post_api(request):
     topic = get_object_or_404(Topic, id=topic_id)
     post = Post(owner=request.user, pub_date=timezone.now(), topic=topic)
     form = PostForm(request.POST, instance=post)
-    date = datetime.strftime(post.pub_date, "%d-%m-%Y-%H-%M-%p")
+    date = format_date(post.pub_date)
     if form.is_valid():
         form.save()
         response = {
             'created': True,
             'id': post.id,
-            'owner': post.owner.username,
+            'owner_username': post.owner.username,
+            'owner_image': post.owner.profile.profile_image,
             'topic': topic.slug,
             'title': post.title,
             'text': post.text,
-            'pub_date': post.pub_date,
+            'pub_date': date,
             'image': post.image,
             'video': post.video
         }
@@ -183,3 +184,7 @@ def comment_like_toggle(request):
         'like_count': comment.comment_pizzas.all().count(),
     }
     return JsonResponse(data)
+
+
+def format_date(date):
+    return datetime.strftime(date, "%d-%m-%Y-%H-%M-%p")

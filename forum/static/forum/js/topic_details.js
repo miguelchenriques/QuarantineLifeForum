@@ -1,6 +1,10 @@
-function open_createPost() {
-        $(".createPost").css("display", "flex");
-};
+function create_post(post) {
+
+}
+
+function close_new_post() {
+    $(".createPost").css("display", "none")
+}
 
 $(document).ready(function () {
     $("#topic-join").submit(function (e) {
@@ -31,11 +35,41 @@ $(document).ready(function () {
         })
     });
 
-    $("#createPost-button").click(function () {
-        open_createPost()
+    $(".createPost_form").submit(function (e) {
+        e.preventDefault();
+
+        if (!login_required()) return;
+
+        const this_ = $(this);
+        $.ajax({
+            url: this_.attr('action'),
+            method: this_.attr('method'),
+            dataType: 'json',
+            data: {
+                topic_id: $("#createPost-topicId").val(),
+                title: this_.find('#title_id').val(),
+                text: this_.find('#text_id').val(),
+                image: this_.find('#image_id').val(),
+                video: this_.find('#video_id').val(),
+                csrfmiddlewaretoken: this_.find('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(data) {
+                if (data['created']) {
+                    create_post(data);
+                    close_new_post();
+                }
+            }
+        })
+    });
+
+    $("#createPost-button").click(async function () {
+        const auth = await login_required();
+        if (!auth) return;
+
+        $(".createPost").css("display", "flex");
     });
 
      $("#close_createComment").click(function () {
-                $(".createPost").css("display", "none")
-            });
+         close_new_post();
+     });
 });

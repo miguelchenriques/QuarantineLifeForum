@@ -83,7 +83,7 @@ def search(request):
     if query is not None:
         context = {
             'posts': Post.objects.filter(Q(title__icontains=query) | Q(text__icontains=query)),
-            'topics': Topic.objects.filter(Q(title__icontains=query) | Q(description__icontains=query)),
+            'topics': Topic.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(slug__icontains=query)),
             'users': User.objects.filter(Q(username__icontains=query))
         }
         return render(request, 'forum/search.html', context)

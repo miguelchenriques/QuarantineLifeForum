@@ -19,14 +19,14 @@
             {% if user.is_authenticated %}
                 {% if user.topic_followers.all %}
                     {% for topic in user.topic_followers.all %}
-                        <a href="{% url 'forum:topic' topic.slug %}">t/{{ topic.title }}</a>
+                        <a href="{% url 'forum:topic' topic.slug %}">t/{{ topic.slug }}</a>
                     {% endfor %}
                 {% else %}
                     <a>You don't follow any topics</a>
                 {% endif %}
             {% else %}
                 {% for topic in topTopics %}
-                    <a href="{% url 'forum:topic' topic.slug %}">t/{{ topic.title }}</a>
+                    <a href="{% url 'forum:topic' topic.slug %}">t/{{ topic.slug }}</a>
                 {% endfor %}
             {% endif %}
         {% endblock leftAside %}

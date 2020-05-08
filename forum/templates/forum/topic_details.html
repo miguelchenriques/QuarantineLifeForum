@@ -61,6 +61,7 @@
                     {{ field }}
                 {% endfor %}
                 <input type="submit" class="createpostbutton" value="Post">
+                <input type="hidden" id="createPost-topicId" value="{{ topic.id }}">
             </form>
         </div>
     </div>

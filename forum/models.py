@@ -24,7 +24,7 @@ class Topic(models.Model):
 class Post(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
-    text = models.TextField()
+    text = models.TextField(blank=True)
     image = models.URLField(max_length=300, blank=True)
     video = models.URLField(max_length=300, blank=True)
     owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="original_poster")

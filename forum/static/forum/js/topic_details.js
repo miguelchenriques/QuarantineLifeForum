@@ -1,7 +1,3 @@
-function create_post(post) {
-
-}
-
 function close_new_post() {
     $(".createPost").css("display", "none")
 }
@@ -73,3 +69,53 @@ $(document).ready(function () {
          close_new_post();
      });
 });
+
+
+
+function create_post(post) {
+    const post_url = $("#postURL").val().replace('1', post['id']);
+    const like_url = $("#likeURL").val();
+    const topic_url = $("#topicURL").val();
+    const profile_url = $("#profileURL").val().replace('username', post['owner_username']);
+    const csrf_token = $("input[name=csrfmiddlewaretoken]").val();
+
+    const pub_date = convertDate(post['pub_date']);
+    let html_content;
+
+    if (post['image']) {
+        html_content = `<img src="${post['image']}">`
+    } else if (post['video']) {
+        html_content = `
+            <iframe source src="${post['video']}">
+            </iframe>`
+    } else {
+        html_content = `<p class="postText">${post['text']}</p>`
+    }
+
+    let html;
+    html = `
+<article class="detail_post-articles" value="${post_url}">
+    <div class="toppost">
+        <a href="${profile_url}"><img src="${post['owner_image']}" alt="Avatar" class="avatar"></a>
+        <a href="${profile_url}">${post['owner_username']}</a>
+        <a>posted in</a>
+        <a href="${topic_url}">t/${post['topic']}</a>
+        <a>${pub_date}</a>
+    </div>
+    <div class="textpost">
+        <p class="postTitle">${post['title']}</p>
+        ${html_content}
+    </div>
+    <div class="buttonspost">
+        <form class="likeForm" method="post" action="${like_url}" name="Post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}">
+            <input type="hidden" name="article_id" value="${post['id']}">
+            <input type="submit" class="like" value="">
+        </form>
+        <p name="Post${post['id']}" class="numberPizzas">0 Likes</p>
+    </div>
+</article>
+`;
+
+    $("#topic_details-PostsDiv").prepend(html);
+}

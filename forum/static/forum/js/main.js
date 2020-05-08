@@ -64,7 +64,7 @@ $(document).ready(function () {
     });
 
     $(document).on('click', ".detail_post-articles", function (e) {
-        if ($(e.target).hasClass('like')) return;
+        if ($(e.target).hasClass('like') || $(e.target).is("iframe")) return;
         location.href = $(this).attr('value')
     });
 

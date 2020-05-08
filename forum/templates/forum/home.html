@@ -5,35 +5,7 @@
     <section>
     {% if page_list %}
         {% for post in page_list %}
-            <article class="detail_post-articles" value="{% url 'forum:post' post.id %}">
-                <div class="toppost">
-                    <a href="{% url 'forum:profile' post.owner.username %}"><img src="{{ post.owner.profile.profile_image }}" alt="Avatar" class="avatar"></a>
-                    <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
-                    <a>posted in</a>
-                    <a href="{% url 'forum:topic' post.topic.slug %}">t/{{ post.topic.slug }}</a>
-                    <a>{{ post.pub_date }}</a>
-                </div>
-                <div class="textpost">
-                    <p class="postTitle">{{ post.title }}</p>
-                    {% if post.image %}
-                        <img src="{{ post.image }}">
-                    {% elif post.video %}
-                        <video>
-                            <source src="{{ post.video }}">
-                        </video>
-                    {% else %}
-                        <p class="postText">{{ post.text }}</p>
-                    {% endif %}
-                </div>
-                <div class="buttonspost">
-                    <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}" name="Post">
-                        {% csrf_token %}
-                        <input type="hidden" name="article_id" value="{{ post.id }}">
-                        <input type="submit" class="like {% if not user.is_authenticated or user in post.post_pizzas.all %}liked{% endif %}"  value="">
-                    </form>
-                    <p name="Post{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
-                </div>
-            </article>
+            {% include 'forum/post_card.html' %}
         {% endfor %}
     {% else %}
         <p>Não há posts</p>

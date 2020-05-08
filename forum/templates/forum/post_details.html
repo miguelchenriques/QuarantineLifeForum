@@ -21,9 +21,8 @@
                         <img src="{{ post.image }}">
                     {% endif %}
                     {% if post.video %}
-                        <video>
-                            <source src="{{ image.video }}">
-                        </video>
+                        <iframe src="{{ post.video }}">
+                        </iframe>
                     {% endif %}
                     <p class="postText">{{ post.text }}</p>
                 </div>

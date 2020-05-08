@@ -86,7 +86,7 @@ function create_post(post) {
         html_content = `<img src="${post['image']}">`
     } else if (post['video']) {
         html_content = `
-            <iframe source src="${post['video']}">
+            <iframe src="${post['video']}">
             </iframe>`
     } else {
         html_content = `<p class="postText">${post['text']}</p>`
@@ -117,5 +117,5 @@ function create_post(post) {
 </article>
 `;
 
-    $("#topic_details-PostsDiv").prepend(html);
+    $(".Posts-Section").prepend(html);
 }

@@ -15,7 +15,7 @@
                 </form>
             </div>
         </div>
-        <div id="topic_details-PostsDiv">
+        <section class="Posts-Section">
         {% if page_list %}
         {% for post in page_list %}
             {% include 'forum/post_card.html' %}
@@ -23,7 +23,7 @@
         {% else %}
             <p>Não há posts</p>
         {% endif %}
-        </div>
+        </section>
     </section>
 {% endblock articles %}
 

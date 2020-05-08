@@ -12,9 +12,8 @@
         {% if post.image %}
             <img src="{{ post.image }}">
         {% elif post.video %}
-            <video>
-                <source src="{{ post.video }}">
-            </video>
+            <iframe src="{{ post.video }}">
+            </iframe>
         {% else %}
             <p class="postText">{{ post.text }}</p>
         {% endif %}

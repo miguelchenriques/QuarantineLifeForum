@@ -49,6 +49,10 @@ $(document).ready(function () {
             success: function (data) {
                 if (data['signup_successful']) {
                     location.reload()
+                } else {
+                    if (data['error_message']) {
+                        $("#signup_error_message").text(data['error_message'])
+                    }
                 }
             }
         })

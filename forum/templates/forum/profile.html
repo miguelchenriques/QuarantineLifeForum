@@ -1,0 +1,88 @@
+{% extends 'forum/index.html' %}
+{% load static %}
+
+{% block leftAside %}
+{% endblock %}
+
+{% block articles %}
+    <section>
+        <div class="searchTab">
+            <button class="tabButton" onclick="openPage('postsTab', this)" id="defaultOpen" style="border-radius: 5px 0 0 0">Posts</button>
+            <button class="tabButton" onclick="openPage('commentsTab', this)">Comments</button>
+            <button class="tabButton" onclick="openPage('topicsfollowedTab', this)" style="border-radius: 0 5px 0 0">Topics followed</button>
+        </div>
+        <div class="searchArticle">
+            <div id="postsTab" class="tabContent">
+                {% if profile.user.post_set.all %}
+                    {% for post in profile.user.post_set.all %}
+                        {% include 'forum/post_profile_card.html' %}
+                    {% endfor %}
+                {% else %}
+                    <a>There are no posts</a>
+                {% endif %}
+            </div>
+            <div id="commentsTab" class="tabContent">
+                {% if profile.user.comment_set.all %}
+                    {% for comment in profile.user.comment_set.all %}
+                        <div class="topicsearch detail_post-articles" value="{% url 'forum:post' comment.post.id %}">
+                            <div class="toppost topsearchpost">
+                                <a href="{% url 'forum:profile' comment.owner.username %}"><img
+                                        src="{{ comment.owner.profile.profile_image }}" alt="Avatar"></a>
+                                <a href="{% url 'forum:profile' comment.owner.username %}" style="margin-top:0px">{{ comment.owner.username }}</a>
+                                <a>commented in</a>
+                                <a href="{% url 'forum:topic' comment.post.topic.slug %}">t/{{ comment.post.topic.title }}</a>
+                                <a>{{ comment.pub_date }}</a>
+                            </div>
+                            <div class="bottomsearchpost">
+                                <p class="postsearchtitle">{{ comment.text }}</p>
+                                <p class="numbersearchpizzas">{{ comment.num_likes }}
+                                    Like{{ comment.num_likes|pluralize }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <a>There are no comments</a>
+                {% endif %}
+            </div>
+            <div id="topicsfollowedTab" class="tabContent">
+                {% if profile.user.followers%}
+                    {% for topic in profile.user.followers %}
+                        <div class="topicsearch" value="{% url 'forum:topic' topic.slug %}">
+                            <a>t/{{ topic.title }}</a>
+                            <a>{{ topic.description }}</a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <a>The user don't follow any topic</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openPage(pageName,elmnt) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabContent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tabButton");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = "#A7A5E6";
+            }
+
+            document.getElementById("defaultOpen").click();
+    </script>
+{% endblock articles %}
+
+{% block rightAside %}
+    <h3>About {{ profile.user.username }}</h3>
+    <div class="profileTop">
+        <img src="{{ profile.profile_image }}" alt="Avatar" class="profileAvatar">
+        <a>{{ profile.user.username }}</a>
+    </div>
+        <p style="padding: 0 20px">{{ profile.bio }}</p>
+{% endblock rightAside %}

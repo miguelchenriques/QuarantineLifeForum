@@ -27,7 +27,7 @@ class Post(models.Model):
     text = models.TextField(blank=True)
     image = models.URLField(max_length=300, blank=True)
     video = models.URLField(max_length=300, blank=True)
-    owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="original_poster")
+    owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     post_pizzas = models.ManyToManyField(User, related_name='post_likes', blank=True)
     pub_date = models.DateTimeField('Publication date')
 

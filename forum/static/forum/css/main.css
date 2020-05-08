@@ -51,7 +51,7 @@ header{
 .searchButton{
     border: 1px solid transparent;
     border-bottom: 1px solid gray;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
     margin-right: 20px;
 }
@@ -811,4 +811,18 @@ article:hover{
 .dropdown:hover .dropdown-content {
   display: flex;
     flex-direction: column;
+}
+
+.profileAvatar{
+     width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.profileTop{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }

@@ -1,0 +1,12 @@
+{% extends 'forum/index.html' %}
+{% load static %}
+
+{% block articles %}
+    {% if posts %}
+        <section>
+            {% for post in posts %}
+                {% include 'forum/post_card.html' %}
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}

@@ -96,6 +96,16 @@ def profile_detail(request, username):
     return None
 
 
+@login_required
+def liked_Posts(request):
+    user = request.user
+    posts = Post.objects.filter(post_pizzas__username__exact=user.username)
+    context = {
+        'posts': posts
+    }
+    return render(request, 'forum/liked_Posts_list.html', context)
+
+
 def get_page(page_number, paginator):
     try:
         page_list = paginator.page(page_number)

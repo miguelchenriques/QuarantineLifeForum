@@ -15,6 +15,7 @@ urlpatterns = [
     path('profile/<str:username>', views.profile_detail, name="profile"),
     path('api/login/', apiviews.login_api, name='api_login'),
     path('api/signup', apiviews.signup_api, name='api_signup'),
+    path('liked-posts/', views.liked_Posts, name='liked_posts'),
 
     # API URLS
     path('api/verify-email/', apiviews.verify_email, name='api_verify_email'),

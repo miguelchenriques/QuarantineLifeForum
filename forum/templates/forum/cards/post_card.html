@@ -28,10 +28,10 @@
                 <iframe src="{{ post.video }}">
                 </iframe>
             {% endif %}
-            {% if post.text %}
-                <p class="postText">{{ post.text }}</p>
-            {% endif %}
         </div>
+        {% if post.text %}
+            <p class="postText">{{ post.text }}</p>
+        {% endif %}
     </div>
     <div class="buttonspost">
         <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}" name="Post">

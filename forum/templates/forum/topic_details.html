@@ -47,11 +47,6 @@
                 {% endfor %}
                 <input type="submit" class="createpostbutton" value="Post">
                 <input type="hidden" id="createPost-topicId" value="{{ topic.id }}">
-                <input type="hidden" id="profileURL" value="{% url 'forum:profile' 'username' %}">
-                <input type="hidden" id="topicURL" value="{% url 'forum:topic' topic.slug %}">
-                <input type="hidden" id="likeURL" value="{% url 'forum:api_like_toggle' %}">
-                <input type="hidden" id="postURL" value="{% url 'forum:post' 1 %}">
-                <input type="hidden" id="deletePostURL" value="{% url 'forum:api_delete_post' %}">
             </form>
         </div>
     </div>

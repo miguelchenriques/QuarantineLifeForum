@@ -18,20 +18,6 @@ async function login_required() {
     return authenticated
 };
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-];
-
-function convertDate(date) {
-    let [day, month, year, hour, minutes, AM_or_PM] = date.split('-');
-    hour = AM_or_PM === 'PM' ? (parseInt(hour) - 12).toString() : hour;
-    month = monthNames[parseInt(month) - 1];
-    AM_or_PM = AM_or_PM === 'PM' ? 'p.m.' : 'a.m.';
-    day = parseInt(day)
-
-    return `${month} ${day}, ${year}, ${hour}:${minutes} ${AM_or_PM}`
-}
-
 $(document).ready(function () {
     $("#navloginbutton").click(function () {
         open_login()

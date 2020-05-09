@@ -1,3 +1,8 @@
+function open_login() {
+    $(".login").css("display", "flex");
+};
+
+
 async function login_required() {
     const api_url = $("#login_required_url").val();
 
@@ -14,13 +19,13 @@ async function login_required() {
 };
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+    "July", "August", "September", "October", "November", "December"
 ];
 
 function convertDate(date) {
     let [day, month, year, hour, minutes, AM_or_PM] = date.split('-');
-    hour = AM_or_PM === 'PM' ? (parseInt(hour)-12).toString() : hour;
-    month = monthNames[parseInt(month)-1];
+    hour = AM_or_PM === 'PM' ? (parseInt(hour) - 12).toString() : hour;
+    month = monthNames[parseInt(month) - 1];
     AM_or_PM = AM_or_PM === 'PM' ? 'p.m.' : 'a.m.';
     day = parseInt(day)
 
@@ -28,7 +33,35 @@ function convertDate(date) {
 }
 
 $(document).ready(function () {
-    $(document).on("submit",".likeForm", function (e) {
+    $("#navloginbutton").click(function () {
+        open_login()
+    });
+
+    $("#close").click(function () {
+        $(".login").css("display", "none")
+    });
+
+    $("#signup").click(function () {
+        $(".login-form").css("display", "none");
+        $(".signup-form").css("display", "flex");
+        $(".login-art").css("order", "1");
+        $(".signup-art").css("display", "flex");
+        $(".login-art").css("display", "none");
+        $("#close").css("left", "revert");
+        $("#close").css("right", "10px");
+    });
+
+    $("#signin").click(function () {
+        $(".login-form").css("display", "flex");
+        $(".signup-form").css("display", "none");
+        $(".login-art").css("order", "2");
+        $(".signup-art").css("display", "none");
+        $(".login-art").css("display", "flex");
+        $("#close").css("left", "10px");
+        $("#close").css("right", "revert");
+    })
+
+    $(document).on("submit", ".likeForm", function (e) {
         e.preventDefault();
         let this_ = $(this);
 
@@ -50,7 +83,7 @@ $(document).ready(function () {
                 } else {
                     this_.find("input:submit").removeClass("liked");
                 }
-                $(`p[name=${type}${id}]`).text(`${data['like_count']} Like${data['like_count'] === 1 ? '': 's'}`)
+                $(`p[name=${type}${id}]`).text(`${data['like_count']} Like${data['like_count'] === 1 ? '' : 's'}`)
             }
         })
     });

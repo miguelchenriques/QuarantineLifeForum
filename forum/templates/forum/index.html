@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block tabTitle %}
-    Quarantine Life
+        Quarantine Life
     {% endblock %}</title>
     {% load static %}
     <script src="{% static 'forum/js/jquery-3.5.0.min.js' %}"></script>
@@ -33,7 +33,7 @@
     </div>
 
     {% block articles %}
-    {% endblock articles%}
+    {% endblock articles %}
 
 
     <div class="right-aside">
@@ -43,117 +43,83 @@
 
 </main>
 
-    <header>
-        <div class="leftheader">
-            <img src="{% static 'forum/img/undraw_at_home_octe.png' %}" id="forumicon" value="{% url 'forum:home' %}">
-            <a value="{% url 'forum:home' %}" id="forumtitle">Quarantine Life</a>
-        </div>
-        <div class="rightheader">
-            <form action="{% url 'forum:search' %}" method="get">
-                <input class="searchButton" type="text" name="q" placeholder="Search...">
-            </form>
-            {% if user.is_authenticated %}
-                <div class="dropdown">
-                    <a href="{% url 'forum:profile' user.username %}"><img src="{{ user.profile.profile_image }}" alt="Avatar" class="avatar"></a>
-                    <div class="dropdown-content">
-                        <a href="{% url 'forum:profile' user.username %}">Profile</a>
-                        <a href="{% url 'forum:liked_posts' %}">Liked Posts</a>
-                        <a href="{% url 'forum:logout' %}">Logout</a>
-                    </div>
+<header>
+    <div class="leftheader">
+        <img src="{% static 'forum/img/undraw_at_home_octe.png' %}" id="forumicon" value="{% url 'forum:home' %}">
+        <a value="{% url 'forum:home' %}" id="forumtitle">Quarantine Life</a>
+    </div>
+    <div class="rightheader">
+        <form action="{% url 'forum:search' %}" method="get">
+            <input class="searchButton" type="text" name="q" placeholder="Search...">
+        </form>
+        {% if user.is_authenticated %}
+            <div class="dropdown">
+                <a href="{% url 'forum:profile' user.username %}"><img src="{{ user.profile.profile_image }}"
+                                                                       alt="Avatar" class="avatar"></a>
+                <div class="dropdown-content">
+                    <a href="{% url 'forum:profile' user.username %}">Profile</a>
+                    <a href="{% url 'forum:liked_posts' %}">Liked Posts</a>
+                    <a href="{% url 'forum:logout' %}">Logout</a>
                 </div>
-            {% else %}
-            <a><button class="loginbutton" id="navloginbutton">Log In</button></a>
-            {% endif %}
-        </div>
-    </header>
+            </div>
+        {% else %}
+            <a>
+                <button class="loginbutton" id="navloginbutton">Log In</button>
+            </a>
+        {% endif %}
+    </div>
+</header>
 </body>
 
-    {% block createPost %}
-    {% endblock createPost %}
+{% block createPost %}
+{% endblock createPost %}
 
-    <div class="login">
-        <div class="login-container">
-            <img src="{% static 'forum/img/close1.png' %}" id="close">
-            <div class="login-form">
-                <img src="{% static 'forum/img/undraw_profile_pic_ic5t.png' %}">
-                <form id="login_form" action="{% url 'forum:api_login' %}" method="post">
-                    {% csrf_token %}
-                    {% for field in loginForm %}
-                        {{ field }}
-                    {% endfor %}
-                    <a class="credencials-error">Wrong e-mail or password</a>
-                    <input type="submit" class="loginbutton" value="LogIn">
-                </form>
-                <a>Don't have an account?</a>
-                <a href="#" id="signup">Signup here</a>
-            </div>
-            <div class="signup-form">
-                <img src="{% static 'forum/img/undraw_profile_pic_ic5t.png' %}">
-                <form action="{% url 'forum:api_signup' %}" method="post" id="signup_form">
-                    {% csrf_token %}
-                    {% for field in signupForm %}
-                        {{ field }}
-                    {% endfor %}
-                    <a id="signup_error_message"></a>
-                    <input type="submit" class="signupButton" value="SignUp">
-                    <input type="hidden" name="url_emailValidation" value="{% url 'forum:api_verify_email' %}">
-                    <input type="hidden" name="url_usernameValidation" value="{% url 'forum:api_verify_username' %}">
-                </form>
-                <a>Already have an account?</a>
-                <a href="#" id="signin">Login here</a>
-            </div>
-            <div class="login-art">
-                <img src="{% static 'forum/img/undraw_social_distancing_2g0u.png' %}">
-            </div>
-            <div class="signup-art">
-                <img src="{% static 'forum/img/undraw_authentication_fsn5.png' %}">
-            </div>
+<div class="login">
+    <div class="login-container">
+        <img src="{% static 'forum/img/close1.png' %}" id="close">
+        <div class="login-form">
+            <img src="{% static 'forum/img/undraw_profile_pic_ic5t.png' %}">
+            <form id="login_form" action="{% url 'forum:api_login' %}" method="post">
+                {% csrf_token %}
+                {% for field in loginForm %}
+                    {{ field }}
+                {% endfor %}
+                <a class="credencials-error">Wrong e-mail or password</a>
+                <input type="submit" class="loginbutton" value="LogIn">
+            </form>
+            <a>Don't have an account?</a>
+            <a href="#" id="signup">Signup here</a>
+        </div>
+        <div class="signup-form">
+            <img src="{% static 'forum/img/undraw_profile_pic_ic5t.png' %}">
+            <form action="{% url 'forum:api_signup' %}" method="post" id="signup_form">
+                {% csrf_token %}
+                {% for field in signupForm %}
+                    {{ field }}
+                {% endfor %}
+                <a id="signup_error_message"></a>
+                <input type="submit" class="signupButton" value="SignUp">
+                <input type="hidden" name="url_emailValidation" value="{% url 'forum:api_verify_email' %}">
+                <input type="hidden" name="url_usernameValidation" value="{% url 'forum:api_verify_username' %}">
+            </form>
+            <a>Already have an account?</a>
+            <a href="#" id="signin">Login here</a>
+        </div>
+        <div class="login-art">
+            <img src="{% static 'forum/img/undraw_social_distancing_2g0u.png' %}">
+        </div>
+        <div class="signup-art">
+            <img src="{% static 'forum/img/undraw_authentication_fsn5.png' %}">
         </div>
     </div>
+</div>
 
-    <input type="hidden" id="login_required_url" value="{% url 'forum:api_login_required' %}">
+<input type="hidden" id="login_required_url" value="{% url 'forum:api_login_required' %}">
 
-    <script>
-        function open_login() {
-            $(".login").css("display", "flex");
-        };
-
-        $(document).ready(function () {
-            $("#navloginbutton").click(function () {
-                open_login()
-            });
-
-            $("#close").click(function () {
-                $(".login").css("display", "none")
-            });
-
-            $("#signup").click(function () {
-                $(".login-form").css("display", "none");
-                $(".signup-form").css("display", "flex");
-                $(".login-art").css("order", "1");
-                $(".signup-art").css("display", "flex");
-                $(".login-art").css("display", "none");
-                $("#close").css("left", "revert");
-                $("#close").css("right", "10px");
-            });
-
-            $("#signin").click(function () {
-                $(".login-form").css("display", "flex");
-                $(".signup-form").css("display", "none");
-                $(".login-art").css("order", "2");
-                $(".signup-art").css("display", "none");
-                $(".login-art").css("display", "flex");
-                $("#close").css("left", "10px");
-                $("#close").css("right", "revert");
-            })
-        })
-
-
-    </script>
-    <script src="{% static 'forum/js/accounts.js' %}"></script>
-    <script src="{% static 'forum/js/main.js' %}"></script>
-    {% block js %}
-    {% endblock js%}
+<script src="{% static 'forum/js/accounts.js' %}"></script>
+<script src="{% static 'forum/js/main.js' %}"></script>
+{% block js %}
+{% endblock js %}
 
 
 </html>

@@ -1,0 +1,19 @@
+{% if page_list.has_other_pages %}
+    <div class="paginator">
+        {% if page_list.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ page_list.previous_page_number }}">&laquo;</a>
+        {% else %}
+            <a class="inactive">First</a>
+            <a class="inactive">&laquo;</a>
+        {% endif %}
+            <a>{{ page_list.number }} of {{ page_list.paginator.num_pages }} </a>
+        {% if page_list.has_next %}
+            <a href="?page={{ page_list.next_page_number }}">&raquo;</a>
+            <a href="?page={{ page_list.paginator.num_pages }}">Last</a>
+            {% else %}
+            <a class="inactive">&raquo;</a>
+            <a class="inactive">Last</a>
+        {% endif %}
+    </div>
+{% endif %}

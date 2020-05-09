@@ -1,15 +1,16 @@
-{%  extends 'forum/index.html' %}
+{% extends 'forum/index.html' %}
 {% load static %}
 
 {% block articles %}
     <section class="Posts-Section">
-    {% if page_list %}
-        {% for post in page_list %}
-            {% include 'forum/cards/post_card.html' %}
-        {% endfor %}
-    {% else %}
-        <p>Não há posts</p>
-    {% endif %}
+        {% if page_list %}
+            {% for post in page_list %}
+                {% include 'forum/cards/post_card.html' %}
+            {% endfor %}
+        {% else %}
+            <p>Não há posts</p>
+        {% endif %}
+        {% include 'forum/paginator.html' %}
     </section>
 {% endblock articles %}
 

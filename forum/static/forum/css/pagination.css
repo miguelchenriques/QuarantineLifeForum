@@ -1,0 +1,17 @@
+.paginator {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.paginator a {
+    background-color: white;
+    color: black;
+    padding: 8px 16px;
+    border: 1px solid black;
+    text-decoration: none;
+}
+
+.paginator .inactive {
+    background-color: #dfe3ee;
+}

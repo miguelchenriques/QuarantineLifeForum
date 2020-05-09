@@ -1,9 +1,17 @@
-<div class="commentsArticle">
+<div id="{{ comment.id }}CommentArticle" class="commentsArticle">
     <div class="commentsTop">
         <a href="{% url 'forum:profile' comment.owner.username %}"><img src="{{ comment.owner.profile.profile_image }}"
                                                                         alt="Avatar" class="avatar"></a>
         <a href="{% url 'forum:profile' comment.owner.username %}">{{ comment.owner.username }}</a>
         <a>{{ comment.pub_date }}</a>
+        {% if user == comment.owner %}
+        <form class="delete-form" method="post" action="{% url 'forum:api_delete_comment' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="Comment">
+            <input type="hidden" name="article_id" value="{{ comment.id }}">
+            <input class="delete-button" type="submit" value="">
+        </form>
+        {% endif %}
     </div>
     <div class="commentsText">
         <a>{{ comment.text }}</a>

@@ -66,7 +66,7 @@ def popular_topics(request):
 
 @login_required
 def create_Topic(request):
-    if request.user.profile.num_likes() < MINIMUM_NUM_LIKES_TO_CREATE_TOPIC:
+    if request.user.profile.reputation() < MINIMUM_NUM_LIKES_TO_CREATE_TOPIC:
         return HttpResponseForbidden()
     if request.method == 'POST':
         form = TopicForm(request.POST)

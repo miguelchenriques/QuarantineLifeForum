@@ -180,5 +180,14 @@ def delete_post_api(request):
         return HttpResponseForbidden()
 
 
-def format_date(date):
-    return datetime.strftime(date, "%d-%m-%Y-%H-%M-%p")
+@require_POST
+@login_required
+def delete_comment_api(request):
+    user = request.user
+    comment = get_object_or_404(Comment, id=request.POST['id'])
+    if user == comment.owner:
+        comment.delete()
+        response = {'deleted': True}
+        return JsonResponse(response)
+    else:
+        return HttpResponseForbidden()

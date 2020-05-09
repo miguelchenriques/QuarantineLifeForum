@@ -12,7 +12,7 @@
             <div id="postsTab" class="tabContent">
                 {% if posts %}
                     {% for post in posts %}
-                        {% include 'forum/post_profile_card.html' %}
+                        {% include 'forum/cards/post_card_min.html' %}
                     {% endfor %}
                 {% else %}
                     <a>There are no posts</a>

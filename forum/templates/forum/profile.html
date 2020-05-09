@@ -15,7 +15,7 @@
             <div id="postsTab" class="tabContent">
                 {% if profile.user.post_set.all %}
                     {% for post in profile.user.post_set.all %}
-                        {% include 'forum/post_profile_card.html' %}
+                        {% include 'forum/cards/post_card_min.html' %}
                     {% endfor %}
                 {% else %}
                     <a>There are no posts</a>
@@ -84,5 +84,10 @@
         <img src="{{ profile.profile_image }}" alt="Avatar" class="profileAvatar">
         <a>{{ profile.user.username }}</a>
     </div>
+    <div class="profileReputation">
+        <h4>Reputation: {{ profile.reputation }}</h4>
+    </div>
+    <div class="profileBio">
         <p style="padding: 0 20px">{{ profile.bio }}</p>
+    </div>
 {% endblock rightAside %}

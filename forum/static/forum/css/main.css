@@ -51,7 +51,7 @@ header{
 .searchButton{
     border: 1px solid transparent;
     border-bottom: 1px solid gray;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
     margin-right: 20px;
 }
@@ -829,4 +829,18 @@ article:hover{
 
 .Posts-Section {
     width: 100%;
+}
+
+.profileAvatar{
+     width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.profileTop{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }

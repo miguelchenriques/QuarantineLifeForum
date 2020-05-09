@@ -1,0 +1,15 @@
+<div class="postsSearch detail_post-articles" value="{% url 'forum:post' post.id %}">
+    <div class="toppost topsearchpost">
+        <a href="{% url 'forum:profile' post.owner.username %}"><img
+                src="{{ post.owner.profile.profile_image }}" alt="Avatar"></a>
+        <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username }}</a>
+        <a>posted in</a>
+        <a href="{% url 'forum:topic' post.topic.slug %}">t/{{ post.topic.title }}</a>
+        <a>{{ post.pub_date }}</a>
+    </div>
+    <div class="bottomsearchpost">
+        <p class="postsearchtitle">{{ post.title }}</p>
+        <p name="Post{{ post.id }}" class="numbersearchpizzas">{{ post.num_likes }}
+            Like{{ post.num_likes|pluralize }}</p>
+    </div>
+</div>

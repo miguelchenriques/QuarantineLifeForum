@@ -20,9 +20,6 @@
     </div>
     <div class="textpost">
         <p class="postTitle">{{ post.title }}</p>
-        {% if post.text %}
-            <p class="postText">{{ post.text }}</p>
-        {% endif %}
         <div class="postmedia">
             {% if post.image %}
                 <img src="{{ post.image }}">
@@ -30,6 +27,9 @@
             {% if post.video %}
                 <iframe src="{{ post.video }}">
                 </iframe>
+            {% endif %}
+            {% if post.text %}
+                <p class="postText">{{ post.text }}</p>
             {% endif %}
         </div>
     </div>

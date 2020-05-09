@@ -60,8 +60,7 @@ def popular_topics(request):
     context = {
         'page_list': page_list,
     }
-    # return render(request, 'forum/popular_topics.html', context)
-    return None
+    return render(request, 'forum/popular_topics.html', context)
 
 
 @login_required

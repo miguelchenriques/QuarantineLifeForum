@@ -63,9 +63,10 @@ header{
 #forumtitle{
     font-size: 30px;
     margin-left: 10px;
-    font-weight: 200;
-    font-family: Verdana;
+    /*font-weight: 200;*/
+    font-family: Helvetica;
     cursor: pointer;
+    /*text-transform: uppercase;*/
 }
 
 #forumicon{
@@ -106,8 +107,6 @@ main{
 }
 
 .left-aside a{
-    /*padding-left: 35px;*/
-    /*display: block;*/
     border-top: 1px solid rgba(0,0,0, 0.2);
     width: 100%;
     text-align: center;
@@ -115,6 +114,15 @@ main{
     text-decoration: none;
     color: black;
     cursor: pointer;
+}
+
+.popular_topics{
+    background-color: #A7A5E6;
+    color: white;
+}
+
+.popular_topics:hover{
+    background-color: #414059;
 }
 
 .left-aside a:hover{
@@ -219,9 +227,9 @@ article:hover{
     border: 1px solid rgba(0,0,0, 0.2);
 }
 
-.topicArticle{
-    margin-bottom: 20px;
-    border: 1px solid transparent;
+.topDescription{
+    /*margin-bottom: 20px;*/
+    /*border: 1px solid transparent;*/
     padding: 5px 20px;
     border-radius: 5px;
     background-color: white;
@@ -229,6 +237,28 @@ article:hover{
     align-items: center;
     position: relative;
     box-shadow: 1px 4px rgba(0,0,0, 0.1);
+    margin-bottom: 20px;
+}
+
+.topicDescription{
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.topicDescription a:nth-child(2){
+    font-size: 14px;
+    color: gray;
+    margin-top: 10px;
+}
+
+.topicArticleTop{
+    display: flex;
+    align-items: center;
+}
+
+.topicArticleTop h3{
+    margin: 0;
 }
 
 .topic_left{
@@ -374,9 +404,21 @@ article:hover{
     font-size: 16px;
 }
 
-.textpost img{
+.postmedia{
+    display: flex;
+    justify-content: center;
+}
+
+.postmedia img{
     max-height: 400px;
     border-radius: 2px;
+}
+
+.postmedia iframe{
+    width: 500px;
+    height: 400px;
+    border-radius: 5px;
+    border: 1px solid transparent;
 }
 
 .postText{
@@ -393,7 +435,7 @@ article:hover{
     font-size: 15px;
 }
 
-.loginbutton, .signupButton, .logoutbutton, .createpostbutton{
+.loginbutton, .signupButton, .logoutbutton, .createpostbutton, .updateProfile{
     border: 1px solid transparent;
     border-radius: 100px;
     /*background-color: #ff6200;*/
@@ -408,6 +450,10 @@ article:hover{
     height: 30px;
     width: 100px;
     cursor: pointer;
+}
+
+.updateProfile{
+    width: 150px;
 }
 
 .signupButton {
@@ -504,7 +550,7 @@ article:hover{
 #commenticon{
     width: 25px;
     height: 25px;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .commentsTop{
@@ -589,7 +635,7 @@ article:hover{
     text-decoration: underline;
 }
 
-.login, .createPost{
+.login, .createPost, .editProfile{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -599,6 +645,11 @@ article:hover{
     display: none;
     align-items: center;
     justify-content: center;
+}
+
+.editProfile{
+    display: flex;
+    background-color: rgba(0,0,0,0.2);
 }
 
 .login-container{
@@ -611,7 +662,7 @@ article:hover{
     position: absolute;
 }
 
-.createPost-container{
+.createPost-container, .editProfileContainer{
     width: 60%;
     height: 500px;
     background-color: white;
@@ -624,18 +675,22 @@ article:hover{
     justify-content: flex-end;
 }
 
-.createPost-container img{
+.createPost-container img, .editProfileContainer img{
     width: 65%;
     height: 100%;
     border-radius: 5px;
 }
 
-.createPost_form{
+.createPost_form, .editProfileForm{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 35%;
     margin-bottom: 20px;
+}
+
+#id_profile_image{
+    color: gray;
 }
 
 .createPost_form input[type="text"], input[type="url"]{
@@ -652,7 +707,7 @@ article:hover{
     outline: none;
 }
 
-.createPost_form textarea{
+.createPost_form textarea, .editProfileForm textarea{
     border-radius: 5px;
     resize: none;
     border: 1px solid gray;
@@ -660,9 +715,10 @@ article:hover{
     width: 250px;
     font-size: 15px;
     padding: 10px;
+    color: gray;
 }
 
-.createPost_form textarea:focus{
+.createPost_form textarea:focus, .editProfileForm textarea:focus{
     outline: none;
 }
 
@@ -843,4 +899,10 @@ article:hover{
     display: flex;
     align-items: center;
     margin-top: 20px;
+}
+
+.paginator a{
+    /*border-radius: 5px 0 5px 0px;*/
+    background-color: #414059;
+    color: white;
 }

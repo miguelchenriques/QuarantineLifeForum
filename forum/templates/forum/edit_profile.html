@@ -5,16 +5,19 @@
 {% endblock %}
 
 {% block articles %}
-    <section>
-        {% if error_message %}
-        {% endif %}
-        <form action="{% url 'forum:edit_profile' %}" method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            {{ field.label }} <br>
-            {{ field }} <br>
-        {% endfor %}
-        <input type="submit" value="Update Profile">
-        </form>
-    </section>
+    <div class="login editProfile">
+        <div class="editProfileContainer">
+            {% if error_message %}
+            {% endif %}
+            <img src="{% static 'forum/img/undraw_social_user_lff0.png' %}">
+            <form class="editProfileForm" action="{% url 'forum:edit_profile' %}" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field.label }} <br>
+                    {{ field }} <br>
+                {% endfor %}
+                <input class="updateProfile" type="submit" value="Update Profile">
+            </form>
+        </div>
+    </div>
 {% endblock %}

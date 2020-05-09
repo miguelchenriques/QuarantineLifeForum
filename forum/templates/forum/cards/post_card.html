@@ -1,3 +1,5 @@
+{% load static %}
+
 <article id="{{ post.id }}PostArticle" class="detail_post-articles" value="{% url 'forum:post' post.id %}">
     <div class="toppost">
         <a href="{% url 'forum:profile' post.owner.username %}"><img src="{{ post.owner.profile.profile_image }}"
@@ -18,14 +20,18 @@
     </div>
     <div class="textpost">
         <p class="postTitle">{{ post.title }}</p>
-        {% if post.image %}
-            <img src="{{ post.image }}">
-        {% elif post.video %}
-            <iframe src="{{ post.video }}">
-            </iframe>
-        {% else %}
+        {% if post.text %}
             <p class="postText">{{ post.text }}</p>
         {% endif %}
+        <div class="postmedia">
+            {% if post.image %}
+                <img src="{{ post.image }}">
+            {% endif %}
+            {% if post.video %}
+                <iframe src="{{ post.video }}">
+                </iframe>
+            {% endif %}
+        </div>
     </div>
     <div class="buttonspost">
         <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}" name="Post">
@@ -36,5 +42,7 @@
                    value="">
         </form>
         <p name="Post{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
+        <img src="{% static 'forum/img/comunicacoes.svg' %}" id="commenticon" style="margin-left: 20px">
+        <p class="numberPizzas">{{ post.comment_set.count }} Comment{{ post.comment_set.count|pluralize }}</p>
     </div>
 </article>

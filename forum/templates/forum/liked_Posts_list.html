@@ -4,6 +4,11 @@
 {% block articles %}
     {% if posts %}
         <section>
+            <div class="topDescription">
+                <div class="topic_left">
+                    <h3>Liked Posts</h3>
+                </div>
+            </div>
             {% for post in posts %}
                 {% include 'forum/cards/post_card.html' %}
             {% endfor %}

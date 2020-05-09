@@ -17,14 +17,18 @@
                 </div>
                 <div class="textpost">
                     <p class="postTitle">{{ post.title }}</p>
-                    {% if post.image %}
-                        <img src="{{ post.image }}">
+                    {% if post.text %}
+                        <p class="postText">{{ post.text }}</p>
                     {% endif %}
-                    {% if post.video %}
-                        <iframe src="{{ post.video }}">
-                        </iframe>
-                    {% endif %}
-                    <p class="postText">{{ post.text }}</p>
+                    <div class="postmedia">
+                        {% if post.image %}
+                            <img src="{{ post.image }}">
+                        {% endif %}
+                        {% if post.video %}
+                            <iframe src="{{ post.video }}">
+                            </iframe>
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="buttonspost">
                         <form class="likeForm" method="post" action="{% url 'forum:api_like_toggle' %}" name="Post">

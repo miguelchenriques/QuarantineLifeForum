@@ -2,7 +2,12 @@
 {% load static %}
 
 {% block articles %}
-    <section class="Posts-Section">
+    <section>
+        <div class="topDescription">
+            <div class="topic_left">
+                <h3>Home Page</h3>
+            </div>
+        </div>
         {% if page_list %}
             {% for post in page_list %}
                 {% include 'forum/cards/post_card.html' %}

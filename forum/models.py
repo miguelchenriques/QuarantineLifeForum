@@ -72,14 +72,14 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    def num_likes(self):
+    def reputation(self):
         count = 0
         posts = Post.objects.filter(owner=self.user)
         comments = Comment.objects.filter(owner=self.user)
         for post in posts:
-            count += post.num_likes()
+            count += post.post_pizzas.exclude(username=self.user.username).count()
         for comment in comments:
-            count += comment.num_likes()
+            count += comment.comment_pizzas.exclude(username=self.user.username).count()
         return count
 
 

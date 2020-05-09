@@ -24,4 +24,4 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'num_likes']
+    list_display = ['user', 'reputation']

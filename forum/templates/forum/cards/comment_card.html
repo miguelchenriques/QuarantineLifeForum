@@ -1,0 +1,24 @@
+<div class="commentsArticle">
+    <div class="commentsTop">
+        <a href="{% url 'forum:profile' comment.owner.username %}"><img src="{{ comment.owner.profile.profile_image }}"
+                                                                        alt="Avatar" class="avatar"></a>
+        <a href="{% url 'forum:profile' comment.owner.username %}">{{ comment.owner.username }}</a>
+        <a>{{ comment.pub_date }}</a>
+    </div>
+    <div class="commentsText">
+        <a>{{ comment.text }}</a>
+    </div>
+    <div class="commentsButtons">
+        {% if user.is_authenticated %}
+            <form class="likeForm" method="post" action="{% url 'forum:api_comment_like_toggle' %}" name="Comment">
+                {% csrf_token %}
+                <input type="hidden" name="article_id" value="{{ comment.id }}">
+                <input type="submit"
+                       class="like commentsLike {% if not user.is_authenticated or user in comment.comment_pizzas.all %} liked commentsLiked {% endif %}"
+                       value="">
+            </form>
+        {% endif %}
+        <p name="Comment{{ comment.id }}" class="numberPizzas commentsPizzas">{{ comment.num_likes }}
+            Like{{ comment.num_likes|pluralize }}</p>
+    </div>
+</div>

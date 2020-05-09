@@ -190,7 +190,7 @@ def comment_like_toggle(request):
 @login_required
 def delete_post_api(request):
     user = request.user
-    post = get_object_or_404(Post, id=request.POST['post_id'])
+    post = get_object_or_404(Post, id=request.POST['id'])
     if user == post.owner:
         post.delete()
         response = {'deleted': True}

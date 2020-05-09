@@ -77,6 +77,7 @@ function create_post(post) {
     const like_url = $("#likeURL").val();
     const topic_url = $("#topicURL").val();
     const profile_url = $("#profileURL").val().replace('username', post['owner_username']);
+    const deletePost_url = $("#deletePostURL").val();
     const csrf_token = $("input[name=csrfmiddlewaretoken]").val();
 
     const pub_date = convertDate(post['pub_date']);
@@ -94,13 +95,19 @@ function create_post(post) {
 
     let html;
     html = `
-<article class="detail_post-articles" value="${post_url}">
+<article id="${post['id']}PostArticle" class="detail_post-articles" value="${post_url}">
     <div class="toppost">
         <a href="${profile_url}"><img src="${post['owner_image']}" alt="Avatar" class="avatar"></a>
         <a href="${profile_url}">${post['owner_username']}</a>
         <a>posted in</a>
         <a href="${topic_url}">t/${post['topic']}</a>
         <a>${pub_date}</a>
+        <form class="delete-form" method="post" action="${deletePost_url}">
+            <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}">
+            <input type="hidden" name="type" value="Post">
+            <input type="hidden" name="article_id" value="${post['id']}">
+            <input class="delete-button" type="submit" value="">
+        </form>
     </div>
     <div class="textpost">
         <p class="postTitle">${post['title']}</p>

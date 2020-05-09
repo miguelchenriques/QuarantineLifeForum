@@ -25,5 +25,6 @@ urlpatterns = [
     path('api/new_post/', apiviews.create_post_api, name='api_new_post'),
     path('api/login_required/', apiviews.login_required_api, name='api_login_required'),
     path('api/topic_follow/', apiviews.follow_topic_api, name='api_follow_topic'),
-    path('api/comment_like_toggle/', apiviews.comment_like_toggle, name='api_comment_like_toggle')
+    path('api/comment_like_toggle/', apiviews.comment_like_toggle, name='api_comment_like_toggle'),
+    path('api/delete_post/', apiviews.delete_post_api, name='api_delete_post')
 ]

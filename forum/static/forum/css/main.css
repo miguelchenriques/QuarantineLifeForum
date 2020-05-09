@@ -812,3 +812,21 @@ article:hover{
   display: flex;
     flex-direction: column;
 }
+
+.delete-button {
+    border: none;
+    background: transparent url("../img/deleteicon.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.delete-form {
+    margin-left: auto;
+}
+
+.Posts-Section {
+    width: 100%;
+}

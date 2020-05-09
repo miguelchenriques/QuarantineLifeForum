@@ -55,6 +55,30 @@ $(document).ready(function () {
         })
     });
 
+    $(document).on('submit', '.delete-form', function (e) {
+        e.preventDefault();
+        const this_ = $(this);
+
+        if (!login_required()) return;
+
+        const id = this_.find("input[name=article_id]").val();
+        const type = this_.find("input[name=type]").val();
+        $.ajax({
+            url: this_.attr('action'),
+            method: this_.attr('method'),
+            dataType: 'json',
+            data: {
+                id: id,
+                csrfmiddlewaretoken: this_.find("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: function (data) {
+                if (data['deleted']) {
+                    $(`#${id}${type}Article`).remove()
+                }
+            }
+        })
+    });
+
     $("#forumtitle").click(function () {
         location.href = $(this).attr('value')
     });
@@ -64,7 +88,7 @@ $(document).ready(function () {
     });
 
     $(document).on('click', ".detail_post-articles", function (e) {
-        if ($(e.target).hasClass('like') || $(e.target).is("iframe")) return;
+        if ($(e.target).is('input') || $(e.target).is("iframe")) return;
         location.href = $(this).attr('value')
     });
 

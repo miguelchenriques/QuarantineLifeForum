@@ -1,4 +1,4 @@
-<article class="detail_post-articles" value="{% url 'forum:post' post.id %}">
+<article id="{{ post.id }}PostArticle" class="detail_post-articles" value="{% url 'forum:post' post.id %}">
     <div class="toppost">
         <a href="{% url 'forum:profile' post.owner.username %}"><img src="{{ post.owner.profile.profile_image }}"
                                                                      alt="Avatar" class="avatar"></a>
@@ -6,6 +6,15 @@
         <a>posted in</a>
         <a href="{% url 'forum:topic' post.topic.slug %}">t/{{ post.topic.slug }}</a>
         <a>{{ post.pub_date }}</a>
+
+        {% if user == post.owner %}
+        <form class="delete-form" method="post" action="{% url 'forum:api_delete_post' %}">
+            {% csrf_token %}
+            <input type="hidden" name="type" value="Post">
+            <input type="hidden" name="article_id" value="{{ post.id }}">
+            <input class="delete-button" type="submit" value="">
+        </form>
+        {% endif %}
     </div>
     <div class="textpost">
         <p class="postTitle">{{ post.title }}</p>

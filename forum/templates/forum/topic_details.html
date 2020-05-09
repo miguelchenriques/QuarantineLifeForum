@@ -18,7 +18,7 @@
         <section class="Posts-Section">
         {% if page_list %}
         {% for post in page_list %}
-            {% include 'forum/post_card.html' %}
+            {% include 'forum/cards/post_card.html' %}
         {% endfor %}
         {% else %}
             <p>Não há posts</p>
@@ -50,6 +50,7 @@
                 <input type="hidden" id="topicURL" value="{% url 'forum:topic' topic.slug %}">
                 <input type="hidden" id="likeURL" value="{% url 'forum:api_like_toggle' %}">
                 <input type="hidden" id="postURL" value="{% url 'forum:post' 1 %}">
+                <input type="hidden" id="deletePostURL" value="{% url 'forum:api_delete_post' %}">
             </form>
         </div>
     </div>

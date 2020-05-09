@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import TopicForm, PostForm
+from .forms import TopicForm, PostForm, EditProfileForm
 from .models import Post, Topic, Profile
 
 PAGE_SIZE = 10
@@ -109,6 +109,23 @@ def liked_Posts(request):
         'posts': posts
     }
     return render(request, 'forum/liked_Posts_list.html', context)
+
+
+@login_required
+def edit_profile(request):
+    profile = request.user.profile
+    context = {}
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('forum:profile', username=request.user.username)
+        context['error_message'] = form.errors
+
+    form = EditProfileForm(initial={'bio': profile.bio, 'profile_image': profile.profile_image})
+    context['form'] = form
+
+    return render(request, 'forum/edit_profile.html', context)
 
 
 def get_page(page_number, paginator):

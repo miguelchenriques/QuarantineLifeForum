@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Topic, Post
+from .models import Topic, Post, Profile
 from django.contrib.auth.forms import AuthenticationForm
 
 
@@ -44,3 +44,9 @@ class PostForm(forms.ModelForm):
             'image': forms.URLInput(attrs={'placeholder': 'Image URL', 'id': 'image_id'}),
             'video': forms.URLInput(attrs={'placeholder': 'Video URL', 'id': 'video_id'})
         }
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'profile_image']

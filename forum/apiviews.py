@@ -1,5 +1,5 @@
 from django.utils import timezone
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
@@ -184,6 +184,19 @@ def comment_like_toggle(request):
         'like_count': comment.comment_pizzas.all().count(),
     }
     return JsonResponse(data)
+
+
+@require_POST
+@login_required
+def delete_post_api(request):
+    user = request.user
+    post = get_object_or_404(Post, id=request.POST['post_id'])
+    if user == post.owner:
+        post.delete()
+        response = {'deleted': True}
+        return JsonResponse(response)
+    else:
+        return HttpResponseForbidden()
 
 
 def format_date(date):

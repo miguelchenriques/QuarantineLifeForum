@@ -66,6 +66,7 @@
                     {% if user.is_staff %}
                         <a href="/admin/">Admin Page</a>
                     {% endif %}
+                    <a href="{% url 'forum:change_password' %}">Change Password</a>
                     <a href="{% url 'forum:logout' %}">Logout</a>
                 </div>
             </div>
@@ -96,6 +97,7 @@
             </form>
             <a>Don't have an account?</a>
             <a href="#" id="signup">Signup here</a>
+            <a href="{% url 'password_reset' %}">Forgot your password?</a>
         </div>
         <div class="signup-form">
             <img src="{% static 'forum/img/undraw_profile_pic_ic5t.png' %}">

@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = '/forum/'
 LOGOUT_REDIRECT_URL = '/forum/'
 
+
+# Email Settings
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_social_share',
 ]
 
 MIDDLEWARE = [

@@ -107,7 +107,7 @@ $(document).ready(function () {
     });
 
     $(document).on('click', ".detail_post-articles", function (e) {
-        if ($(e.target).is('input') || $(e.target).is("iframe")) return;
+        if ($(e.target).is('input') || $(e.target).is("iframe") || $(e.target).parents('.share-element').length) return;
         location.href = $(this).attr('value')
     });
 

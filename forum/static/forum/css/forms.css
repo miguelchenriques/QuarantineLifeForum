@@ -1,0 +1,207 @@
+.signupButton {
+    margin-top: 15px;
+}
+
+.login, .createPost, .editProfile{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0,0 , 0.7);
+    /*display: flex;*/
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.editProfile{
+    display: flex;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.login-container{
+    width: 60%;
+    height: 31rem;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    position: absolute;
+}
+
+.createPost-container, .editProfileContainer{
+    width: 60%;
+    height: 31rem;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    /*flex-direction: column;*/
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.createPost-container img, .editProfileContainer img{
+    width: 65%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.createPost_form, .editProfileForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%;
+    margin-bottom: 20px;
+}
+
+#id_profile_image{
+    color: gray;
+}
+
+.createPost_form input[type="text"], input[type="url"]{
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    font-size: 1rem;
+    margin-top: 15px;
+    width: 12.5rem;
+    padding-bottom: 10px;
+}
+
+.createPost_form input[type="text"]:focus, input[type="url"]:focus{
+    outline: none;
+}
+
+.createPost_form textarea, .editProfileForm textarea{
+    border-radius: 5px;
+    resize: none;
+    border: 1px solid gray;
+    margin-top: 15px;
+    width: 15.6rem;
+    font-size: 1rem;
+    padding: 10px;
+    color: gray;
+}
+
+.createPost_form textarea:focus, .editProfileForm textarea:focus{
+    outline: none;
+}
+
+.createPost_form input[type="submit"]{
+    margin-top: 20px;
+}
+
+#close{
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+#close:hover, #close_createComment:hover{
+    border: 1px solid gray;
+    border-radius: 100px;
+}
+
+#close_createComment{
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.login-form{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#login_form, #signup_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form{
+    width: 35%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+}
+
+.login-form img, .signup-form img{
+    width: 6.25rem;
+    height: 6.25rem;
+}
+
+.login-form input:nth-child(-n+3), .signup-form input:nth-child(-n+5){
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    width: 12.5rem;
+    padding-bottom: 10px;
+}
+
+.login-form input:nth-child(-n+3):focus, .signup-form input:nth-child(-n+5):focus{
+    outline: none;
+}
+
+.login-form input:nth-child(5), .signup-form input:nth-child(6){
+    margin-top: 30px;
+    border-radius: 100px;
+    /*width: 100px;*/
+}
+
+.credencials-error{
+    margin-top: 5px;
+    color: red;
+    font-size: 0.7rem;
+    display: none;
+}
+
+#signup_error_message {
+    color: red;
+    font-size: 0.7rem;
+    margin-top: 5px;
+}
+
+.login-form a:nth-child(3), .signup-form a{
+    margin-top: 15px;
+    font-size: 0.7rem;
+}
+
+.login-form a:nth-child(4){
+    font-size: 0.7rem;
+}
+
+.login-art img, .signup-art img{
+    width: 100%;
+    height: 31rem;
+    text-align: right;
+    border-radius: 5px;
+    /*transform: scaleX(-1);*/
+}
+
+.login-art{
+    justify-content: flex-end;
+    width: 65%;
+}
+
+.signup-art{
+    justify-content: start;
+    width: 65%;
+    display: none;
+}

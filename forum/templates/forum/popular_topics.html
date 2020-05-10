@@ -1,6 +1,10 @@
 {% extends 'forum/index.html' %}
 {% load static %}
 
+{% block style %}
+    <link rel="stylesheet" href="{% static 'forum/css/topic_card.css' %}">
+{% endblock %}
+
 {% block leftAside %}
 {% endblock %}
 
@@ -13,10 +17,10 @@
         </div>
         {% if page_list %}
             {% for topic in page_list %}
-                <article>
+                <article class="detail_post-articles" value="{% url 'forum:topic' topic.slug %}">
                     <div class="topicArticleTop">
                         <div class="topic_left">
-                            <h3>t/{{ topic.slug }}</h3>
+                            <h3 style="margin: 0">t/{{ topic.slug }}</h3>
                         </div>
                         <div class="topic_right">
                             <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">

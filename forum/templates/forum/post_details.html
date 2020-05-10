@@ -7,7 +7,7 @@
 
 {% block articles %}
         <div class="postSection">
-            <div class="postArticle">
+            <article class="postArticle">
                 <div class="toppost">
                     <a href="{% url 'forum:profile' post.owner.username %}"><img src="{{ post.owner.profile.profile_image }}" alt="Avatar" class="avatar"></a>
                     <a href="{% url 'forum:profile' post.owner.username %}">{{ post.owner.username}}</a>
@@ -54,7 +54,7 @@
                 {% else %}
                 {% endif %}
                 </div>
-            </div>
+            </article>
         </div>
 {% endblock articles %}
 

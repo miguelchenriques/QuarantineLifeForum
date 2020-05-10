@@ -1,0 +1,97 @@
+.searchTab{
+    flex-direction: row;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    border-radius: 5px;
+}
+
+.searchTab button{
+    height: 100%;
+    width: 33.3%;
+    border: 1px solid transparent;
+    padding: 10px;
+    background-color: #414059;
+    color: white;
+    /*border-radius: 5px;*/
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.searchArticle{
+    height: fit-content;
+    background-color: white;
+    display: flex;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+}
+
+.tabButton{
+    cursor: pointer;
+}
+
+.topicsearch{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.topicsearch:hover{
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.topicsearch a:nth-child(2){
+    font-size: .8rem;
+    margin-top: 5px;
+}
+
+.topsearchpost img, .userssearch img{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.topsearchpost a:nth-child(2n){
+    font-size: 1rem;
+}
+
+.tabContent{
+    width: 100%;
+}
+
+.postsSearch{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.postsSearch:hover{
+    border: 1px solid rgba(0,0,0, 0.2);
+    border-radius: 5px;
+}
+
+.userssearch{
+    display: flex;
+    padding: 10px;
+}
+
+.userssearch:hover{
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.userssearch a:nth-child(2){
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
+
+.userssearch a:nth-child(2):hover{
+    text-decoration: underline;
+}

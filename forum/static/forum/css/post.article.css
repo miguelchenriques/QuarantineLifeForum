@@ -1,0 +1,208 @@
+.toppost{
+    display: flex;
+    align-items: center;
+}
+
+.textpost{
+    margin: 10px 0;
+}
+
+.postTitle{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.toppost img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+.toppost a:nth-child(2n){
+    text-decoration: none;
+    color: #3b5998;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.toppost a:nth-child(2n):hover{
+    text-decoration: underline;
+}
+
+.toppost a:nth-child(2n+1){
+    margin-left: 5px;
+    color: gray;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+}
+
+.toppost a:nth-child(1){
+    margin: 0;
+}
+
+.postmedia{
+    display: flex;
+    justify-content: center;
+}
+
+.postmedia img{
+    max-height: 25rem;
+    max-width: 35rem;
+    border-radius: 2px;
+}
+
+.postmedia iframe{
+    width: 35rem;
+    height: 25rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+.postText{
+    font-size: .9rem;
+}
+
+.buttonspost{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.bottomsearchpost{
+    margin-left: 35px;
+    margin-bottom: 10px;
+}
+
+.numberPizzas{
+    margin: 0;
+    font-size: .9rem;
+    color: gray;
+    margin-left: 5px;
+}
+
+.numbersearchpizzas{
+    font-size: .7rem;
+    color: gray;
+    margin: 0;
+}
+
+.commentsPizzas{
+    font-size: .7rem;
+}
+
+.like{
+    border: none;
+    background: transparent url("../img/pizzaOutline3.png");
+    background-size: cover;
+    width: 1.9rem;
+    height: 1.9rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+.liked{
+    border: none;
+    background: transparent url("../img/pizza.png");
+    background-size: cover;
+    width: 1.9rem;
+    height: 1.9rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+.commentsLike{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.commentsLiked{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.commentsArticle{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.commentBar{
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#commentInput{
+    border: 1px solid transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    width: 90%;
+    padding: 10px;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    height: 40px;
+    resize: none;
+}
+
+#commentInput:focus{
+    outline: none;
+    height: 80px;
+}
+
+#commenticon{
+    width: 1.6rem;
+    height: 1.6rem;
+    opacity: 0.6;
+}
+
+.commentsTop{
+    display: flex;
+    align-items: center;
+}
+
+.commentsTop img{
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+}
+
+.commentsTop a:nth-child(2){
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #3B5998;
+    margin-left: 10px;
+}
+
+.commentsTop a:nth-child(3){
+    font-size: .6rem;
+    text-decoration: none;
+    color: gray;
+    margin-left: 5px;
+}
+
+.commentsText{
+    margin-top: 10px;
+    margin-left: 33px;
+    margin-right: 33px;
+    display: flex;
+}
+
+.commentsText a{
+    font-size: .8rem;
+}
+
+.commentsButtons{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 33px;
+}
+
+@media screen and (max-width: 500px) {
+    .postSection {
+        width: 90vw;
+    }
+}

@@ -1,0 +1,60 @@
+.right-aside{
+    width: 20%;
+    padding: 0;
+    position: sticky;
+    top: 1rem;
+    margin: 30px 20px;
+    background-color: white;
+    border-radius: 5px;
+    height: fit-content;
+    height: -moz-fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 3px rgba(0,0,0,0.1);
+    font-size: 16px;
+}
+
+.right-aside p{
+    padding: 0 15px;
+    font-size: .9em;
+}
+
+.right-aside h3{
+    background-color: #414059;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px 5px 0 0;
+    color: white;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.right-aside button{
+    border: 1px solid transparent;
+    border-radius: 100px;
+    background-color: #414059;
+    background-clip: padding-box;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 2px;
+    padding: 0.6em 1.3em;
+    font-size: 0.8em;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .right-aside{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .right-aside{
+        display: none;
+    }
+}

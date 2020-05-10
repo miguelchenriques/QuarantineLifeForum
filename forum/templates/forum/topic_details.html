@@ -1,18 +1,24 @@
 {%  extends 'forum/index.html' %}
 {% load static %}
 
+{% block style %}
+    <link rel="stylesheet" href="{% static 'forum/css/topic_card.css' %}">
+{% endblock %}
+
 {% block articles %}
     <section>
             <div class="topDescription">
-                <div class="topic_left">
-                    <h3>{{ topic.title }}</h3>
-                </div>
-                <div class="topic_right">
-                    <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
-                        {% csrf_token %}
-                        <input id="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
-                        <input id="topic-join-submit" type="submit" value="{% if user.is_authenticated and user in topic.followers.all %}Following{% else %}Join{% endif %}" class="topic_join_button {% if user.is_authenticated and user in topic.followers.all %}is_following{% endif %}">
-                    </form>
+                <div class="topicArticleTop">
+                    <div class="topic_left">
+                        <h3>{{ topic.title }}</h3>
+                    </div>
+                    <div class="topic_right">
+                        <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
+                            {% csrf_token %}
+                            <input id="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
+                            <input id="topic-join-submit" type="submit" value="{% if user.is_authenticated and user in topic.followers.all %}Following{% else %}Join{% endif %}" class="topic_join_button {% if user.is_authenticated and user in topic.followers.all %}is_following{% endif %}">
+                        </form>
+                    </div>
                 </div>
             </div>
         <section class="Posts-Section">

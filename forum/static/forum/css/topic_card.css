@@ -1,0 +1,49 @@
+.topicDescription{
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.topicDescription a:nth-child(2){
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 10px;
+}
+
+.topicArticleTop{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.topic_left{
+    display: flex;
+    width: 50%;
+}
+
+.topic_right{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.topic_join_button{
+    background: #A7A5E6;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 2px;
+    padding: 0.6rem 1.3rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.is_following{
+    background-color: white;
+    background: none;
+    color: #414059;
+    border: 1px solid gray;
+}

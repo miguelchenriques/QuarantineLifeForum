@@ -11,6 +11,12 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <link rel="shortcut icon" type="image/png" href="{% static 'forum/img/favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'forum/css/pagination.css' %}">
+    <link rel="stylesheet" href="{% static 'forum/css/left-aside.css' %}">
+    <link rel="stylesheet" href="{% static 'forum/css/right-aside.css' %}">
+    <link rel="stylesheet" href="{% static 'forum/css/post.article.css' %}">
+    <link rel="stylesheet" href="{% static 'forum/css/forms.css' %}">
+    {% block style %}
+    {% endblock style %}
 </head>
 <body>
 <main>
@@ -70,7 +76,7 @@
             </div>
         {% else %}
             <a>
-                <button class="loginbutton" id="navloginbutton">Log In</button>
+                <button class="navLoginbutton" id="navloginbutton">Log In</button>
             </a>
         {% endif %}
     </div>

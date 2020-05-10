@@ -1,6 +1,10 @@
 {% extends 'forum/index.html' %}
 {% load static %}
 
+{% block style %}
+    <link rel="stylesheet" href="{% static 'forum/css/search-page.css' %}">
+{% endblock %}
+
 {% block leftAside %}
 {% endblock %}
 
@@ -9,7 +13,7 @@
         <div class="searchTab">
             <button class="tabButton" onclick="openPage('postsTab', this)" id="defaultOpen" style="border-radius: 5px 0 0 0">Posts</button>
             <button class="tabButton" onclick="openPage('commentsTab', this)">Comments</button>
-            <button class="tabButton" onclick="openPage('topicsfollowedTab', this)" style="border-radius: 0 5px 0 0">Topics followed</button>
+            <button class="tabButton" onclick="openPage('topicsfollowedTab', this)" style="border-radius: 0 5px 0 0" style="text-wrap: none">Topics followed</button>
         </div>
         <div class="searchArticle">
             <div id="postsTab" class="tabContent">

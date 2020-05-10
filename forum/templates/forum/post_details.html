@@ -37,6 +37,7 @@
                             <input type="submit" class="like {% if not user.is_authenticated or user in post.post_pizzas.all %}liked{% endif %}"  value="">
                         </form>
                     <p name="Post{{ post.id }}" class="numberPizzas">{{ post.num_likes }} Like{{ post.num_likes|pluralize }}</p>
+                    {% include 'forum/widgets/share_button.html' %}
                 </div>
 
                 <form id="new_comment" class="commentBar" method="post" action="{% url 'forum:api_new_comment' %}">

@@ -20,7 +20,7 @@
         {% for post in page_list %}
             {% include 'forum/cards/post_card.html' %}
         {% endfor %}
-            {% include 'forum/paginator.html' %}
+            {% include 'forum/widgets/paginator.html' %}
         {% else %}
             <p>Não há posts</p>
         {% endif %}

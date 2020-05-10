@@ -1,0 +1,25 @@
+{% load static %}
+{% load social_share %}
+
+<section class="share-dropdown">
+    <img src="{% static 'forum/img/share_button.png' %}" id="commenticon" style="margin-left: 20px">
+    <span class="share-text">Share Post</span>
+    <div class="share-content">
+        <div class="share-element">
+            <img src="{% static 'forum/img/fb_icon.png' %}">
+            {% post_to_facebook post "Facebok" %}
+        </div>
+        <div class="share-element">
+            <img src="{% static 'forum/img/twitter_logo.png' %}">
+            {% post_to_twitter "{{ post.title }}" post "Twitter" %}
+        </div>
+        <div class="share-element">
+            <img src="{% static 'forum/img/reddit_logo.png' %}">
+            {% post_to_reddit "{{ post.tittle }}" post "Reddit" %}
+        </div>
+        <div class="share-element">
+            <img src="{% static 'forum/img/whatsapp_logo.png' %}">
+            {% post_to_whatsapp post 'WhatsApp' %}
+        </div>
+    </div>
+</section>

@@ -7,17 +7,19 @@
 {% block articles %}
     <div class="login editProfile">
         <div class="editProfileContainer">
-            {% if error_message %}
-                {{ error_message }}
-            {% endif %}
             <img src="{% static 'forum/img/undraw_social_user_lff0.png' %}">
             <form class="editProfileForm" action="{% url 'forum:edit_profile' %}" method="post">
+                {% if error_message %}
+                    {{ error_message }}
+                {% endif %}
                 {% csrf_token %}
                 {% for field in form %}
                     {{ field.label }} <br>
                     {{ field }} <br>
                 {% endfor %}
                 <input class="updateProfile" type="submit" value="Update Profile">
+                <input type="hidden" id="username" value="{{ user.username }}">
+                <a id="delete-account" href="{% url 'forum:remove_account' %}">Remove account</a>
             </form>
         </div>
     </div>

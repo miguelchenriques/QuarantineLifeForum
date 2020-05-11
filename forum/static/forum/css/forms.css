@@ -258,3 +258,15 @@
     border: none;
     font-size: .8rem;
 }
+
+.errorlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #f12711;
+}
+
+#delete-account {
+    font-size: 0.7rem;
+    margin-top: 0.25em;
+}

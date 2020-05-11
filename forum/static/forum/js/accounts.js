@@ -100,6 +100,24 @@ $(document).ready(function () {
                 }
             }
         })
+    });
+
+    $('#delete-account').click(function (e) {
+        e.preventDefault();
+
+        const this_ = $(this);
+        if (confirm("Click OK to remove account")) {
+            $.ajax({
+                url: this_.attr('href'),
+                method: 'post',
+                data: {
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+                },
+                success: function () {
+                    location.href = '/forum'
+                }
+            })
+        }
     })
 });
 

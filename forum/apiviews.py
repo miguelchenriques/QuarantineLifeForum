@@ -191,3 +191,11 @@ def delete_comment_api(request):
         return JsonResponse(response)
     else:
         return HttpResponseForbidden()
+
+
+@require_POST
+@login_required
+def delete_user(request):
+    user = request.user
+    user.delete()
+    return JsonResponse({'success':True})

@@ -20,7 +20,8 @@ urlpatterns = [
     path('api/signup', apiviews.signup_api, name='api_signup'),
     path('liked-posts/', views.liked_Posts, name='liked_posts'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
-    path('change_password', auth_views.PasswordChangeView.as_view(success_url='/forum/'), name='change_password'),
+    path('change_password/', auth_views.PasswordChangeView.as_view(success_url='/forum/'), name='change_password'),
+    path('remove_account/', apiviews.delete_user, name='remove_account'),
 
     # API URLS
     path('api/verify-email/', apiviews.verify_email, name='api_verify_email'),

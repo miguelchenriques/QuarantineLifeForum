@@ -238,6 +238,10 @@ article:hover{
     text-decoration: underline;
 }
 
+.is_taken {
+    border-bottom: 1px solid red !important;
+}
+
 @media screen and (max-width: 1000px) {
     html, header{
         font-size: 14px;

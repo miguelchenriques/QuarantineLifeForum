@@ -89,7 +89,7 @@ $(document).ready(function () {
             url: url_email,
             method: "get",
             data: {
-                username: this_.val()
+                email: this_.val()
             },
             dataType: 'json',
             success: function (data) {

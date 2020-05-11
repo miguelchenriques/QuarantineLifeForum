@@ -43,11 +43,6 @@ class Post(models.Model):
     def user_has_like(self, user):
         return self.post_pizzas.filter(username=user.username).exists()
 
-    def post_score(self):
-        pizza_score = self.post_pizzas.exclude(username__iexact=self.owner).count()
-        comment_score = self.comment_set.exclude(owner=self.owner).count()
-        return pizza_score + comment_score
-
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('forum:post', args=(self.id,))

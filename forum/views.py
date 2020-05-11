@@ -1,4 +1,4 @@
-from django.db.models import Count, Q
+from django.db.models import Count, Q, F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
@@ -9,12 +9,19 @@ from .forms import TopicForm, PostForm, EditProfileForm
 from .models import Post, Topic, Profile
 
 PAGE_SIZE = 10
-MINIMUM_NUM_LIKES_TO_CREATE_TOPIC = 5
+MINIMUM_REPUTATION_TO_CREATE_TOPIC = 5
+MINIMUM_POST_SCORE_FOR_HOMEPAGE = 2
 
 
 # Forum display Views
 def homepage(request):
-    post_list = Post.objects.all()
+    post_list = Post.objects.annotate(
+        score=(
+            Count('post_pizzas', filter=~Q(post_pizzas__username__iexact=F('owner__username'))) +
+            Count('comment', filter=~Q(comment__owner__username__iexact=F('owner__username')))
+        )
+    ).filter(score__gte=MINIMUM_POST_SCORE_FOR_HOMEPAGE)
+
     paginator = Paginator(post_list, PAGE_SIZE)
     page_number = request.GET.get('page', 1)
 
@@ -24,6 +31,19 @@ def homepage(request):
         'page_list': page_list,
     }
     return render(request, 'forum/home.html', context)
+
+
+def new_posts(request):
+    post_list = Post.objects.all()
+
+    paginator = Paginator(post_list, PAGE_SIZE)
+    page_number = request.GET.get('page', 1)
+    page_list = get_page(page_number, paginator)
+
+    context = {
+        'page_list': page_list
+    }
+    return render(request, 'forum/new_posts.html', context)
 
 
 def topic_details(request, topic_slug):
@@ -65,7 +85,7 @@ def popular_topics(request):
 
 @login_required
 def create_Topic(request):
-    if request.user.profile.reputation() < MINIMUM_NUM_LIKES_TO_CREATE_TOPIC:
+    if request.user.profile.reputation() < MINIMUM_REPUTATION_TO_CREATE_TOPIC:
         return HttpResponseForbidden()
     if request.method == 'POST':
         form = TopicForm(request.POST)

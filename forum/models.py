@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class Topic(models.Model):
-    slug = models.SlugField(max_length=50)
+    slug = models.SlugField(max_length=50, unique=True)
     title = models.CharField(max_length=100)
     description = models.TextField()
     followers = models.ManyToManyField(User, blank=True, related_name='topic_followers')
@@ -27,7 +27,7 @@ class Post(models.Model):
     text = models.TextField(blank=True)
     image = models.URLField(max_length=300, blank=True)
     video = models.URLField(max_length=300, blank=True)
-    owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     post_pizzas = models.ManyToManyField(User, related_name='post_likes', blank=True)
     pub_date = models.DateTimeField('Publication date')
 
@@ -50,7 +50,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     text = models.TextField()
     pub_date = models.DateTimeField(verbose_name='Comment Time')
     comment_pizzas = models.ManyToManyField(User, blank=True, related_name='comment_pizzas')
@@ -72,6 +72,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     profile_image = models.URLField(max_length=300, default='https://www.w3schools.com/w3images/avatar6.png')
+    topic_created = models.ForeignKey(Topic, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.user.username
@@ -86,4 +87,9 @@ class Profile(models.Model):
             count += comment.comment_pizzas.exclude(username=self.user.username).count()
         return count
 
+    def has_created_topic(self):
+        return self.topic_created is not None
 
+    def create_topic(self, topic):
+        self.topic_created_id = topic.id
+        self.save()

@@ -31,6 +31,15 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ['slug', 'title', 'description']
+        widgets = {
+            'slug': forms.TextInput(attrs={'placeholder': 'Title Slug'}),
+            'title': forms.TextInput(attrs={'placeholder': 'Title'}),
+            'description': forms.Textarea(attrs={'placeholder': 'Description'})
+        }
+
+        help_texts = {
+            'slug': 'The slug is an url friendly and unique word/phrase that has no spaces or slashes'
+        }
 
 
 class PostForm(forms.ModelForm):

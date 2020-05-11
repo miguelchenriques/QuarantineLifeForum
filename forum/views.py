@@ -16,10 +16,7 @@ MINIMUM_POST_SCORE_FOR_HOMEPAGE = 2
 # Forum display Views
 def homepage(request):
     post_list = Post.objects.annotate(
-        score=(
-            Count('post_pizzas', filter=~Q(post_pizzas__username__iexact=F('owner__username'))) +
-            Count('comment', filter=~Q(comment__owner__username__iexact=F('owner__username')))
-        )
+        score=Count('post_pizzas', filter=~Q(post_pizzas__username__iexact=F('owner__username')))
     ).filter(score__gte=MINIMUM_POST_SCORE_FOR_HOMEPAGE)
 
     paginator = Paginator(post_list, PAGE_SIZE)
@@ -85,15 +82,20 @@ def popular_topics(request):
 
 @login_required
 def create_Topic(request):
-    if request.user.profile.reputation() < MINIMUM_REPUTATION_TO_CREATE_TOPIC:
+    if request.user.profile.reputation() < MINIMUM_REPUTATION_TO_CREATE_TOPIC or request.user.profile.has_created_topic():
         return HttpResponseForbidden()
+    form = TopicForm()
     if request.method == 'POST':
-        form = TopicForm(request.POST)
+        topic = Topic()
+        form = TopicForm(request.POST, instance=topic)
         if form.is_valid():
             form.save()
+            request.user.profile.create_topic(topic)
             return redirect('forum:home')
-        else:
-            return None
+    context = {
+        'form': form
+    }
+    return render(request, 'forum/create_topic.html', context)
 
 
 @require_GET
@@ -102,7 +104,8 @@ def search(request):
     if query is not None:
         context = {
             'posts': Post.objects.filter(Q(title__icontains=query) | Q(text__icontains=query)),
-            'topics': Topic.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(slug__icontains=query)),
+            'topics': Topic.objects.filter(
+                Q(title__icontains=query) | Q(description__icontains=query) | Q(slug__icontains=query)),
             'users': User.objects.filter(Q(username__icontains=query))
         }
         return render(request, 'forum/search.html', context)

@@ -1,0 +1,19 @@
+{% extends 'forum/index.html' %}
+{% load static %}
+
+{% block leftAside %}
+{% endblock %}
+
+{% block articles %}
+    <section>
+        <form action="{% url 'forum:create_topic' %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field.help_text }}<br>
+                {{ field }}<br>
+                {{ field.errors }}
+            {% endfor %}
+            <input type="submit" value="Create Topic">
+        </form>
+    </section>
+{% endblock %}

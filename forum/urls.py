@@ -10,6 +10,8 @@ urlpatterns = [
     path('post_<int:post_id>/', views.post_details, name='post'),
     path('search/', views.search, name='search'),
     path('popular_topics/', views.popular_topics, name='popular_topics'),
+    path('new_posts/', views.new_posts, name='new_posts'),
+    path('create_topic/', views.create_Topic, name='create_topic'),
 
     # Accounts URLS
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),

@@ -71,6 +71,9 @@
                     <a href="{% url 'forum:profile' user.username %}">Profile</a>
                     <a href="{% url 'forum:liked_posts' %}">Liked Posts</a>
                     <a href="{% url 'forum:edit_profile' %}">Edit Profile</a>
+                    {% if user.profile.reputation > minTopicRep and not user.profile.has_created_topic %}
+                        <a href="{% url 'forum:create_topic' %}">Create Topic</a>
+                    {% endif %}
                     {% if user.is_staff %}
                         <a href="/admin/">Admin Page</a>
                     {% endif %}

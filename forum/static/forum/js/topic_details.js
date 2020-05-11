@@ -3,30 +3,32 @@ function close_new_post() {
 }
 
 $(document).ready(function () {
-    $("#topic-join").submit(function (e) {
+    $(".topic-join").submit(function (e) {
         e.preventDefault();
         const this_ = $(this);
 
         if (!login_required()) return;
+
+        const id = this_.find(".topic_id-join").val()
 
         $.ajax({
             url: this_.attr('action'),
             method: this_.attr('method'),
             dataType: 'json',
             data: {
-                topic_id: $("#topic_id-join").val(),
+                topic_id: id,
                 csrfmiddlewaretoken: this_.find("input[name=csrfmiddlewaretoken]").val()
             },
             success: function (data) {
                 const num_followers = data['num_followers'];
                 if (data['is_following']) {
-                    $("#topic-join-submit").addClass('is_following')
-                    $("#topic-join-submit").val('Following')
+                    this_.find(".topic-join-submit").addClass('is_following')
+                    this_.find(".topic-join-submit").val('Following')
                 } else {
-                    $("#topic-join-submit").removeClass('is_following')
-                    $("#topic-join-submit").val('Join')
+                    this_.find(".topic-join-submit").removeClass('is_following')
+                    this_.find(".topic-join-submit").val('Join')
                 }
-                $("#topic-followers").text(`${num_followers} Follower${num_followers === 1 ? '' : 's'}`)
+                $("#topic-followers"+id).text(`${num_followers} Follower${num_followers === 1 ? '' : 's'}`)
             }
         })
     });

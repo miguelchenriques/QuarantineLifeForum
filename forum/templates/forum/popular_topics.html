@@ -23,16 +23,16 @@
                             <h3 style="margin: 0">t/{{ topic.slug }}</h3>
                         </div>
                         <div class="topic_right">
-                            <form id="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
+                            <form class="topic-join" action="{% url 'forum:api_follow_topic' %}" method="post">
                                 {% csrf_token %}
-                                <input id="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
-                                <input id="topic-join-submit" type="submit" value="{% if user.is_authenticated and user in topic.followers.all %}Following{% else %}Join{% endif %}" class="topic_join_button {% if user.is_authenticated and user in topic.followers.all %}is_following{% endif %}">
+                                <input class="topic_id-join" type="hidden" name="topic_id" value="{{ topic.id }}">
+                                <input type="submit" value="{% if user.is_authenticated and user in topic.followers.all %}Following{% else %}Join{% endif %}" class="topic-join-submit topic_join_button {% if user.is_authenticated and user in topic.followers.all %}is_following{% endif %}">
                             </form>
                         </div>
                     </div>
                      <div class="topicDescription">
-                        <a>{{ topic.description }}</a>
-                         <a>{{ topic.num_followers }} Follower{{ topic.num_followers|pluralize }}</a>
+                         <a>{{ topic.description }}</a>
+                         <a id="topic-followers{{ topic.id }}">{{ topic.num_followers }} Follower{{ topic.num_followers|pluralize }}</a>
                     </div>
                 </article>
             {% endfor %}
@@ -45,4 +45,8 @@
             </div>
         {% endif %}
     </section>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'forum/js/topic_details.js' %}"></script>
 {% endblock %}

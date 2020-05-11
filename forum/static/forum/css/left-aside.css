@@ -13,6 +13,14 @@
     height: -moz-fit-content;
     box-shadow: 2px 3px rgba(0,0,0,0.1);
     font-size: 16px;
+    max-height: 75%;
+}
+
+.left-aside-scroll{
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .left-aside a{

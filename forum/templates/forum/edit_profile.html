@@ -8,6 +8,7 @@
     <div class="login editProfile">
         <div class="editProfileContainer">
             {% if error_message %}
+                {{ error_message }}
             {% endif %}
             <img src="{% static 'forum/img/undraw_social_user_lff0.png' %}">
             <form class="editProfileForm" action="{% url 'forum:edit_profile' %}" method="post">

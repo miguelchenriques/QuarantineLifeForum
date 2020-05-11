@@ -24,6 +24,7 @@ header{
     /*overflow: hidden;*/
     display: flex;
     font-size: 16px;
+    box-shadow: 6px 8px 16px 0px rgba(0,0,0,0.1);
 }
 
 .leftheader{
@@ -127,7 +128,7 @@ article:hover{
     margin-bottom: 20px;
 }
 
-.loginbutton, .signupButton, .logoutbutton, .createpostbutton, .updateProfile{
+.loginbutton, .signupButton, .logoutbutton, .createpostbutton, .updateProfile, .resetButton{
     border: 1px solid transparent;
     border-radius: 100px;
     background: #f12711;  /* fallback for old browsers */
@@ -222,6 +223,17 @@ article:hover{
     display: flex;
     align-items: center;
     margin-top: 20px;
+}
+
+.home_new-posts{
+    text-decoration: none;
+    color: #A7A5E6;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.home_new-posts:hover{
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 1000px) {

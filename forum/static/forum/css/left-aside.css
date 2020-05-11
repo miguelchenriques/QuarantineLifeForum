@@ -11,7 +11,7 @@
     align-items: center;
     height: fit-content;
     height: -moz-fit-content;
-    box-shadow: 2px 3px rgba(0,0,0,0.1);
+    box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.1);
     font-size: 16px;
     max-height: 75%;
 }

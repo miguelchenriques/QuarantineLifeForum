@@ -5,15 +5,14 @@
 {% endblock %}
 
 {% block articles %}
-    <section>
-        <form action="{% url 'forum:create_topic' %}" method="post">
+    <section class="password_reset">
+        <form class="topic_form" action="{% url 'forum:create_topic' %}" method="post">
             {% csrf_token %}
-            {% for field in form %}
-                {{ field.help_text }}<br>
-                {{ field }}<br>
-                {{ field.errors }}
-            {% endfor %}
-            <input type="submit" value="Create Topic">
+                <a class="help_text">{{ form.slug.help_text }}</a>
+                {{ form.slug }}
+                {{ form.title }}
+                {{ form.description }}
+            <input type="submit" value="Create Topic" class="resetButton">
         </form>
     </section>
 {% endblock %}

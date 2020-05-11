@@ -12,7 +12,7 @@
                 <h3>{% block PageName %}Home Page{% endblock %}</h3>
             </div>
             <div class="topic_right">
-                {% block PageLink %}<a href="#" class="home_new-posts">See the newest posts &rarr;</a>{% endblock %}
+                {% block PageLink %}<a href="{% url 'forum:new_posts' %}" class="home_new-posts">See the newest posts &rarr;</a>{% endblock %}
             </div>
         </div>
 

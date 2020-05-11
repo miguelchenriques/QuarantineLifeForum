@@ -4,3 +4,7 @@
 {% block PageName %}
 New Posts
 {% endblock %}
+
+{% block PageLink %}
+    <a href="{% url 'forum:home' %}" class="home_new-posts">Go to home page &rarr;</a>
+{% endblock %}

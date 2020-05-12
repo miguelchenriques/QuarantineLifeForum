@@ -37,7 +37,9 @@
                 {% include 'forum/cards/post_card.html' %}
             {% endfor %}
         {% else %}
-            <p>Não há posts</p>
+            <article>
+                <p>There are no posts!</p>
+            </article>
         {% endif %}
         {% include 'forum/widgets/paginator.html' %}
     </section>

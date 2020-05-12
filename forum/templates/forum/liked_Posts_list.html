@@ -2,16 +2,20 @@
 {% load static %}
 
 {% block articles %}
-    {% if posts %}
-        <section>
-            <div class="topDescription">
-                <div class="topic_left">
-                    <h3>Liked Posts</h3>
-                </div>
+    <section>
+        <div class="topDescription">
+            <div class="topic_left">
+                <h3>Liked Posts</h3>
             </div>
+        </div>
+        {% if posts %}
             {% for post in posts %}
                 {% include 'forum/cards/post_card.html' %}
             {% endfor %}
-        </section>
-    {% endif %}
+        {% else %}
+            <article>
+                You don't like any posts
+            </article>
+        {% endif %}
+    </section>
 {% endblock %}

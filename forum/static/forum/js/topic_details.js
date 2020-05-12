@@ -53,10 +53,15 @@ $(document).ready(function () {
             },
             success: function (data) {
                 $(".Posts-Section").prepend(data);
+                this_.find('#title_id').val('');
+                this_.find('#text_id').val('');
+                this_.find('#image_id').val('');
+                this_.find('#video_id').val('');
                 close_new_post();
             }
         })
     });
+
 
     $("#createPost-button").click(async function () {
         const auth = await login_required();

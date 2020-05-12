@@ -53,9 +53,9 @@
                 {% for field in postForm %}
                     {{ field }}
                 {% endfor %}
+                <div class="createPost-error"></div>
                 <input type="submit" class="createpostbutton" value="Post">
                 <input type="hidden" id="createPost-topicId" value="{{ topic.id }}">
-                <div class="createPost-error"></div>
             </form>
         </div>
     </div>

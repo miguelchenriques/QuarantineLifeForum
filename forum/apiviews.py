@@ -119,7 +119,7 @@ def create_post_api(request):
         }
         return render(request, 'forum/cards/post_card.html', response)
     else:
-        return HttpResponseBadRequest()
+        return JsonResponse({'error_message': form.errors.as_json()})
 
 
 @require_GET

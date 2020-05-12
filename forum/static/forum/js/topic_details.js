@@ -28,7 +28,7 @@ $(document).ready(function () {
                     this_.find(".topic-join-submit").removeClass('is_following')
                     this_.find(".topic-join-submit").val('Join')
                 }
-                $("#topic-followers"+id).text(`${num_followers} Follower${num_followers === 1 ? '' : 's'}`)
+                $("#topic-followers" + id).text(`${num_followers} Follower${num_followers === 1 ? '' : 's'}`)
             }
         })
     });
@@ -42,7 +42,6 @@ $(document).ready(function () {
         $.ajax({
             url: this_.attr('action'),
             method: this_.attr('method'),
-            dataType: 'html',
             data: {
                 topic_id: $("#createPost-topicId").val(),
                 title: this_.find('#title_id').val(),
@@ -52,12 +51,20 @@ $(document).ready(function () {
                 csrfmiddlewaretoken: this_.find('input[name=csrfmiddlewaretoken]').val()
             },
             success: function (data) {
-                $(".Posts-Section").prepend(data);
-                this_.find('#title_id').val('');
-                this_.find('#text_id').val('');
-                this_.find('#image_id').val('');
-                this_.find('#video_id').val('');
-                close_new_post();
+                if (data['error_message']) {
+                    data = JSON.parse(data['error_message']);
+                    for (let k in data) {
+                        $(".createPost-error").append(`${k}: ${data[k][0]['message']}`);
+                    };
+                } else {
+                    $(".Posts-Section").prepend(data);
+                    this_.find('#title_id').val('');
+                    this_.find('#text_id').val('');
+                    this_.find('#image_id').val('');
+                    this_.find('#video_id').val('');
+                    $(".createPost-error").empty();
+                    close_new_post();
+                }
             }
         })
     });

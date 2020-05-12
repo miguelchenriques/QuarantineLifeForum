@@ -287,7 +287,9 @@ article:hover{
     display: flex;
 }
 
-
+.createPost-error {
+    color: red;
+}
 
 @media screen and (max-width: 1000px) {
     html, header{

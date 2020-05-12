@@ -227,20 +227,67 @@ article:hover{
     margin-top: 20px;
 }
 
-.home_new-posts{
-    text-decoration: none;
-    color: #A7A5E6;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-.home_new-posts:hover{
-    text-decoration: underline;
-}
-
 .is_taken {
     border-bottom: 1px solid red !important;
 }
+
+#down-arrow {
+    width: 7px;
+    height: 7px;
+    margin-left: 0.5em;
+    margin-top: 0.25em;
+}
+
+#dropdown-post-nav {
+    display: inline-block;
+    position: relative;
+}
+
+#dropdown-btn {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    padding: 0 1.25em;
+}
+
+.post-nav-content {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #f9f9f9;
+    align-items: center;
+    top: 3.5em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    width: 100%;
+}
+
+.post-nav-content a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.dropdown-element {
+    height: 2em;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.dropdown-element:hover {
+    background-color: #A7A5E6;
+}
+
+.dropdown-element:hover a {
+    color: white;
+}
+
+#dropdown-post-nav:hover .post-nav-content {
+    display: flex;
+}
+
+
 
 @media screen and (max-width: 1000px) {
     html, header{

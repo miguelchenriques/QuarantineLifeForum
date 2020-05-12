@@ -43,6 +43,20 @@ def new_posts(request):
     return render(request, 'forum/new_posts.html', context)
 
 
+@login_required
+def followed_posts(request):
+    post_list = Post.objects.filter(topic__followers__username__contains=request.user.username)
+
+    paginator = Paginator(post_list, PAGE_SIZE)
+    page_number = request.GET.get('page', 1)
+    page_list = get_page(page_number, paginator)
+
+    context = {
+        'page_list': page_list
+    }
+    return render(request, 'forum/followed_posts.html', context)
+
+
 def topic_details(request, topic_slug):
     topic = get_object_or_404(Topic, slug=topic_slug)
     post_list = Post.objects.filter(topic=topic)
@@ -95,7 +109,7 @@ def create_Topic(request):
     context = {
         'form': form
     }
-    return render(request, 'forum/create_topic.html', context)
+    return render(request, 'forum/forms/create_topic.html', context)
 
 
 @require_GET
@@ -147,7 +161,7 @@ def edit_profile(request):
     form = EditProfileForm(initial={'bio': profile.bio, 'profile_image': profile.profile_image})
     context['form'] = form
 
-    return render(request, 'forum/edit_profile.html', context)
+    return render(request, 'forum/forms/edit_profile.html', context)
 
 
 def get_page(page_number, paginator):

@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block PageName %}
-    New Posts
+    Followed Posts
 {% endblock %}
 
 {% block firstPageLink %}
     <a href="{% url 'forum:home' %}">HomePage</a>
 {% endblock %}
 {% block secondPageLink %}
-    <a href="{% url 'forum:followed_posts' %}">Followed Posts</a>
+    <a href="{% url 'forum:new_posts' %}">New Posts</a>
 {% endblock %}

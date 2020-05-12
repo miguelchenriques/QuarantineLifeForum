@@ -12,6 +12,7 @@ urlpatterns = [
     path('popular_topics/', views.popular_topics, name='popular_topics'),
     path('new_posts/', views.new_posts, name='new_posts'),
     path('create_topic/', views.create_Topic, name='create_topic'),
+    path('followed_posts/', views.followed_posts, name='followed_posts'),
 
     # Accounts URLS
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),

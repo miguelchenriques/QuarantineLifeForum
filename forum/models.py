@@ -25,8 +25,8 @@ class Post(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     text = models.TextField(blank=True)
-    image = models.URLField(max_length=300, blank=True)
-    video = models.URLField(max_length=300, blank=True)
+    image = models.URLField(max_length=400, blank=True)
+    video = models.URLField(max_length=400, blank=True)
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     post_pizzas = models.ManyToManyField(User, related_name='post_likes', blank=True)
     pub_date = models.DateTimeField('Publication date')
@@ -71,7 +71,7 @@ class Comment(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    profile_image = models.URLField(max_length=300, default='https://www.w3schools.com/w3images/avatar6.png')
+    profile_image = models.URLField(max_length=400, default='https://www.w3schools.com/w3images/avatar6.png')
     topic_created = models.ForeignKey(Topic, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):

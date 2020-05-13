@@ -21,13 +21,12 @@
     <div class="textpost">
         <p class="postTitle">{{ post.title }}</p>
         {% if post.text %}
-            <p class="postText">{{ post.text }}</p>
+            <p class="postText">{{ post.text|linebreaks }}</p>
         {% endif %}
         <div class="postmedia">
             {% if post.image %}
                 <img src="{{ post.image }}">
-            {% endif %}
-            {% if post.video %}
+            {% elif post.video  %}
                 <iframe src="{{ post.video }}">
                 </iframe>
             {% endif %}

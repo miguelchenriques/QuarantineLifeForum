@@ -26,9 +26,9 @@
 
             <div class="left-aside-scroll">
                 {% if user.is_authenticated %}
+                    <h3>Following topics</h3>
+                    <a class="popular_topics" href="{% url 'forum:popular_topics' %}">Popular Topics &rarr;</a>
                     {% if user.topic_followers.all %}
-                        <h3>Following topics</h3>
-                        <a class="popular_topics" href="{% url 'forum:popular_topics' %}">Popular Topics &rarr;</a>
                         {% for topic in user.topic_followers.all %}
                             <a href="{% url 'forum:topic' topic.slug %}">t/{{ topic.slug }}</a>
                         {% endfor %}

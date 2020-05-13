@@ -23,11 +23,12 @@
 <main>
     <div class="left-aside">
         {% block leftAside %}
-            <h3>Following topics</h3>
-            <a class="popular_topics" href="{% url 'forum:popular_topics' %}">Popular Topics</a>
+
             <div class="left-aside-scroll">
                 {% if user.is_authenticated %}
                     {% if user.topic_followers.all %}
+                        <h3>Following topics</h3>
+                        <a class="popular_topics" href="{% url 'forum:popular_topics' %}">Popular Topics &rarr;</a>
                         {% for topic in user.topic_followers.all %}
                             <a href="{% url 'forum:topic' topic.slug %}">t/{{ topic.slug }}</a>
                         {% endfor %}
@@ -35,6 +36,8 @@
                         <a>You don't follow any topics</a>
                     {% endif %}
                 {% else %}
+                    <h3>Top 10 Topics</h3>
+                    <a class="popular_topics" href="{% url 'forum:popular_topics' %}">Popular Topics &rarr;</a>
                     {% for topic in topTopics %}
                         <a href="{% url 'forum:topic' topic.slug %}">t/{{ topic.slug }}</a>
                     {% endfor %}
